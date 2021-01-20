@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PJ1 plane</title>
+    <style>
+        div {
+            background-color: #aaaaaa;
+            min-height: 80vh;
+            width: 80%;
+            margin: 10px 20px;
+            padding: 10px 50px;
+            box-sizing: border-box;
+        }
+
+        div.tag {
+            background-color: #aaaaff;
+            position: sticky;
+            min-height: 30px;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tag">
+        <a href="#function">Function</a>
+        <a href="#FE">Front end</a>
+        <a href="#BE">Back end</a>
+        <a href="#DB">Database</a>
+    </div>
+    <h1>event apps</h1>
+    <div id="function">
+        <h2>Function</h2>
+        <ul>
+            <h2>User</h2>
+            <li>Log in</li>
+            <li>Create new account</li>
+            <li>Create event</li>
+            <li>Check events</li>
+            <li>Join event</li>
+        </ul>
+        <ul>
+            <h2>Event creator</h2>
+            <li>Change event</li>
+        </ul>
+        <ul>
+            <h2>Event groupmate</h2>
+            <li>Give grade</li>
+            <li>chatroom</li>
+        </ul>
+    </div>
+    <div id="FE">
+        <h1>Front end</h1>
+        <ul>
+            <h2>User</h2>
+            <li>
+                <ul>
+                    <h3>Log in</h3>
+                    <li>Log in page(html)</li>
+                    <li>Log in request(POST)</li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <h3>Create new account</h3>
+                    <li>Create new account page(html)</li>
+                    <li>account request(POST)</li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <h3>Create event</h3>
+                    <li>Create event page(html)</li>
+                    <li>event request(POST)</li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <h3>Check events</h3>
+                    <li>Check events page(html)</li>
+                    <li>event request(GET)</li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <h3>Join event</h3>
+                    <li>Join event page(html)</li>
+                    <li>event request(POST) "/join" </li>
+                </ul>
+            </li>
+            <h2>Event creator</h2>
+            <li>
+                <ul>
+                    <h3>Change event</h3>
+                    <li>Change event page(html)</li>
+                    <li>event request(Update)</li>
+                    <li>event request(DELETE)</li>
+                </ul>
+            </li>
+            <h2>Event groupmate</h2>
+            <li>
+                <ul>
+                    <h3>Give grade</h3>
+                    <li>grade request(POST)</li>
+                    <li>grade request(Update)</li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <h3>Chatroom</h3>
+                    <li>Chatroom request(GET)</li>
+                    <li>Chatroom request(POST)</li>
+                    <li>Chatroom request(Update)</li>
+                    <li>Chatroom request(Delete)</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="BE">
+        <h1>Back end</h1>
+        <ul>
+            <h2>User</h2>
+            <li>
+                <ul>
+                    <h3>Log in</h3>
+                    <li>Log in Router(POST)</li>
+                    <li>Session</li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <h3>Create new account</h3>
+                    <li>account Router(POST)</li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <h3>Create event</h3>
+                    <li>event Router(POST)</li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <h3>Check events</h3>
+                    <li>event Router(GET)</li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <h3>Join event</h3>
+                    <li>Join event page(html)</li>
+                    <li>event Router(POST) "/join" </li>
+                    <li>Grade more than 3.5</li>
+                </ul>
+            </li>
+            <h2>Event creator</h2>
+            <li>
+                <ul>
+                    <h3>Change event</h3>
+                    <li>event Router(Update)</li>
+                    <li>event Router(DELETE)</li>
+                </ul>
+            </li>
+            <h2>Event groupmate</h2>
+            <li>
+                <ul>
+                    <h3>Give grade</h3>
+                    <li>grade Router(POST)</li>
+                    <li>grade Router(Update)</li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <h3>Chatroom</h3>
+                    <li>Chatroom Router(GET)</li>
+                    <li>Chatroom Router(POST)</li>
+                    <li>Chatroom Router(Update)</li>
+                    <li>Chatroom Router(Delete)</li>
+                </ul>
+            </li>
+    </div>
+    <div id="DB">
+        <h1>Database</h1>
+        <ul>
+            <h2>User</h2>
+            <li>id : SERIAL primary key</li>
+            <li>name : VARCHAR(255)</li>
+            <li>password : VARCHAR(255)</li>
+            <li>gender : VARCHAR(255)</li>
+            <li>experience : INTEGER</li>
+            <li>history : History ID Key</li>
+            <li>introduction : TEXT</li>
+            <li>grade : INTEGER</li>
+            <li>user_mage</li>
+            <li>image</li>
+        </ul>
+        <ul>
+            <h2>User_joining_event</h2>
+            <li>id : SERIAL primary key</li>
+            <li>user : User ID</li>
+            <li>event : event ID</li>
+        </ul>
+        <ul>
+            <h2>History</h2>
+            <li>id : SERIAL primary key</li>
+            <li>user : User ID</li>
+            <li>event : event ID</li>
+        </ul>
+        <ul>
+            <h2>User_grade_event</h2>
+            <li>id : SERIAL primary key</li>
+            <li>user : User ID</li>
+            <li>event : event ID</li>
+            <li>grade_person : User ID</li>
+            <li>grade : INTEGER</li>
+        </ul>
+        <ul>
+            <h2>Event</h2>
+            <li>id : SERIAL primary key</li>
+            <li>event_name : VARCHAR(255)</li>
+            <li>meeting_point : VARCHAR(255)</li>
+            <li>date : DATE</li>
+            <li>time : TIME</li>
+            <li>max_number_of_member: INTEGER</li>
+            <li>joining_number_of_member: INTEGER</li>
+            <li>hiking_trail:Hiking_trail ID</li>
+            <li>detail: VARCHAR(255)</li>
+        </ul>
+    </div>
+</body>
+
+</html>
