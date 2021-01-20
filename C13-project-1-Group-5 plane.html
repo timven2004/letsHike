@@ -50,6 +50,7 @@
             <h2>Event groupmate</h2>
             <li>Give grade</li>
             <li>chatroom</li>
+            <li>Check own event</li>
         </ul>
     </div>
     <div id="FE">
@@ -228,6 +229,20 @@
             <li>joining_number_of_member: INTEGER</li>
             <li>hiking_trail:Hiking_trail ID</li>
             <li>detail: VARCHAR(255)</li>
+        </ul>
+        <ul>
+            <h2>hiking_trail</h2>
+            <li>id : SERIAL primary key</li>
+            <li>name : VARCHAR(255)</li>
+            <li>image</li>
+            <li>introduction : TEXT</li>
+        </ul>
+        <ul>
+            <h2>Chatroom</h2>
+            <li>id : SERIAL primary key</li>
+            <li>user : User ID</li>
+            <li>event : event ID</li>
+            <li>center : TEXT</li>
         </ul>
     </div>
 </body>
