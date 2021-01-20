@@ -1,0 +1,89 @@
+body{
+    margin:0;
+}
+
+.container{
+    position:relative;
+}
+
+.container button{
+    position:absolute;
+    z-index:1;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    top: 75%;
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: none;
+    outline:none;
+    font-family: 'Oswald';
+    background-color: rgb(255, 255, 255);
+    color:black;
+    font-size: larger;
+}
+
+.title{
+    position:absolute;
+    z-index:1;
+    color:white;
+    font-family: "Oswald";
+    font-size: 100px;
+    filter: drop-shadow(2px 7px 1px #000000);
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    top: 40%;
+
+}
+
+.slider {
+    min-width: 100vw;
+    min-height: 100vh;
+    filter: grayscale(20%);
+    filter:brightness(80%);
+  }
+  .slide1,.slide2,.slide3 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  .slide1 {
+    background: url(./assets/index/Sheklungkung.jpg)no-repeat center;
+        background-size: cover;
+      animation:fade 12s infinite;
+  -webkit-animation:fade 12s infinite;
+  
+  } 
+  .slide2 {
+    background: url(./assets/index/sunsetPeak.jpg)no-repeat center;
+        background-size: cover;
+      animation:fade2 12s infinite;
+  -webkit-animation:fade2 12s infinite;
+  }
+  .slide3 {
+      background: url(./assets/index/tiutanglunglaichiwo.jpg)no-repeat center;
+        background-size: cover;
+      animation:fade3 12s infinite;
+  -webkit-animation:fade3 12s infinite;
+  }
+  @keyframes fade
+  {
+    0%   {opacity:1}
+    33.333% { opacity: 0}
+    66.666% { opacity: 0}
+    100% { opacity: 1}
+  }
+  @keyframes fade2
+  {
+    0%   {opacity:0}
+    33.333% { opacity: 1}
+    66.666% { opacity: 0 }
+    100% { opacity: 0}
+  }
+  @keyframes fade3
+  {
+    0%   {opacity:0}
+    33.333% { opacity: 0}
+    66.666% { opacity: 1}
+    100% { opacity: 0}
+  }
