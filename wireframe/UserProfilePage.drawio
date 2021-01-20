@@ -1,1 +1,25 @@
-<mxfile host="app.diagrams.net" modified="2021-01-20T05:29:20.866Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" etag="i-iscVmx1mkuHoh1ISGY" version="14.2.4" type="device"><diagram id="I5Rz9A1Y3YKO6M5AUlT3" name="Page-1">zVddk5owFP01zLQPziARdB/9oHZ2uo6j3e7MvqUQJd1AaIiC/fW9SPjGrrbq9Ink3Jubyz2Xk6ChqZ/MBQ69J+4Sphm6m2hophmGoQ8teKTIIUP6+oNCtoK6CiuBNf1FckeF7qhLopqj5JxJGtZBhwcBcWQNw0LwuO624ay+a4i3pAWsHcza6At1padQS9dLw2dCt57a+iE3+Dh3VkDkYZfHFQjZGpoKzmU28pMpYWn18rpk6z6dsBaJCRLIcxZsFstXfbF8OejPP578x8fZm/vaU1H2mO3UC2uGxSDeZMMhLGQtD6oU1s8dzw296EjUGByMQZiURhht0+dS8A2FhYa+pI7cCZKHhfyyyJmfKk2xiQE5A7UwmcQelWQdYie1xNBegHnSZzDrwxBHYcb3hibELULtiZAkOVmiflF4aFnCfSLFAVzyfh0orlS3jtQ0LpkvXLwK6QWIVbdti9AlITBQnFzAj3GSnyjEwd/zs8A+UDLNg30XuWGFJQ22H+ar8cz+2OnxhezTj7wJVwjOUjtBsOC7wE0Jm+nvk3wFTk3U4NRscTocdnGKbsUputE3txh/m4xX535od+Mh7pLNaqWtWxV6cKNCP6/tVXqmkcgRNJSUB5cXvX+X5jfMevMjq0PRUAcng9GtSDFPkuL1m1pyrsYhK6VJP67Uj7ZYvUtqDbjwMWvTaPuYsorEtZTrDxLXztWl+39Lv5nenECriPfzA7hj76uno2T/P8nGTkIiKAkccsWUOpm+x9tccJp259WQGRAMWdeSSAr+RqaccQFIwIP0hgU3NNaAYDMHzn8AzHL2lYMyzXrGqYOCg0Zt2PFu61HXJQFg9ePlGud4426GzLaUjfpdUmZeLmUwLS/mR1vl/wbZvwE=</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-01-20T07:04:50.296Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" etag="pA93UMTM_uFTdM_Dq3LO" version="14.2.5" type="gitlab">
+  <diagram id="I5Rz9A1Y3YKO6M5AUlT3" name="Page-1">
+    <mxGraphModel dx="2062" dy="1122" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fNPZ0NPWy0UjMmJJDkdZ-1" value="&lt;font style=&quot;font-size: 24px&quot;&gt;Profile Picture&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+          <mxGeometry x="240" y="80" width="240" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="fNPZ0NPWy0UjMmJJDkdZ-2" value="&lt;span style=&quot;font-size: 24px&quot;&gt;Name,&lt;br&gt;Rating,&lt;br&gt;Level&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="530" y="85" width="770" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="fNPZ0NPWy0UjMmJJDkdZ-3" value="&lt;font style=&quot;font-size: 24px&quot;&gt;NAVBAR&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry width="1600" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fNPZ0NPWy0UjMmJJDkdZ-4" value="&lt;font style=&quot;font-size: 24px&quot;&gt;USER description&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="250" y="360" width="230" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="fNPZ0NPWy0UjMmJJDkdZ-5" value="&lt;h1&gt;&lt;span style=&quot;font-size: 36px ; font-weight: normal&quot;&gt;Email,&lt;/span&gt;&lt;br&gt;&lt;/h1&gt;&lt;div&gt;&lt;span style=&quot;font-size: 36px&quot;&gt;Gender,&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 36px&quot;&gt;Experience,&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 36px&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="540" y="350" width="810" height="450" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
