@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-01-20T08:47:26.220Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" etag="cJWYcWx94oCv3h6kP72Z" version="14.2.5" type="gitlab">
+<mxfile host="app.diagrams.net" modified="2021-01-20T09:25:25.773Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" etag="7EM63NbRuQnFnr46EvQo" version="14.2.5" type="gitlab">
   <diagram id="65VvHo6--kCIn4KXoi39" name="Page-1">
-    <mxGraphModel dx="3410" dy="2607" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3193" dy="2043" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -148,7 +148,7 @@
         <mxCell id="-zenPWLFXA5SUry6Ur8m-39" value="VARCHAR(255)" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;fontSize=14;" vertex="1" parent="-zenPWLFXA5SUry6Ur8m-37">
           <mxGeometry x="110" width="160" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="-zenPWLFXA5SUry6Ur8m-79" value="Chatroom" style="shape=table;startSize=50;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;strokeColor=#000000;gradientColor=none;fontSize=16;" vertex="1" parent="1">
+        <mxCell id="-zenPWLFXA5SUry6Ur8m-79" value="chatroom" style="shape=table;startSize=50;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;strokeColor=#000000;gradientColor=none;fontSize=16;" vertex="1" parent="1">
           <mxGeometry x="-220" y="-1090" width="330" height="210" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-80" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=16;" vertex="1" parent="-zenPWLFXA5SUry6Ur8m-79">
@@ -187,7 +187,7 @@
         <mxCell id="-zenPWLFXA5SUry6Ur8m-106" value="TEXT" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;fontSize=16;" vertex="1" parent="-zenPWLFXA5SUry6Ur8m-104">
           <mxGeometry x="110" width="220" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="-zenPWLFXA5SUry6Ur8m-110" value="User_joining_event" style="shape=table;startSize=80;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;strokeColor=#000000;gradientColor=none;fontSize=16;" vertex="1" parent="1">
+        <mxCell id="-zenPWLFXA5SUry6Ur8m-110" value="user_joining_event" style="shape=table;startSize=80;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;strokeColor=#000000;gradientColor=none;fontSize=16;" vertex="1" parent="1">
           <mxGeometry x="-190" y="-720" width="260" height="180.00000000000023" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-111" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=16;" vertex="1" parent="-zenPWLFXA5SUry6Ur8m-110">
@@ -322,7 +322,7 @@
         <mxCell id="-zenPWLFXA5SUry6Ur8m-206" value="INTEGER" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;" vertex="1" parent="-zenPWLFXA5SUry6Ur8m-204">
           <mxGeometry x="90" width="130" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="-zenPWLFXA5SUry6Ur8m-207" value="Event" style="shape=table;startSize=80;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;strokeColor=#000000;gradientColor=none;fontSize=16;" vertex="1" parent="1">
+        <mxCell id="-zenPWLFXA5SUry6Ur8m-207" value="event" style="shape=table;startSize=80;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;strokeColor=#000000;gradientColor=none;fontSize=16;" vertex="1" parent="1">
           <mxGeometry x="310" y="-890" width="360" height="380" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-208" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="-zenPWLFXA5SUry6Ur8m-207">
