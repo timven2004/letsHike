@@ -12,8 +12,7 @@ CREATE TABLE users(
     experience INTEGER,
     introduction TEXT,
     rating INTEGER,
-    user_icon VARCHAR(255),
-    auto_rating BOOLEAN
+    user_icon VARCHAR(255)
 );
 
 CREATE TABLE hiking_trail(
@@ -60,7 +59,8 @@ CREATE TABLE user_joining_event(
     FOREIGN KEY (users_id) REFERENCES users(id),
     event_id INTEGER,
     FOREIGN KEY (event_id ) REFERENCES event(id),
-    is_default BOOLEAN
+    is_default BOOLEAN,
+    auto_rating BOOLEAN
 );
 
 CREATE TABLE rating_event(
