@@ -59,7 +59,8 @@ CREATE TABLE user_joining_event(
     users_id INTEGER,
     FOREIGN KEY (users_id) REFERENCES users(id),
     event_id INTEGER,
-    FOREIGN KEY (event_id ) REFERENCES event(id)
+    FOREIGN KEY (event_id ) REFERENCES event(id),
+    is_default BOOLEAN
 );
 
 CREATE TABLE rating_event(
@@ -74,3 +75,7 @@ CREATE TABLE rating_event(
     comment TEXT
 );
 
+-- users --
+
+-- POST
+INSERT INTO users ( name, email, password ) VALUES ($1,$2,$3)
