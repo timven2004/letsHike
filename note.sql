@@ -13,15 +13,22 @@ CREATE TABLE users(
     introduction TEXT,
     rating INTEGER,
     user_icon VARCHAR(255),
-    image VARCHAR(255)
+    auto_rating BOOLEAN
 );
 
 CREATE TABLE hiking_trail(
     id SERIAL primary key,
     name VARCHAR(255),
-    image VARCHAR(255),
+    image_id INTEGER,
     introduction TEXT,
     hardness INTEGER
+);
+
+CREATE TABLE image_hiking_trail(
+    id SERIAL primary key,
+    image VARCHAR(255),
+    hiking_trail_id INTEGER,
+    FOREIGN KEY (hiking_trail_id) REFERENCES hiking_trail(id)
 );
 
 CREATE TABLE event(

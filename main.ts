@@ -1,6 +1,26 @@
 import express from 'express'
 import http from 'http'
 import {Server as SocketIO} from 'socket.io'
+import {Client} from 'pg'
+import dotenv from 'dotenv'
+
+dotenv.config()
+
+// Please Set up .env !!
+export const client = new Client({
+    database:process.env.DB_NAME,
+    user:process.env.DB_USERNAME,
+    password:process.env.DB_PASSWORD
+})
+
+client.connect()
+
+// async function test(){
+//     const res = await client.query(' select * from test')
+//     console.log(res.rows)
+// }
+
+// test()
 
 const app = express()
 const server = new http.Server(app)
@@ -11,6 +31,8 @@ io.on('connection',(socket)=>{
 })
 
 app.use(express.static('public'))
+
+
 
 const PORT = 8080
 
