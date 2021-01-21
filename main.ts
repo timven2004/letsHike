@@ -34,9 +34,15 @@ io.on('connection', (socket) => {
 
 app.use(expressSession({
     secret: 'This is session',
-    resave:true,
-    saveUninitialized:true
+    resave: true,
+    saveUninitialized: true
 }))
+
+app.use((req,res,n)=>{
+    console.log("TEST")
+    console.log(req.session)
+    n()
+})
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())

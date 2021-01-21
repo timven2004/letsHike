@@ -8,7 +8,7 @@ users.post("/api/v1/usersRegister", async (req, res) => {
         let data = req.body
         console.log(data)
         await client.query(`
-            INSERT INTO users ( name, email, password ) VALUES ($1,$2,$3)
+            INSERT INTO users ( user_name, email, password ) VALUES ($1,$2,$3)
         `, [data.name, data.email, data.password])
         res.json({ message: "success" })
     } catch (err) {
@@ -22,17 +22,13 @@ users.post("/api/v1/userLogin", async (req, res) => {
         let userInputName = req.body.name
         let userInputPassword = req.body.password
         let usersData = await client.query(`
-            SELECT * FROM users
-        `)
-        let pass = false
-        for(let userData of usersData.rows){
-            if(userData.name === userInputName && userData.password === userInputPassword){
-                pass = true
-            }
-        }
-        if(pass){
-            req.session["user-id"] = usersData.rows["id"]
+            SELECT * FROM users WHERE user_name = $1
+        `, [userInputName])
+        const user = usersData.rows[0];
+        if(user && user.password === userInputPassword){
+            req.session["user-id"] = user["id"]
             res.json({ message: "success" })
+            console.log(req.session);
         }else {
             res.status(400).json({ message: "Invalid login, please try again" })
         }

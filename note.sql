@@ -4,7 +4,7 @@ CREATE DATABASE c13_project_1_group_5;
 
 CREATE TABLE users(
     id SERIAL primary key,
-    name VARCHAR(255),
+    user_name VARCHAR(255) ,
     email VARCHAR(255),
     password VARCHAR(255),
     gender VARCHAR(255),
