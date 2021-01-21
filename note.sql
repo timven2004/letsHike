@@ -79,3 +79,11 @@ CREATE TABLE rating_event(
 
 -- POST
 INSERT INTO users ( name, email, password ) VALUES ($1,$2,$3)
+
+
+-- events /details --
+
+-- POST
+INSERT INTO event ( event_name, meeting_point, date, time, max_number_of_member, joining_number_of_member , hiking_trail_id, detail) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
+
+
