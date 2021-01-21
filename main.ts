@@ -39,12 +39,6 @@ app.use(expressSession({
     saveUninitialized: true
 }))
 
-app.use((req,res,n)=>{
-    console.log("TEST")
-    console.log(req.session)
-    n()
-})
-
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 

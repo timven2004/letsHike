@@ -28,12 +28,10 @@ users.post("/api/v1/userLogin", async (req, res) => {
         if(user && user.password === userInputPassword){
             req.session["user-id"] = user["id"]
             res.json({ message: "success" })
-            console.log(req.session);
         }else {
             res.status(400).json({ message: "Invalid login, please try again" })
         }
     } catch (err) {
-        console.error(err.message)
         res.status(500).json({ message: "Internal Server Error" })
     }
 })
