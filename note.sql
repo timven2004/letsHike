@@ -4,14 +4,14 @@ CREATE DATABASE c13_project_1_group_5;
 
 CREATE TABLE users(
     id SERIAL primary key,
-    user_name VARCHAR(255) ,
-    email VARCHAR(255),
-    password VARCHAR(255),
-    gender VARCHAR(255),
-    level INTEGER,
-    experience INTEGER,
+    user_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    gender VARCHAR(255) NOT NULL,
+    level INTEGER DEFAULT 0,
+    experience INTEGER DEFAULT 0,
     introduction TEXT,
-    rating INTEGER,
+    rating DECIMAL(2,1) DEFAULT 0,
     user_icon VARCHAR(255)
 );
 
