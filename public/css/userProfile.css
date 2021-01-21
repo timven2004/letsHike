@@ -3,7 +3,6 @@
 }
 
 body{
-    background: linear-gradient(to bottom, #eb596e, #e4e5e6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     animation: fadeIn 1s;
     background-repeat: no-repeat;
     background-size: auto; 
@@ -78,6 +77,12 @@ nav{
     background-color: yellow;
     border-radius: 10px;
     padding: 3px 10px
+}
+
+.rating>*{
+    padding: 5px;
+    border-radius: 5px;
+    display: inline;
 }
 
 @keyframes moveInFromLeft{
