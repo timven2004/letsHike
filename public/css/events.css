@@ -40,6 +40,46 @@ ul li a {
   width: 300px;
 }
 
+button {
+  height: 40px;
+  width: 90px;
+  right: 50%;
+}
+
+.filters {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter {
+  height: 50px;
+  width: 220px;
+}
+
+.events {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+
+.event {
+  background-color: #000;
+  height: 270px;
+  width: 220px;
+}
+
+footer {
+  background-color: #000;
+  width: 100%;
+  height: 100px;
+  padding: 20px;
+}
+
 @media only screen and (max-width: 375px) {
   .nav-bar {
     display: none;

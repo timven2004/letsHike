@@ -1,5 +1,5 @@
 body{
-    margin:0;
+margin:0
 }
 
 .container{
@@ -16,19 +16,24 @@ body{
     border-radius: 5px;
     border: none;
     outline:none;
-    font-family: 'Oswald';
+    font-family: 'Abel', sans-serif;
     background-color: rgb(255, 255, 255);
     color:black;
     font-size: larger;
+}
+
+.container button:hover{
+  background-color: rgb(200, 255, 255);
+  cursor:pointer;
 }
 
 .title{
     position:absolute;
     z-index:1;
     color:white;
-    font-family: "Oswald";
+    font-family: 'Abel', sans-serif;
     font-size: 100px;
-    filter: drop-shadow(2px 7px 1px #000000);
+    filter: drop-shadow(2px 7px 3px rgba(0,0,0,0.3));
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     top: 40%;
@@ -48,20 +53,20 @@ body{
     z-index: 0;
   }
   .slide1 {
-    background: url(./assets/index/Sheklungkung.jpg)no-repeat center;
+    background: url(../assets/index/Sheklungkung.jpg) no-repeat center;
         background-size: cover;
       animation:fade 12s infinite;
   -webkit-animation:fade 12s infinite;
   
   } 
   .slide2 {
-    background: url(./assets/index/sunsetPeak.jpg)no-repeat center;
+    background: url(../assets/index/sunsetPeak.jpg)no-repeat center;
         background-size: cover;
       animation:fade2 12s infinite;
   -webkit-animation:fade2 12s infinite;
   }
   .slide3 {
-      background: url(./assets/index/tiutanglunglaichiwo.jpg)no-repeat center;
+      background: url(../assets/index/tiutanglunglaichiwo.jpg)no-repeat center;
         background-size: cover;
       animation:fade3 12s infinite;
   -webkit-animation:fade3 12s infinite;
