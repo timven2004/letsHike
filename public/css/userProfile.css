@@ -15,6 +15,7 @@ body{
     border-radius: 50%;
     width: 100%;
     height: auto;
+    max-height: 600px;
     animation: moveInFromLeft 0.4s ease-out;
 }
 
@@ -32,7 +33,7 @@ nav{
     padding:15px;
     color:black;
     animation: moveInFromLeft 0.4s ease-out;
-
+    
 }
 
 .rating{
@@ -66,11 +67,23 @@ nav{
 }
 
 .cardContainer {
-    margin: 90px 50px;
+    margin: 90px 0px;
     background-color: whitesmoke;
     padding:20px;
     border-radius: 10px;
 }
+
+.commentCardsHolder{
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+
+}
+
+.card{
+    margin:0 10px 10px 0;
+}
+
 
 #editProfile{
     position:absolute;

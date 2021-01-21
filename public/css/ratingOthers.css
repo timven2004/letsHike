@@ -1,0 +1,109 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-repeat: no-repeat;
+    background-size: auto; 
+    min-height: calc(100vh-56px);
+    font-family: 'Abel', sans-serif;
+
+}
+
+.cardContainer {
+    margin: 90px 50px;
+    background-color: whitesmoke;
+    padding:20px;
+    border-radius: 10px;
+}
+
+
+.profilePic{
+    border-radius: 50%;
+    width: 100%;
+    max-height: 600px;
+    height: auto;
+    animation: moveInFromLeft 0.4s ease-out;
+}
+
+
+
+.row{
+    margin-bottom: 20px;
+}
+
+.UserIntroduction{
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    padding:15px;
+    color:black;
+    animation: moveInFromRight 0.4s ease-out;
+    margin:5vh 5vw 0 5vw;
+    text-align: center;
+}
+
+.cardLevel{
+    text-align: center;
+    margin-top: 50px;
+    animation: moveInFromLeft 0.4s ease-out;
+    background-color: blanchedalmond;
+    padding:20px 0;
+}
+
+.fiveStarsAndComment{
+    margin: 20px;
+    display:flex;
+    flex-flow: column;
+}
+
+.fiveStarsAndComment h1{
+    text-align: center;
+    font-size: 7rem;
+    animation: moveInFromRight 0.4s ease-out;
+
+}
+
+#commentText{
+    width: 100%;
+    height:300px;
+}
+
+#submitButton{
+    outline: none;
+    align-self: center;
+    background-color: blanchedalmond;
+    margin: 10px 0 0 50%;
+    transform:translateX(-50%);
+    border: none;
+    font-size: 2rem;
+}
+
+@keyframes moveInFromLeft{
+    0%{
+        transform: translateX(-500px);
+    }
+
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+@keyframes moveInFromRight{
+    0%{
+        transform: translateX(500px);
+    }
+
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
