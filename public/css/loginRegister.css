@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: 'Abel', sans-serif;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.form-wrapper {
+  top: 0;
+  left: 0;
+  transform: translate(25%, 0);
+  margin-top: 100px;
+}
+
+.button {
+  padding: 10px 20px;
+  letter-spacing: 2px;
+  background: #6b705c;
+  color: #fff;
+  margin-left: 20px;
+}
