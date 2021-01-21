@@ -10,7 +10,6 @@ events.get("/", (req, res) => {
 events.post("/createEvent", async (req, res) => {
     try {
         const { event_name, meeting_point, date, time, max_number_of_member, hiking_trail_id, detail } = req.body
-        console.log(event_name, meeting_point, date, time, max_number_of_member, hiking_trail_id, detail)
 
         await client.query(/*sql*/`INSERT INTO event ( event_name, meeting_point, date, time, max_number_of_member, joining_number_of_member , hiking_trail_id, detail) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`,
             [event_name, meeting_point, date, time, max_number_of_member, hiking_trail_id, detail])

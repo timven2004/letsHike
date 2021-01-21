@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Let's hike!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="css/eventDetails.css">
@@ -21,44 +23,57 @@
         </nav>
 
         <div class="eventDetails-wrapper">
-            <div class="event-title">
-                <h1>Event Title</h1>
+            <div class="row">
+                <div class="col-12">
+                    <h1>Event Title</h1>
+                    <img src="/public/assets/event/event.jpg" alt="">
+                </div>
             </div>
-            <div class="event-detail">
-                <p>meeting point:</p>
-                <p>Date:</p>
-                <p>Time:</p>
-                <p>Max number of member:</p>
-                <p>Joining number of member:</p>
-                <p>Details:</p>
-                <p>Joining number of member:</p>
+
+            <div class="row">
+                <div class="col-12 col-md-5 detail">
+                    <h5>meeting point:</h5>
+                    <h5>Date:</h5>
+                    <h5>Time:</h5>
+                    <h5>Max number of member:</h5>
+                    <h5>Joining number of member:</h5>
+                </div>
+                <div class="col-12 col-md-5 detail">
+                    <p>Details:</p>
+                </div>
             </div>
-            <div class="comment-area">
-                <div class="show-comment">
-                    <div class="comment">
-                        <h7>name</h7>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi officia, distinctio commodi exercitationem autem harum minus corporis asperiores ipsa facere et reiciendis facilis quisquam nihil ipsum voluptatem tenetur hic iure.</p>
+
+            <div class="comments-wrapper">
+                <h2>Comments</h2>
+                <div class="row">
+                    <div class="col-12 col-md-10 comment">
+                        <p>Comment:</p>
                     </div>
-                    <div class="comment">
-                        <h7>name</h7>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi officia, distinctio commodi exercitationem autem harum minus corporis asperiores ipsa facere et reiciendis facilis quisquam nihil ipsum voluptatem tenetur hic iure.</p>
+                    <div class="col-12 col-md-9 comment">
+                        <p>Comment:</p>
                     </div>
-                    <div class="comment">
-                        <h7>name</h7>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi officia, distinctio commodi exercitationem autem harum minus corporis asperiores ipsa facere et reiciendis facilis quisquam nihil ipsum voluptatem tenetur hic iure.</p>
+                    <div class="col-12 col-md-10 comment">
+                        <p>Comment:</p>
+                    </div>
+                    <div class="col-12 col-md-9 comment">
+                        <p>Comment:</p>
+                    </div>
+                    <div class="col-12 col-md-10 comment">
+                        <p>Comment:</p>
+                    </div>
+                    <div class="col-12 col-md-10 comment">
+                        <p>Comment:</p>
                     </div>
                 </div>
-                <div class="input-area">
-                    <form id="">
-                        <textarea class="add-comment" name="add-comment" cols="200" row="200"></textarea><br>
-                        <input type="submit" value="Submit">
+                <h2>Add Comment</h2>
+                <div class="row">
+                    <form id="comment-form">
+                        <textarea id="content" name="intro" rows="6" cols="80"></textarea>
+                        <input class="button" type="submit" value="submit">
                     </form>
-
                 </div>
             </div>
         </div>
-
     </div>
-    
 </body>
 </html>

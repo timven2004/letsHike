@@ -1,3 +1,10 @@
+@font-face {
+  font-family: Monument Extended;
+  src: url('/public/assets/fonts/MonumentExtended-Regular.ttf') format('ttf'),
+    url('/public/assets/fonts/MonumentExtended-Regular.woff') format('woff'),
+    url('/public/assets/fonts/MonumentExtended.otf') format('otf');
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,35 +12,61 @@
   font-family: 'Abel', sans-serif;
 }
 
+body {
+  background: #c1c6bf;
+}
+
 .wrapper {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 
 .eventDetails-wrapper {
-  height: 900px;
-  margin: 2rem 0;
+  position: relative;
 }
 
-.event-title {
-  background: rgb(165, 138, 138);
-  height: 200px;
-  margin-top: 200px;
+.eventDetails-wrapper img {
+  position: relative;
+  width: 100%;
+  float: right;
 }
 
-.event-detail {
-  background: yellow;
-  margin-top: 20px;
-  height: 300px;
-  padding: 30px;
+.eventDetails-wrapper h1 {
+  position: absolute;
+  font-family: 'Monument Extended', sans-serif;
+  font-size: 100px;
+  z-index: 2;
+  color: #fff;
+  bottom: 10px;
 }
 
-.comment {
-  background: #f5f4f4;
-  margin-top: 20px;
+.eventDetails-wrapper .detail {
+  background: grey;
+  width: 100%;
+  padding: 20px;
+  margin: 50px auto;
 }
 
-.input-area {
-  width: 90%;
-  margin-top: 100px;
+.comments-wrapper {
+  width: 80%;
+  margin: 10px auto;
+}
+
+.eventDetails-wrapper .comment {
+  border: solid 1px #fff;
+  border-radius: 2px;
+  padding: 10px;
+  color: #fff;
+}
+
+.eventDetails-wrapper .comment:nth-child(even) {
+  /* right: 0; */
+  background: rgb(255, 255, 255, 0.5);
+  border: none;
+  color: #000;
+  margin: 20px;
+}
+
+textarea{
+  padding: 10px;
 }
