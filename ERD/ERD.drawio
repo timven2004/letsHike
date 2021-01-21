@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-01-21T04:39:43.767Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" etag="4xwTp_KIgZbDG1LokvrR" version="14.2.6" type="gitlab">
+<mxfile host="app.diagrams.net" modified="2021-01-21T04:51:58.635Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" etag="TDvT3itkyplQJNORkDk8" version="14.2.6" type="gitlab">
   <diagram id="65VvHo6--kCIn4KXoi39" name="Page-1">
-    <mxGraphModel dx="1865" dy="1717" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3310" dy="2139" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -416,7 +416,7 @@
           <mxGeometry x="197.00000000000023" width="162.99999999999977" height="30" as="geometry" />
         </mxCell>
         <mxCell id="W8MikCeuZX580ekkMF8j-11" value="image_hiking_trail" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;" vertex="1" parent="1">
-          <mxGeometry x="140" y="-250" width="250" height="110" as="geometry" />
+          <mxGeometry x="140" y="-250" width="250" height="130" as="geometry" />
         </mxCell>
         <mxCell id="W8MikCeuZX580ekkMF8j-12" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="W8MikCeuZX580ekkMF8j-11">
           <mxGeometry y="30" width="250" height="30" as="geometry" />
@@ -443,6 +443,15 @@
           <mxGeometry width="110" height="20" as="geometry" />
         </mxCell>
         <mxCell id="W8MikCeuZX580ekkMF8j-43" value="hiking_trail ID" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;" vertex="1" parent="W8MikCeuZX580ekkMF8j-41">
+          <mxGeometry x="110" width="140" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="W8MikCeuZX580ekkMF8j-55" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="W8MikCeuZX580ekkMF8j-11">
+          <mxGeometry y="110" width="250" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="W8MikCeuZX580ekkMF8j-56" value="is_default" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;" vertex="1" parent="W8MikCeuZX580ekkMF8j-55">
+          <mxGeometry width="110" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="W8MikCeuZX580ekkMF8j-57" value="BOOLEAN" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;" vertex="1" parent="W8MikCeuZX580ekkMF8j-55">
           <mxGeometry x="110" width="140" height="20" as="geometry" />
         </mxCell>
         <mxCell id="W8MikCeuZX580ekkMF8j-34" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmany;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="-zenPWLFXA5SUry6Ur8m-192" target="W8MikCeuZX580ekkMF8j-12">
