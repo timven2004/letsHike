@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Abel', sans-serif;
+}
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.eventDetails-wrapper {
+  height: 900px;
+  margin: 2rem 0;
+}
+
+.event-title {
+  background: rgb(165, 138, 138);
+  height: 200px;
+  margin-top: 200px;
+}
+
+.event-detail {
+  background: yellow;
+  margin-top: 20px;
+  height: 300px;
+  padding: 30px;
+}
+
+.comment {
+  background: #f5f4f4;
+  margin-top: 20px;
+}
+
+.input-area {
+  width: 90%;
+  margin-top: 100px;
+}

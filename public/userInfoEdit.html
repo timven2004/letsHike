@@ -11,23 +11,23 @@
 <body>
     <div class="container">
         <div class="form-wrapper">
-        <h1>REGISTER</h1>
+        <h1>Edit User Info</h1>
         <form id="register-form">
             <div class="row">
                 <div class="input-field col s6">
-                  <input id="name" type="text" class="validate" name="name" required>
+                  <input id="name" type="text" class="validate">
                   <label class="active" for="name">Name</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                  <input id="email" type="email" class="validate" name="email" required>
+                  <input id="email" type="text" class="validate">
                   <label class="active" for="email">E-mail</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                  <input id="password" type="password" class="validate" name="password" required>
+                  <input id="password" type="password" class="validate">
                   <label class="active" for="password">Password</label>
                 </div>
             </div>
@@ -48,12 +48,10 @@
                   <input type="file" name="image" id="image"/>
                 </div>
             </div>
-            <p id="message">hi</p>
             <input class="button" type="submit" value="submit">
         </form>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="js/register.js"></script>
 </body>
 </html>

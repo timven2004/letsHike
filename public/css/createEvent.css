@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: 'Abel', sans-serif;
+  font-weight: 900;
+  font-size: 60px;
+  letter-spacing: 2px;
+}
+
+.form-wrapper {
+  top: 0;
+  left: 0;
+  transform: translate(25%, -50px);
+  margin-top: 100px;
+}
+
+.button {
+  padding: 10px 20px;
+  letter-spacing: 2px;
+  background: #6b705c;
+  color: #fff;
+  margin-left: 20px;
+}
+
+.row {
+  margin-top: -20px;
+}

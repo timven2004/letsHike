@@ -5,6 +5,7 @@ import { Server as SocketIO } from 'socket.io'
 import { Client } from 'pg'
 import dotenv from 'dotenv'
 import { users } from './router/users'
+import { events } from './router/events'
 
 dotenv.config()
 
@@ -35,9 +36,15 @@ io.on('connection', (socket) => {
 
 app.use(expressSession({
     secret: 'This is session',
-    resave:true,
-    saveUninitialized:true
+    resave: true,
+    saveUninitialized: true
 }))
+
+app.use((req,res,n)=>{
+    console.log("TEST")
+    console.log(req.session)
+    n()
+})
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -45,6 +52,7 @@ app.use(express.json())
 app.use(express.static('public'))
 
 app.use(users)
+app.use('/events', events)
 
 const PORT = 8080
 

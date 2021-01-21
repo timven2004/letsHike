@@ -4,7 +4,7 @@ CREATE DATABASE c13_project_1_group_5;
 
 CREATE TABLE users(
     id SERIAL primary key,
-    name VARCHAR(255),
+    user_name VARCHAR(255) ,
     email VARCHAR(255),
     password VARCHAR(255),
     gender VARCHAR(255),
@@ -12,8 +12,7 @@ CREATE TABLE users(
     experience INTEGER,
     introduction TEXT,
     rating INTEGER,
-    user_icon VARCHAR(255),
-    auto_rating BOOLEAN
+    user_icon VARCHAR(255)
 );
 
 CREATE TABLE hiking_trail(
@@ -60,7 +59,8 @@ CREATE TABLE user_joining_event(
     FOREIGN KEY (users_id) REFERENCES users(id),
     event_id INTEGER,
     FOREIGN KEY (event_id ) REFERENCES event(id),
-    is_default BOOLEAN
+    is_default BOOLEAN,
+    auto_rating BOOLEAN
 );
 
 CREATE TABLE rating_event(
@@ -79,3 +79,11 @@ CREATE TABLE rating_event(
 
 -- POST
 INSERT INTO users ( name, email, password ) VALUES ($1,$2,$3)
+
+
+-- events /details --
+
+-- POST
+INSERT INTO event ( event_name, meeting_point, date, time, max_number_of_member, joining_number_of_member , hiking_trail_id, detail) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
+
+
