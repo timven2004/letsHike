@@ -1,4 +1,5 @@
 import express from 'express'
+import expressSession from 'express-session'
 import http from 'http'
 import { Server as SocketIO } from 'socket.io'
 import { Client } from 'pg'
@@ -30,6 +31,12 @@ const io = new SocketIO(server)
 io.on('connection', (socket) => {
     console.log("Connect")
 })
+
+app.use(expressSession({
+    secret: 'This is session',
+    resave:true,
+    saveUninitialized:true
+}))
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
