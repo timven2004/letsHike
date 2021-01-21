@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/createEvent.css">
+    <title>Let's hike!</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form-wrapper">
+        <h1>Create Event</h1>
+        <form id="create-event-form">
+            <div class="row">
+                <div class="input-field col s6">
+                  <input id="event-name" type="text" class="validate">
+                  <label class="active" for="event-name">Event name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                  <input id="meeting-point" type="text" class="validate">
+                  <label class="active" for="meeting-point">Meeting Point</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                  <input id="date" type="date" class="validate">
+                  <label class="active" for="date">Date</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                  <input id="time" type="time" class="validate">
+                  <label class="active" for="time">Time</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                  <input id="max-no-of-member" type="number" class="validate">
+                  <label class="active" for="max-no-of-member">Max no. of member</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <select>
+                      <option value=""  selected>Choose your option</option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label>Materialize Select</label>
+                  </div>
+            </div>
+            
+            <input class="button" type="submit" value="submit">
+        </form>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+        });
+    </script>
+</body>
+</html>

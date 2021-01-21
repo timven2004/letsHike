@@ -13,15 +13,22 @@ CREATE TABLE users(
     introduction TEXT,
     rating INTEGER,
     user_icon VARCHAR(255),
-    image VARCHAR(255)
+    auto_rating BOOLEAN
 );
 
 CREATE TABLE hiking_trail(
     id SERIAL primary key,
     name VARCHAR(255),
-    image VARCHAR(255),
+    image_id INTEGER,
     introduction TEXT,
     hardness INTEGER
+);
+
+CREATE TABLE image_hiking_trail(
+    id SERIAL primary key,
+    image VARCHAR(255),
+    hiking_trail_id INTEGER,
+    FOREIGN KEY (hiking_trail_id) REFERENCES hiking_trail(id)
 );
 
 CREATE TABLE event(
@@ -52,7 +59,8 @@ CREATE TABLE user_joining_event(
     users_id INTEGER,
     FOREIGN KEY (users_id) REFERENCES users(id),
     event_id INTEGER,
-    FOREIGN KEY (event_id ) REFERENCES event(id)
+    FOREIGN KEY (event_id ) REFERENCES event(id),
+    is_default BOOLEAN
 );
 
 CREATE TABLE rating_event(
@@ -67,3 +75,7 @@ CREATE TABLE rating_event(
     comment TEXT
 );
 
+-- users --
+
+-- POST
+INSERT INTO users ( name, email, password ) VALUES ($1,$2,$3)
