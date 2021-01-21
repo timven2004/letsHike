@@ -25,10 +25,10 @@ users.post("/api/v1/userLogin", async (req, res) => {
             SELECT * FROM users WHERE user_name = $1
         `, [userInputName])
         const user = usersData.rows[0];
-        if(user && user.password === userInputPassword){
+        if (user && user.password === userInputPassword) {
             req.session["user-id"] = user["id"]
             res.json({ message: "success" })
-        }else {
+        } else {
             res.status(400).json({ message: "Invalid login, please try again" })
         }
     } catch (err) {
@@ -36,16 +36,16 @@ users.post("/api/v1/userLogin", async (req, res) => {
     }
 })
 
-users.get("/api/v1/userProfile/self", async(req,res)=>{
+users.get("/api/v1/userProfile/self", async (req, res) => {
     console.log(req.session["user-id"]);
 
-    try{    
-        let data = await client.query('SELECT FROM users WHERE id=($1);',[1]);
+    try {
+        let data = await client.query('SELECT FROM users WHERE id=($1);', [1]);
         console.log(data.rows[0]);
         console.log(req.session["user-id"])
         res.json(data.rows[0]);
     } catch (err) {
-        console.error(err.message) 
-        res.status(500).json({500: "Internal server error"})
+        console.error(err.message)
+        res.status(500).json({ 500: "Internal server error" })
     }
 })

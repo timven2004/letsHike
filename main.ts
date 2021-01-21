@@ -13,8 +13,7 @@ dotenv.config()
 export const client = new Client({
     database: process.env.DB_NAME,
     user: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    host: "localhost"
+    password: process.env.DB_PASSWORD
 })
 
 client.connect()
@@ -39,6 +38,11 @@ app.use(expressSession({
     resave: true,
     saveUninitialized: true
 }))
+
+app.use((req, res, next) => {
+    console.log("session['user-id'] = ", req.session["user-id"])
+    next()
+})
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
