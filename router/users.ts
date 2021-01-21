@@ -8,8 +8,8 @@ users.post("/api/v1/usersRegister", async (req, res) => {
         let data = req.body
         console.log(data)
         await client.query(`
-            INSERT INTO users ( name, email, password ) VALUES ($1,$2,$3)
-        `, [data.name, data.email, data.password])
+        INSERT INTO users ( user_name , email, password, gender ) VALUES ($1,$2,$3,$4)
+        `, [data.name, data.email, data.password, data.gender])
         res.json({ message: "success" })
     } catch (err) {
         console.error(err.message)
@@ -22,22 +22,30 @@ users.post("/api/v1/userLogin", async (req, res) => {
         let userInputName = req.body.name
         let userInputPassword = req.body.password
         let usersData = await client.query(`
-            SELECT * FROM users
-        `)
-        let pass = false
-        for(let userData of usersData.rows){
-            if(userData.name === userInputName && userData.password === userInputPassword){
-                pass = true
-            }
-        }
-        if(pass){
-            req.session["user-id"] = usersData.rows["id"]
+            SELECT * FROM users WHERE user_name = $1
+        `, [userInputName])
+        const user = usersData.rows[0];
+        if (user && user.password === userInputPassword) {
+            req.session["user-id"] = user["id"]
             res.json({ message: "success" })
-        }else {
+        } else {
             res.status(400).json({ message: "Invalid login, please try again" })
         }
     } catch (err) {
-        console.error(err.message)
         res.status(500).json({ message: "Internal Server Error" })
+    }
+})
+
+users.get("/api/v1/userProfile/self", async (req, res) => {
+    console.log(req.session["user-id"]);
+
+    try {
+        let data = await client.query('SELECT FROM users WHERE id=($1);', [1]);
+        console.log(data.rows[0]);
+        console.log(req.session["user-id"])
+        res.json(data.rows[0]);
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).json({ 500: "Internal server error" })
     }
 })

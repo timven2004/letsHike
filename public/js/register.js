@@ -15,6 +15,7 @@ function userRegisterFormSubmit() {
         formObject["name"] = form.name.value
         formObject["email"] = form.email.value
         formObject["password"] = form.password.value
+        formObject["gender"] = form.gender.value
         const res = await fetch("/api/v1/usersRegister", {
             method: "POST",
             headers: {
@@ -24,5 +25,9 @@ function userRegisterFormSubmit() {
         })
         const result = await res.json()
         console.log(result)
+        if(res.status === 200){
+            document.getElementById("message").innerHTML = result.message
+            return
+        }
     })
 }

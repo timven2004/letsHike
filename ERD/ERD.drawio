@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-01-21T05:48:41.793Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" etag="Pfta0FCZBljIYnumwBjJ" version="14.2.6" type="gitlab">
+<mxfile host="app.diagrams.net" modified="2021-01-21T10:55:33.267Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" etag="4D-XiQ3tQ5fP0_OZ-Bo0" version="14.2.6" type="gitlab">
   <diagram id="65VvHo6--kCIn4KXoi39" name="Page-1">
-    <mxGraphModel dx="2417" dy="2652" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2329" dy="1773" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -41,97 +41,97 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-18" value="users" style="shape=table;startSize=60;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;gradientColor=none;fontSize=24;" parent="1" vertex="1">
-          <mxGeometry x="-730" y="-890" width="310" height="420" as="geometry" />
+          <mxGeometry x="-730" y="-890" width="309" height="420" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-19" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="-zenPWLFXA5SUry6Ur8m-18" vertex="1">
-          <mxGeometry y="60" width="310" height="40" as="geometry" />
+          <mxGeometry y="60" width="309" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-20" value="id" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-19" vertex="1">
           <mxGeometry width="149.99999999999977" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-21" value="SERIAL primary key" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-19" vertex="1">
-          <mxGeometry x="149.99999999999977" width="160.00000000000023" height="40" as="geometry" />
+          <mxGeometry x="149.99999999999977" width="159.00000000000023" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-22" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;top=0;left=0;bottom=1;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-18" vertex="1">
-          <mxGeometry y="100" width="310" height="40" as="geometry" />
+          <mxGeometry y="100" width="309" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-23" value="name" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-22" vertex="1">
           <mxGeometry width="149.99999999999977" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-24" value="VARCHAR(255)" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-22" vertex="1">
-          <mxGeometry x="149.99999999999977" width="160.00000000000023" height="40" as="geometry" />
+          <mxGeometry x="149.99999999999977" width="159.00000000000023" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-61" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;top=0;left=0;bottom=1;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-18" vertex="1">
-          <mxGeometry y="140" width="310" height="40" as="geometry" />
+          <mxGeometry y="140" width="309" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-62" value="email" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-61" vertex="1">
           <mxGeometry width="149.99999999999977" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-63" value="VARCHAR(255)" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-61" vertex="1">
-          <mxGeometry x="149.99999999999977" width="160.00000000000023" height="40" as="geometry" />
+          <mxGeometry x="149.99999999999977" width="159.00000000000023" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-58" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;top=0;left=0;bottom=1;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-18" vertex="1">
-          <mxGeometry y="180" width="310" height="40" as="geometry" />
+          <mxGeometry y="180" width="309" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-59" value="password" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-58" vertex="1">
           <mxGeometry width="149.99999999999977" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-60" value="VARCHAR(255)" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-58" vertex="1">
-          <mxGeometry x="149.99999999999977" width="160.00000000000023" height="40" as="geometry" />
+          <mxGeometry x="149.99999999999977" width="159.00000000000023" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-55" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;top=0;left=0;bottom=1;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-18" vertex="1">
-          <mxGeometry y="220" width="310" height="40" as="geometry" />
+          <mxGeometry y="220" width="309" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-56" value="gender" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-55" vertex="1">
           <mxGeometry width="149.99999999999977" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-57" value="VARCHAR(255)" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-55" vertex="1">
-          <mxGeometry x="149.99999999999977" width="160.00000000000023" height="40" as="geometry" />
+          <mxGeometry x="149.99999999999977" width="159.00000000000023" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-52" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;top=0;left=0;bottom=1;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-18" vertex="1">
-          <mxGeometry y="260" width="310" height="30" as="geometry" />
+          <mxGeometry y="260" width="309" height="30" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-53" value="level" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-52" vertex="1">
           <mxGeometry width="149.99999999999977" height="30" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-54" value="INTEGER" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-52" vertex="1">
-          <mxGeometry x="149.99999999999977" width="160.00000000000023" height="30" as="geometry" />
+          <mxGeometry x="149.99999999999977" width="159.00000000000023" height="30" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-49" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;top=0;left=0;bottom=1;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-18" vertex="1">
-          <mxGeometry y="290" width="310" height="30" as="geometry" />
+          <mxGeometry y="290" width="309" height="30" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-50" value="experience" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-49" vertex="1">
           <mxGeometry width="149.99999999999977" height="30" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-51" value="INTEGER" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-49" vertex="1">
-          <mxGeometry x="149.99999999999977" width="160.00000000000023" height="30" as="geometry" />
+          <mxGeometry x="149.99999999999977" width="159.00000000000023" height="30" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-46" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;top=0;left=0;bottom=1;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-18" vertex="1">
-          <mxGeometry y="320" width="310" height="40" as="geometry" />
+          <mxGeometry y="320" width="309" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-47" value="introduction" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-46" vertex="1">
           <mxGeometry width="149.99999999999977" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-48" value="TEXT" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-46" vertex="1">
-          <mxGeometry x="149.99999999999977" width="160.00000000000023" height="40" as="geometry" />
+          <mxGeometry x="149.99999999999977" width="159.00000000000023" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-43" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;top=0;left=0;bottom=1;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-18" vertex="1">
-          <mxGeometry y="360" width="310" height="30" as="geometry" />
+          <mxGeometry y="360" width="309" height="30" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-44" value="rating" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-43" vertex="1">
           <mxGeometry width="149.99999999999977" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="-zenPWLFXA5SUry6Ur8m-45" value="INTEGER" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-43" vertex="1">
-          <mxGeometry x="149.99999999999977" width="160.00000000000023" height="30" as="geometry" />
+        <mxCell id="-zenPWLFXA5SUry6Ur8m-45" value="DECIMAL(2,1)" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-43" vertex="1">
+          <mxGeometry x="149.99999999999977" width="159.00000000000023" height="30" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-40" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;top=0;left=0;bottom=1;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-18" vertex="1">
-          <mxGeometry y="390" width="310" height="30" as="geometry" />
+          <mxGeometry y="390" width="309" height="30" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-41" value="user_icon" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-40" vertex="1">
           <mxGeometry width="149.99999999999977" height="30" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-42" value="VARCHAR(255)" style="shape=partialRectangle;connectable=0;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;fontSize=14;" parent="-zenPWLFXA5SUry6Ur8m-40" vertex="1">
-          <mxGeometry x="149.99999999999977" width="160.00000000000023" height="30" as="geometry" />
+          <mxGeometry x="149.99999999999977" width="159.00000000000023" height="30" as="geometry" />
         </mxCell>
         <mxCell id="-zenPWLFXA5SUry6Ur8m-79" value="chatroom" style="shape=table;startSize=50;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;strokeColor=#000000;gradientColor=none;fontSize=16;" parent="1" vertex="1">
           <mxGeometry x="-220" y="-1090" width="330" height="210" as="geometry" />
