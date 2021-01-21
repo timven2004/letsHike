@@ -7,6 +7,8 @@ body{
     background-repeat: no-repeat;
     background-size: auto; 
     min-height: 100vh;
+    font-family: 'Abel', sans-serif;
+
 }
 
 .profilePic{
