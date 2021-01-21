@@ -64,7 +64,9 @@ body{
 
 }
 
-
+img{
+    object-fit: cover;
+}
 @keyframes moveInFromLeft{
     0%{
         transform: translateX(-500px);

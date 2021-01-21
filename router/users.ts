@@ -35,3 +35,17 @@ users.post("/api/v1/userLogin", async (req, res) => {
         res.status(500).json({ message: "Internal Server Error" })
     }
 })
+
+users.get("/api/v1/userProfile/self", async(req,res)=>{
+    console.log(req.session["user-id"]);
+
+    try{    
+        let data = await client.query('SELECT FROM users WHERE id=($1);',[1]);
+        console.log(data.rows[0]);
+        console.log(req.session["user-id"])
+        res.json(data.rows[0]);
+    } catch (err) {
+        console.error(err.message) 
+        res.status(500).json({500: "Internal server error"})
+    }
+})
