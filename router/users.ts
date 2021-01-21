@@ -8,8 +8,8 @@ users.post("/api/v1/usersRegister", async (req, res) => {
         let data = req.body
         console.log(data)
         await client.query(`
-            INSERT INTO users ( user_name, email, password ) VALUES ($1,$2,$3)
-        `, [data.name, data.email, data.password])
+        INSERT INTO users ( user_name , email, password, gender ) VALUES ($1,$2,$3,$4)
+        `, [data.name, data.email, data.password, data.gender])
         res.json({ message: "success" })
     } catch (err) {
         console.error(err.message)
