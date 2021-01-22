@@ -79,11 +79,15 @@ CREATE TABLE rating_event(
 
 -- POST
 INSERT INTO users ( user_name , email, password, gender ) VALUES ($1,$2,$3,$4)
-INSERT INTO users ( user_name , email, password, gender ) VALUES ('a','a@a','a','?');
+INSERT INTO users ( user_name , email, password, gender, introduction ) VALUES ('a','a@a','a','?','aaa');
 
 -- GET
 SELECT * FROM users WHERE id = $1
 SELECT * FROM users WHERE id = 1;
+
+-- PUT
+UPDATE users SET ( user_name , email, password, gender ) = ($1,$2,$3,$4) WHERE id = $5
+UPDATE users SET  user_name , email, password, gender ) = ('a','a@a','a','?') WHERE id = 3;
 
 -- events /details --
 
