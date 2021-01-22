@@ -1,5 +1,5 @@
 window.onload = () => {
-    userRegisterFormSubmit()
+    
 }
 
 function userRegisterFormSubmit() {
@@ -7,6 +7,8 @@ function userRegisterFormSubmit() {
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
         
+        console.log(form.image)
+
         if(form.password.value !== form.password1.value){
             document.getElementById("message").innerHTML = "Confirmed Password not same"
             return
@@ -16,6 +18,7 @@ function userRegisterFormSubmit() {
         formObject["email"] = form.email.value
         formObject["password"] = form.password.value
         formObject["gender"] = form.gender.value
+        formObject["image"] = form.image.file
         const res = await fetch("/api/v1/usersRegister", {
             method: "POST",
             headers: {
@@ -24,7 +27,6 @@ function userRegisterFormSubmit() {
             body: JSON.stringify(formObject)
         })
         const result = await res.json()
-        console.log(result)
         if(res.status === 200){
             document.getElementById("message").innerHTML = result.message
             return

@@ -12,28 +12,28 @@
     <div class="container">
         <div class="form-wrapper">
         <h1>Edit User Info</h1>
-        <form id="register-form">
+        <form id="edit-form" action="/editUserData" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s6">
-                  <input id="name" type="text" class="validate" name="name">
+                  <input id="name" type="text" class="validate" name="name" required>
                   <label class="active" for="name">Name</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                  <input id="email" type="email" class="validate" name="email">
+                  <input id="email" type="email" class="validate" name="email" required>
                   <label class="active" for="email">E-mail</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                  <input id="password" type="text" class="validate" name="password">
+                  <input id="password" type="text" class="validate" name="password" required>
                   <label class="active" for="password">Password</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                  <input id="gender" type="text" class="validate">
+                  <input id="gender" type="text" class="validate" required>
                   <label class="active" for="gender">Gender</label>
                 </div>
             </div>
@@ -48,6 +48,7 @@
                   <input type="file" name="image" id="image"/>
                 </div>
             </div>
+            <img src="../upload/a967dcb120316bc2d88be76632a5b779" alt="">
             <input class="button" type="submit" value="submit">
         </form>
         </div>
