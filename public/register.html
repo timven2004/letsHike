@@ -12,7 +12,7 @@
     <div class="container">
       <div class="form-wrapper">
         <h1>REGISTER</h1>
-        <form id="register-form" action="/usersRegister" method="POST" enctype="multipart/form-data">
+        <form id="register-form" enctype="multipart/form-data">
           <div class="input-field col s6">
             <input id="name" type="text" class="validate" name="name" required>
             <label class="active" for="name">Name</label>
@@ -33,6 +33,17 @@
             <input id="gender" type="text" class="validate" name="gender" required>
             <label class="active" for="gender">Gender</label>
           </div>
+          
+          <!-- Select format
+          <div class="input-field col s6">
+            <select id="gender">
+              <option value=""  selected></option>
+              <option value="M">M</option>
+              <option value="F">F</option>
+            </select>
+            <label>Choose a trail</label>
+          </div> -->
+
           <div class="input-field col s6">
             <label class="active intro" for="intro" >Introduction</label>
             <textarea id="into" name="intro" cols="10" rows="5"></textarea>

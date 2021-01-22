@@ -6,50 +6,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/loginRegister.css">
+  <link rel="stylesheet" href="./css/register.css">
   <title>Let's hike!</title>
 </head>
 
 <body>
   <div class="container">
+    <h1 style="color: #fff;">EDIT USER INFO</h1>
     <div class="form-wrapper">
-      <h1>Edit User Info</h1>
       <form id="edit-form">
-        <div class="row">
           <div class="input-field col s6">
             <input id="name" type="text" class="validate" name="name" required>
             <label class="active" for="name">Name</label>
           </div>
-        </div>
-        <div class="row">
           <div class="input-field col s6">
             <input id="email" type="email" class="validate" name="email" required>
             <label class="active" for="email">E-mail</label>
           </div>
-        </div>
-        <div class="row">
           <div class="input-field col s6">
             <input id="password" type="text" class="validate" name="password" required>
             <label class="active" for="password">Password</label>
           </div>
-        </div>
-        <div class="row">
           <div class="input-field col s6">
             <input id="gender" type="text" class="validate" required>
             <label class="active" for="gender">Gender</label>
           </div>
-        </div>
-        <div class="row">
           <div class="input-field col s6">
             <label class="active intro" for="intro">Introduction</label>
             <textarea id="intro" name="intro" cols="100" row="100"></textarea>
           </div>
-        </div>
-        <div class="row">
           <div class="input-field col s6">
             <input type="file" name="image" id="image" />
           </div>
-        </div>
         <div id="">
           <img id="user_icon" src="" alt="">
         </div>
