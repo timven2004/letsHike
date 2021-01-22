@@ -50,7 +50,7 @@ app.use(express.json())
 app.use(express.static('public'))
 
 app.use(users)
-app.use('/events', events)
+app.use(events)
 
 const PORT = 8080
 

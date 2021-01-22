@@ -11,6 +11,7 @@ function createEventFormSubmit() {
         formObject["meeting_point"] = form.meeting_point.value
         formObject["date"] = parseInt(form.date.value)
         formObject["time"] = parseInt(form.time.value)
+        formObject["max_number_of_member"] = parseInt(form.max_number_of_member.value)
         formObject["hiking_trail_id"] = parseInt(form.hiking_trail_id.value)
         formObject["detail"] = form.detail.value
 
@@ -24,5 +25,6 @@ function createEventFormSubmit() {
         if (res.status === 200) {
             window.location = "/eventDetails.html"
         }
+        console.log(formObject)
     })
 }
