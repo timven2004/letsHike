@@ -65,6 +65,7 @@ import { events } from './router/events'
 import { ratingOthers } from './router/ratingOthers'
 // Use Folder
 app.use(express.static('public'))
+app.use(express.static("uploads"))
 
 // Router
 app.use(users)
