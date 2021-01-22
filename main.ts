@@ -40,7 +40,7 @@ app.use(expressSession({
 }))
 
 app.use((req, res, next) => {
-    console.log("session['user-id'] = ", req.session["user-id"])
+    console.log("session['user_id'] = ", req.session["user_id"])
     next()
 })
 

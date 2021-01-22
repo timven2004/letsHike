@@ -81,6 +81,9 @@ CREATE TABLE rating_event(
 INSERT INTO users ( user_name , email, password, gender ) VALUES ($1,$2,$3,$4)
 INSERT INTO users ( user_name , email, password, gender ) VALUES ('a','a@a','a','?');
 
+-- GET
+SELECT * FROM users WHERE id = $1
+SELECT * FROM users WHERE id = 1;
 
 -- events /details --
 
