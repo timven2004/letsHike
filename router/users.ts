@@ -46,16 +46,16 @@ users.get("/api/v1/userProfile/self", async (req, res) => {
             WHERE users.id=$1
             ;`, [req.session["user_id"]]);
 
-            // let comments = await client.query(`
-            // SELECT *
-            // FROM            
-            // JOIN rating_event 
-            // ON users.id = rating_event.users_id 
-            // JOIN event 
-            // ON rating_event.event_id = event.id
+            let comments = await client.query(`
+            SELECT *
+            FROM rating_event           
+            JOIN users 
+            ON rating_event.users_id = users.id 
+            WHERE rating_person_id = $1
+            `,[req.session["user_id"]])
 
-            // `)
         console.log(data.rows[0]);
+        console.log(comments.rows[0]);
         console.log(req.session["user_id"])
         res.json(data.rows[0]);
     } catch (err) {
