@@ -4,8 +4,7 @@ import http from 'http'
 import { Server as SocketIO } from 'socket.io'
 import { Client } from 'pg'
 import dotenv from 'dotenv'
-import { users } from './router/users'
-import { events } from './router/events'
+import multer from "multer"
 
 dotenv.config()
 
@@ -25,6 +24,7 @@ client.connect()
 
 // test()
 
+// Socket.io Setup
 const app = express()
 const server = new http.Server(app)
 const io = new SocketIO(server)
@@ -33,6 +33,7 @@ io.on('connection', (socket) => {
     console.log("Connect")
 })
 
+// Session Setup
 app.use(expressSession({
     secret: 'This is session',
     resave: true,
@@ -44,11 +45,28 @@ app.use((req, res, next) => {
     next()
 })
 
+// Form body Setup
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
+// Multer Setup
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, `${__dirname}/uploads`);
+    },
+    filename: function (req, file, cb) {
+        cb(null, `${file.fieldname}-${Date.now()}.${file.mimetype.split("/")[1]}`);
+    }
+})
+export const upload = multer({ storage })
+
+import { users } from './router/users'
+import { events } from './router/events'
+
+// Use Folder
 app.use(express.static('public'))
 
+// Router
 app.use(users)
 app.use(events)
 
