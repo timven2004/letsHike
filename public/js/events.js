@@ -5,15 +5,16 @@ window.onload = () => {
 async function loadAndDisplayEvents() {
     const res = await fetch('/events')
     const data = await res.json()
-    console.log(data)
 
-    let eventsStr = `
-        <div class="event">
+    let eventsStr = ``
+    for (const event of data) {
+        eventsStr += `
+        <div class="event" onclick="">
             <img src=${data.image} alt="">
             <p>${data.event_name}</p>
-        </div>`
+        </div>
+        `
+    }
 
     document.querySelector('.events').innerHTML = eventsStr
-    // console.log(document.querySelector('.events'))
-
 }
