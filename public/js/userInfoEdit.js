@@ -6,12 +6,12 @@ window.onload = () => {
 async function getUserDataIntoEditForm() {
     const data = await fetch("/api/v1/getUserData")
     const userData = await data.json()
-    console.log(userData.user_icon)
     document.getElementById("name").value = userData.user_name
     document.getElementById("email").value = userData.email
     document.getElementById("password").value = userData.password
     document.getElementById("gender").value = userData.gender
     document.getElementById("intro").value = userData.introduction
+    document.getElementById("user_icon").src = userData.user_icon
 }
 
 function userDataEditFormSubmit() {
