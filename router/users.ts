@@ -48,11 +48,10 @@ users.get("/api/v1/userProfile/self", async (req, res) => {
 
             let comments = await client.query(`
             SELECT *
-            FROM rating_event           
-            JOIN users 
-            ON rating_event.users_id = users.id 
+            FROM rating_event
             WHERE rating_person_id = $1
-            `,[req.session["user_id"]])
+            ;`, [req.session["user_id"]])
+            // ON rating_event.users_id = users.id 
 
         console.log(data.rows[0]);
         console.log(comments.rows[0]);
