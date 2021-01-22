@@ -88,6 +88,13 @@ SELECT * FROM users WHERE id = 1;
 -- events /details --
 
 -- POST
-INSERT INTO event ( event_name, meeting_point, date, time, max_number_of_member, joining_number_of_member , hiking_trail_id, detail) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
+INSERT INTO event ( event_name, meeting_point, date, time, max_number_of_member, hiking_trail_id, detail) VALUES ($1,$2,$3,$4,$5,$6,$7)
 
 
+
+-- insert image --
+INSERT INTO image_hiking_trail (image, hiking_trail_id) VALUES ($1,$2);
+
+-- GET events --
+SELECT * FROM event LEFT OUTER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail_id 
+LEFT OUTER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = image_id;
