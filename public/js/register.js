@@ -1,5 +1,5 @@
 window.onload = () => {
-    
+    userRegisterFormSubmit()
 }
 
 function userRegisterFormSubmit() {
@@ -11,18 +11,16 @@ function userRegisterFormSubmit() {
             document.getElementById("message").innerHTML = "Confirmed Password not same"
             return
         }
-        const formObject = {}
-        formObject["name"] = form.name.value
-        formObject["email"] = form.email.value
-        formObject["password"] = form.password.value
-        formObject["gender"] = form.gender.value
-        formObject["image"] = form.image.file
+        const formData = new FormData(); 
+        formData.append("name", form.name.value)
+        formData.append("email", form.email.value)
+        formData.append("password", form.password.value)
+        formData.append("gender", form.gender.value)
+        formData.append("intro", form.intro.value)
+        formData.append("image", form.image.files[0])
         const res = await fetch("/api/v1/usersRegister", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formObject)
+            body: formData
         })
         const result = await res.json()
         if(res.status === 200){

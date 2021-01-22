@@ -18,18 +18,16 @@ function userDataEditFormSubmit() {
     const form = document.getElementById("edit-form")
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
-        const formObject = {}
-        formObject["name"] = form.name.value
-        formObject["email"] = form.email.value
-        formObject["password"] = form.password.value
-        formObject["gender"] = form.gender.value
-        formObject["intro"] = form.intro.value
+        const formData = new FormData(); 
+        formData.append("name", form.name.value)
+        formData.append("email", form.email.value)
+        formData.append("password", form.password.value)
+        formData.append("gender", form.gender.value)
+        formData.append("intro", form.intro.value)
+        formData.append("image", form.image.files[0])
         const res = await fetch("/api/v1/editUserData", {
             method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formObject)
+            body: formData
         })
         let result = await res.json()
         console.log(result)

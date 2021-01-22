@@ -5,10 +5,11 @@ import { upload } from "../main"
 
 export const users = express.Router()
 
-users.post("/usersRegister",upload.single("image"), async (req, res) => {
+users.post("/api/v1/usersRegister",upload.single("image"), async (req, res) => {
     try {
+        console.log(req.files)
         const data = req.body
-        const imagePath = req.file.path
+        const imagePath = req.file.filename
         console.log(imagePath)
         await client.query(`
         INSERT INTO users ( user_name , email, password, gender, introduction , user_icon ) VALUES ($1,$2,$3,$4,$5,$6)
@@ -117,9 +118,11 @@ users.get("/api/v1/getUserData", async (req, res) => {
     }
 })
 
-users.put("editUserData", async (req, res) => {
+users.put("/api/v1/editUserData",upload.single('image'), async (req, res) => {
     try {
         const updateUserData = req.body
+        const imagePath = req.file.path
+        console.log("imagePath",imagePath)
         const user_id = req.session["user_id"]
         const updateName = updateUserData.name
         const updateEmail = updateUserData.email
@@ -127,8 +130,8 @@ users.put("editUserData", async (req, res) => {
         const updateGender = updateUserData.gender
         const updateIntro = updateUserData.intro
         await client.query(`
-            UPDATE users SET ( user_name, email , password , gender , introduction ) = ($1,$2,$3,$4,$5) WHERE id = $6
-        `, [updateName, updateEmail, updatePassword, updateGender, updateIntro, user_id])
+            UPDATE users SET ( user_name, email , password , gender , introduction, user_icon ) = ($1,$2,$3,$4,$5,$6) WHERE id = $7
+        `, [updateName, updateEmail, updatePassword, updateGender, updateIntro, imagePath, user_id])
         res.json("success")
     } catch (err) {
         console.error(err.message)
