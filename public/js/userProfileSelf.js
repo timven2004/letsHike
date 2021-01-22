@@ -36,7 +36,7 @@ window.onload = async () => {
       string = string +
       `<div class="card" style="width: 20rem;">
         <div class="card-body">
-        <h5 class="card-title">${element.rating}/5</h5>
+        <h5 class="card-title">${element.single_rating}/5</h5>
         <h6 class="card-subtitle mb-2 text-muted">by ${element.user_name} <span
                 id="date">${element.date}</span></span></h6>
         <p class="card-text" >${element.comment}</p>

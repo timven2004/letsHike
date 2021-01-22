@@ -73,7 +73,7 @@ CREATE TABLE rating_event(
     FOREIGN KEY (event_id) REFERENCES event(id),
     rating_person_id INTEGER,
     FOREIGN KEY (rating_person_id) REFERENCES users(id),
-    rating  INTEGER,
+    single_rating  INTEGER,
     comment TEXT,
     date TIMESTAMP
 );
@@ -99,8 +99,12 @@ UPDATE users SET ( user_name , email, password, gender ) = ('a','a@a','a','?') W
 -- events /details --
 INSERT INTO event (event_name,organizer,meeting_point,date,time,max_number_of_member,joining_number_of_member,detail,is_active) VALUES ('TaiMoShanHiking!',1,'MONG KOK','2021-01-01', '09:00:00',5,3,'Lets meet at MK then go TaiMoshan',false);
 
-INSERT INTO rating_event (users_id,rating_person_id,rating,comment) VALUES (2, 1, 4.0, 'This is a good hiker! I like it');
-INSERT INTO rating_event (users_id,rating_person_id,rating,comment) VALUES (3, 1, 5.0, 'This guy is handsome, so I gave it 5 stars');
+INSERT INTO rating_event (users_id,rating_person_id,single_rating,comment) VALUES (2, 1, 4.0, 'This is a good hiker! I like it');
+INSERT INTO rating_event (users_id,rating_person_id,single_rating,comment) VALUES (3, 1, 5.0, 'This guy is handsome, so I gave it 5 stars');
+INSERT INTO rating_event (users_id,rating_person_id,single_rating,comment) VALUES (4, 2, 4.0, 'This is a on_ hiker! I hate it');
+INSERT INTO rating_event (users_id,rating_person_id,single_rating,comment) VALUES (1, 3, 2.0, 'This guy is ugly, so I gave it 2 stars');
+
+
 
 -- POST
 INSERT INTO event ( event_name, meeting_point, date, time, max_number_of_member, joining_number_of_member , hiking_trail_id, detail) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
