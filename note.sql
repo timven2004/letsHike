@@ -72,7 +72,8 @@ CREATE TABLE rating_event(
     rating_person_id INTEGER,
     FOREIGN KEY (rating_person_id) REFERENCES event(id),
     rating  INTEGER,
-    comment TEXT
+    comment TEXT,
+    date TIMESTAMP
 );
 
 -- users --
