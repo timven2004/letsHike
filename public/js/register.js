@@ -6,8 +6,6 @@ function userRegisterFormSubmit() {
     const form = document.getElementById("register-form")
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
-        
-        console.log(form.image)
 
         if(form.password.value !== form.password1.value){
             document.getElementById("message").innerHTML = "Confirmed Password not same"

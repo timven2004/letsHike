@@ -11,8 +11,8 @@ users.post("/usersRegister",upload.single("image"), async (req, res) => {
         const imagePath = req.file.path
         console.log(imagePath)
         await client.query(`
-        INSERT INTO users ( user_name , email, password, gender, user_icon ) VALUES ($1,$2,$3,$4,$5)
-        `, [data.name, data.email, data.password, data.gender, imagePath])
+        INSERT INTO users ( user_name , email, password, gender, introduction , user_icon ) VALUES ($1,$2,$3,$4,$5,$6)
+        `, [data.name, data.email, data.password, data.gender, data.intro, imagePath])
         res.json({ message: "success" })
     } catch (err) {
         console.error(err.message)
