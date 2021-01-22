@@ -11,6 +11,7 @@ const experience = document.querySelector("#experience");
 const commentCardsHolder = document.querySelector(".commentCardsHolder")
 
 window.onload = async () => {
+
   const response = await fetch(`/api/v1/userProfile/self`, {
     method: 'GET', // *GET, POST, PUT, DELETE, etc.
     headers: {

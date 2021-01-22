@@ -1,0 +1,131 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    animation: fadeIn 1s;
+    background-repeat: no-repeat;
+    background-size: auto; 
+    min-height: 100vh;
+    font-family: 'Abel', sans-serif;
+
+}
+
+.profilePic{
+    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    animation: moveInFromLeft 0.4s ease-out;
+}
+
+nav{
+    margin-bottom: 20px;
+}
+
+.row{
+    margin-bottom: 20px;
+}
+
+.UserIntroduction{
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    padding:15px;
+    color:black;
+    animation: moveInFromLeft 0.4s ease-out;
+    
+}
+
+.rating{
+    background-color: #ffe227;
+    padding:15px;
+    color:black;
+    height:100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    position:relative;
+    animation: moveInFromRight 0.4s ease-out;
+
+}
+
+.container{
+    min-height: calc(100vh-76px);
+    margin-top: 56px;
+}
+
+.personBiography{
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    animation: moveInFromRight 0.4s ease-out;
+
+}
+
+.personBiography>*{
+    margin:20px
+}
+
+.cardContainer {
+    margin: 90px 0px;
+    background-color: whitesmoke;
+    padding:20px;
+    border-radius: 10px;
+}
+
+.commentCardsHolder{
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+
+}
+
+.card{
+    margin:0 10px 10px 0;
+}
+
+
+#editProfile{
+    position:absolute;
+    right:40px;
+    top:40px;
+    background-color: yellow;
+    border-radius: 10px;
+    padding: 3px 10px
+}
+
+.rating>*{
+    padding: 5px;
+    border-radius: 5px;
+    display: inline;
+}
+
+@keyframes moveInFromLeft{
+    0%{
+        transform: translateX(-500px);
+    }
+
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+@keyframes moveInFromRight{
+    0%{
+        transform: translateX(500px);
+    }
+
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}

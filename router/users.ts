@@ -36,8 +36,35 @@ users.post("/api/v1/userLogin", async (req, res) => {
     }
 })
 
+users.get("/userProfile/:id", async (req,res)=>{
+    try {
+        let data = await client.query<User>(
+            `SELECT * 
+            FROM users 
+            WHERE users.id=$1
+            ;`, [req.params.id]);
+
+            let comments = await client.query(`
+            SELECT *
+            FROM rating_event
+            JOIN users
+            ON rating_event.users_id = users.id
+            WHERE rating_person_id = $1
+            ;`, [req.params.id])
+
+        data.rows[0]["comments"] = comments.rows
+        res.render("./userProfile.ejs", {transferred: data.rows[0]});
+            console.log(data.rows[0])
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).json({ message: "Internal server error" })
+    }
+
+
+})
+
+
 users.get("/api/v1/userProfile/self", async (req, res) => {
-    console.log(req.session["user_id"]);
 
     try {
         let data = await client.query<User>(
