@@ -17,3 +17,16 @@ chatroom.post("/chatroom/addMessage", upload.none(), async (req, res) => {
         res.status(500).json({ message: "Internal server error" })
     }
 })
+
+chatroom.get("/chatroom/getMessage/:event_id", async (req, res) => {
+    try {
+        const event_id = req.params.event_id
+        const chatMessage = await client.query(`
+        SELECT * FROM chatroom WHERE event_id = $1
+        `,[event_id])
+        res.json(chatMessage.rows)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).json({message:"Internal server error"})
+    }
+})

@@ -125,3 +125,7 @@ INSERT INTO hiking_trail (name,image_id,introduction,hardness) VALUES ('Tai Po T
 -- POST
 INSERT INTO chatroom (users_id, event_id, content) VALUES ($1,$2,$3)
 INSERT INTO chatroom (users_id, event_id, content) VALUES (1,1,'hi');
+
+-- GET
+SELECT * FROM chatroom WHERE event_id ($1)
+SELECT * FROM chatroom WHERE event_id = 1;
