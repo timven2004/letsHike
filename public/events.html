@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/events.css">
     <title>Let's hike!</title>
@@ -11,7 +14,7 @@
 <body>
     <div class="wrapper">
         <nav id="nav">
-            <h3 id="logo">Let's Hike</h3>
+            <h1 id="logo"><i class="fas fa-mountain"></i>Let's Hike</h1>
             <div id="toggle" onclick="toggle()"><span></span></div>
                 <ul class="nav-bar">
                     <li><a href="">About</a></li>
@@ -19,18 +22,16 @@
                     <li><a href="">Hiking Trails</a></li>
                 </ul>
         </nav>
-        <section class="hero">
-            <img src="./assets/index/sunsetPeak.jpg" alt="">
+        <div class="hero">
+            <img src="./assets/event/bg.jpg" alt="">
             <h3 class="slogan">Slogan here!! </h3>
-            <a href="/createEvent.html">Add Event</a>
-        </section>
-        <div class="filters">
-                <button class="filter"></button>
-                <button class="filter"></button>
-                <button class="filter"></button>
+            <a href="#events-wrapper">Join now</a>
         </div>
-        <div class="events">
-
+        <div class="add-event-btn">
+            <a href="/createEvent.html">Add Event</a>
+        </div>
+        <div class="row" id="events-wrapper">
+            <!-- AJAX here -->
         </div>
     </div>
     <script src="js/events.js"></script>

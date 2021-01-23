@@ -10,6 +10,7 @@ events.get("/events", async (req, res) => {
     LEFT OUTER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = image_id
     `)
     const eventsdata = data.rows
+    console.log(eventsdata)
     res.json(eventsdata)
 })
 
