@@ -1,5 +1,6 @@
 window.onload = () => {
     loadAndDisplayEvent()
+    addChatroomMessage()
 }
 
 async function loadAndDisplayEvent() {
@@ -26,4 +27,23 @@ async function loadAndDisplayEvent() {
 
 
     document.getElementById('event-detail-form').innerHTML = eventStr
+}
+
+function addChatroomMessage() {
+    const paramString = window.location.search
+    const serachParams = new URLSearchParams(paramString)
+    const id = serachParams.get("id")
+    const form = document.getElementById("comment-form")
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault()
+        const formData = new FormData
+        formData.append("comment", form.comment.value)
+        formData.append("event_id", id)
+        let res = await fetch("/chatroom/addMessage", {
+            method: "POST",
+            body: formData
+        })
+        let result = await res.json()
+        console.log(result)
+    })
 }

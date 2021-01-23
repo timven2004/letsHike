@@ -17,9 +17,6 @@ function loginFormSubmit() {
             body: JSON.stringify(formObject)
         })
         const result = await res.json()
-        if(res.status !== 200){
-            document.getElementById("message").innerHTML = result.message
-        }
-        console.log(result.message)
+        document.getElementById("message").innerHTML = result.message
     })
 }

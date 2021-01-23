@@ -119,3 +119,9 @@ SELECT * FROM event LEFT OUTER JOIN hiking_trail ON event.hiking_trail_id = hiki
 LEFT OUTER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = image_id;
 
 INSERT INTO hiking_trail (name,image_id,introduction,hardness) VALUES ('Tai Po Trail', '2','detail',3)
+
+-- chatroom --
+
+-- POST
+INSERT INTO chatroom (users_id, event_id, content) VALUES ($1,$2,$3)
+INSERT INTO chatroom (users_id, event_id, content) VALUES (1,1,'hi');

@@ -65,6 +65,8 @@ export const upload = multer({ storage })
 import { users } from './router/users'
 import { events } from './router/events'
 import { ratingOthers } from './router/ratingOthers'
+import { chatroom } from './router/chatroom'
+
 // Use Folder
 app.use(express.static('public'))
 app.use(express.static("uploads"))
@@ -73,6 +75,7 @@ app.use(express.static("uploads"))
 app.use(users)
 app.use(ratingOthers)
 app.use(events)
+app.use(chatroom)
 
 const PORT = 8080
 

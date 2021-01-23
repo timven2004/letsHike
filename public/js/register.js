@@ -8,7 +8,7 @@ function userRegisterFormSubmit() {
         event.preventDefault()
 
         if(form.password.value !== form.password1.value){
-            document.getElementById("message").innerHTML = "Confirmed Password not same"
+            document.getElementById("message").innerHTML = "Confirmed Password don't same"
             return
         }
         const formData = new FormData(); 
