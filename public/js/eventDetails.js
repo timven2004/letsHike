@@ -30,6 +30,24 @@ async function loadAndDisplayEvent() {
     document.getElementById('event-detail-form').innerHTML = eventStr
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function addChatroomMessage() {
     const paramString = window.location.search
     const searchParams = new URLSearchParams(paramString)
