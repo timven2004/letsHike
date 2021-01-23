@@ -4,8 +4,11 @@ const userLevel = document.querySelector("#userLevel")
 const userRating = document.querySelector("#userRating")
 const numberOfEventsJoined = document.querySelector("#numberOfEventsJoined")
 const ratingStars = document.querySelector("#ratingStars")
-const comentText = document.querySelector("#commentText")
+const commentText = document.querySelector("#commentText")
 const currentURL = window.location.href;
+const stars = document.querySelectorAll(".star")
+const hiddenNumber = document.querySelector(".hidden")
+
 console.log(currentURL)
 
 window.onload = async()=>{
@@ -28,5 +31,15 @@ window.onload = async()=>{
 
     }
 
+for (let i=0;i<stars.length;i++){
+    stars[i].addEventListener("click", ()=>{
+        hiddenNumber.value=`${5-i}`
+        for (let j=i;j<stars.length;j++){
+        stars[j].innerHTML="★"
+        }
+        for (let k=i;k>=0;k--)
+        stars[k].innerHTML="☆"
+    })
+}
 
 
