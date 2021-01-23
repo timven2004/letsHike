@@ -2,6 +2,7 @@ window.onload = () => {
     loadAndDisplayEvent()
     addChatroomMessage()
     getChatroomMessage()
+    userJoinEvent()
 }
 
 async function loadAndDisplayEvent() {
@@ -74,7 +75,7 @@ async function getChatroomMessage() {
 
     const res = await fetch(`/chatroom/getMessage/${event_id}`)
     const datas = await res.json()
-    const showComments = document.getElementById("showComments")
+    const showComments = document.querySelector(".show-comment")
 
     let c = 0
     for (let data of datas) {
@@ -94,3 +95,21 @@ async function getChatroomMessage() {
     }
 }
 
+function userJoinEvent() {
+    const join = document.querySelector("div.join > a")
+    join.addEventListener("click", async (event) => {
+        event.preventDefault()
+        const paramString = window.location.search
+        const searchParams = new URLSearchParams(paramString)
+        const event_id = searchParams.get("id")
+        const res = await fetch("/userJoinEvent", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ "event_id": event_id })
+        })
+        const result = await res.json()
+        console.log(result)
+    })
+}
