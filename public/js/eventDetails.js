@@ -37,6 +37,7 @@ async function loadAndDisplayEvent() {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 async function deleteEvent(id) {
     const res = await fetch(`/events/deleteEvent/${id}`, {
@@ -50,6 +51,26 @@ async function deleteEvent(id) {
     }
 }
 =======
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 15eca0ff0ac35f4fa0303999f3e2e5eaf9acfe6e
 function addChatroomMessage() {
     const paramString = window.location.search
     const searchParams = new URLSearchParams(paramString)
