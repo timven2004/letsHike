@@ -36,9 +36,6 @@ async function loadAndDisplayEvent() {
     document.getElementById('event-detail-form').innerHTML = eventStr
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
 async function deleteEvent(id) {
     const res = await fetch(`/events/deleteEvent/${id}`, {
         method: "DELETE",
@@ -50,27 +47,7 @@ async function deleteEvent(id) {
         alert(data.message);
     }
 }
-=======
-=======
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 15eca0ff0ac35f4fa0303999f3e2e5eaf9acfe6e
 function addChatroomMessage() {
     const paramString = window.location.search
     const searchParams = new URLSearchParams(paramString)
@@ -116,4 +93,4 @@ async function getChatroomMessage() {
         }
     }
 }
->>>>>>> bd69b9a1bc8603cf62fa413701290af252eeb29f
+
