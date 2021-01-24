@@ -2,29 +2,48 @@ console.log("connected js")
 
 const el = document.querySelector('body');
 const page = document.querySelector(".page");
-const img = document.querySelectorAll(".img");
+const imgs = document.querySelectorAll(".img");
+const anchors = document.querySelectorAll(".imgAnchor")
 let position = 0;
 
-el.addEventListener('wheel', function(event){
-    if (position>=-100 && event.deltaY<0){ 
-        console.log(event.deltaY);
-        position = position + event.deltaY*0.7;
-        page.style.left =`${position}px`;
-        console.log(page.style.left);
+window.onload = async () => {
+    try {
+        const result = await fetch(`/9hiketrails/api/index`,
+            {
+                method: "GET", // Specific your HTTP method
+                headers: {
+                    // Specify any HTTP Headers Here
+                    "Content-Type": "application/json; charset=utf-8"
+                }
+            })
+        let urls = await result.json()
+        
+            console.log(urls)
+
+        for (let index in imgs) {
+            imgs[index].setAttribute("src", `assets/9WalkingTrails/${urls[index].image}`)
+            anchors[index].setAttribute("href", `/9hiketrails/intro/${parseInt(index)+1}`)
+        }
+    }
+    catch (e) {
+        console.log(e)
+    }
+}
+
+el.addEventListener('wheel', function (event) {
+    if (position >= -100 && event.deltaY < 0) {
+        position = position + event.deltaY * 0.7;
+        page.style.left = `${position}px`;
     }
 
-    if (position>-3500 && position<-100){ 
-        console.log(event.deltaY);
-        position = position + event.deltaY*0.7;
-        page.style.left =`${position}px`;
-        console.log(page.style.left);
+    if (position > -2500 && position < -100) {
+        position = position + event.deltaY * 0.7;
+        page.style.left = `${position}px`;
     }
 
-    if (position<=-3500 && event.deltaY>0){ 
-        console.log(event.deltaY);
-        position = position + event.deltaY*0.7;
-        page.style.left =`${position}px`;
-        console.log(page.style.left);
+    if (position <= -2500 && event.deltaY > 0) {
+        position = position + event.deltaY * 0.7;
+        page.style.left = `${position}px`;
     }
 
 });

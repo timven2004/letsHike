@@ -37,7 +37,6 @@ function eventDetailEditSubmit() {
         formObject["hiking_trail_id"] = form.hiking_trail_id.value
         formObject["detail"] = form.detail.value
 
-        console.log(formObject)
         const res = await fetch(`/events/updateEventDetail/${id}`, {
             method: "PUT",
             headers: {
