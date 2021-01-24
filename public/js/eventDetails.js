@@ -12,7 +12,6 @@ async function loadAndDisplayEvent() {
 
     const res = await fetch(`/events/eventDetails/${id}`)
     const data = await res.json()
-    console.log(data)
 
     let eventStr = `
         <div class="row">
@@ -24,7 +23,7 @@ async function loadAndDisplayEvent() {
         <div id="event-detail-form">
             <div class="row">
             <div class="edit-button">
-                <a href="../eventEdit.html?id=${data.id}">Edit</a>
+                <a href="/eventEdit.html?id=${data.id}">Edit</a>
                 <button onclick="deleteEvent(${data.id})">Delete</button>
             </div>
             <div class="col-12 col-md-7 detail">
