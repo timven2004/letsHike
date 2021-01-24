@@ -6,8 +6,8 @@ export const events = express.Router()
 
 events.get("/events", async (req, res) => {
     const data = await client.query(`
-    SELECT event_name, image FROM event LEFT OUTER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail_id 
-    LEFT OUTER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = image_id
+    SELECT event.id, image, event_name FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
+        INNER JOIN image_hiking_trail ON image_id = image_hiking_trail.id;
     `)
     const eventsdata = data.rows
     console.log(eventsdata)
@@ -91,7 +91,7 @@ events.post("/userJoinEvent", async (req, res) => {
         const event_id = req.body.event_id
         await client.query(`
             INSERT INTO user_joining_event (users_id,event_id) VALUES ($1,$2)
-        `,[user_id,event_id])
+        `, [user_id, event_id])
         res.json("success")
     } catch (err) {
         console.error(err.message)
