@@ -9,3 +9,12 @@ hikeTrails.get('/9hiketrails/api/index', async (req,res)=>{
     `)
     res.json(images.rows);
 })
+
+hikeTrails.get('/9hiketrails/intro/:id', async (req,res)=>{
+    const data = await client.query(`
+    SELECT * FROM hiking_trail 
+    WHERE id=$1
+    `,[req.params.id])
+
+res.json(data["rows"]);
+})
