@@ -66,6 +66,7 @@ import { users } from './router/users'
 import { events } from './router/events'
 import { ratingOthers } from './router/ratingOthers'
 import { chatroom } from './router/chatroom'
+import {hikeTrails} from './router/hikeTrails'
 
 // Use Folder
 app.use(express.static('public'))
@@ -76,6 +77,7 @@ app.use(users)
 app.use(ratingOthers)
 app.use(events)
 app.use(chatroom)
+app.use(hikeTrails)
 
 const PORT = 8080
 
