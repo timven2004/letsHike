@@ -7,11 +7,11 @@ function userRegisterFormSubmit() {
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
 
-        if(form.password.value !== form.password1.value){
+        if (form.password.value !== form.password1.value) {
             document.getElementById("message").innerHTML = "Confirmed Password don't same"
             return
         }
-        const formData = new FormData(); 
+        const formData = new FormData();
         formData.append("name", form.name.value)
         formData.append("email", form.email.value)
         formData.append("password", form.password.value)
@@ -23,9 +23,7 @@ function userRegisterFormSubmit() {
             body: formData
         })
         const result = await res.json()
-        if(res.status === 200){
-            document.getElementById("message").innerHTML = result.message
-            return
-        }
+        document.getElementById("message").innerHTML = result.message
+
     })
 }
