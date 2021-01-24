@@ -27,7 +27,8 @@ CREATE TABLE image_hiking_trail(
     id SERIAL primary key,
     image VARCHAR(255),
     hiking_trail_id INTEGER,
-    FOREIGN KEY (hiking_trail_id) REFERENCES hiking_trail(id)
+    FOREIGN KEY (hiking_trail_id) REFERENCES hiking_trail(id),
+    is_default BOOLEAN
 );
 
 CREATE TABLE event(
@@ -143,3 +144,16 @@ INSERT INTO hiking_trail (name, introduction, hardness) VALUES
 ('Parkview to Jardine’s Lookout(陽明山至畢拿山)','If you’re looking for an easy hike with incredible views, this one is for you. The hike begins at the intersection of Wilson Trail and Hong Kong Trail. Follow the sign that points towards Jardine’s Lookout and you will reach the top in under 30 minutes. From up high, you will have a bird’s eye view of Victoria Harbour and its surrounding skyscrapers. Go back the way you come from to end your hike. If you are up for a challenge, continue the hike to Mount Butler, which involves more stairs going uphill and will take you all the way to Quarry Bay.',7) ,
 ('Sir Cecil’s Ride and Red Incense Burner Summit(金督馳馬徑至紅香爐峰)','Spanning from Mount Butler to Braemar Hill, this is an easy and relatively flat trail that offers breathtaking views of Hong Kong’s skyline. If you time yourself correctly, you’ll be able to catch the sun set over Victoria Harbour from the Red Incense Burner Summit, a grassy lookout near the end of the trail. There are a few boulders where you can sit on at the summit to watch the day turn into night. This is a popular sunset spot, so get there early to nab a spot. Alternatively, you can take a taxi and get off at Chinese International School. From there, it’s only a 15 minute walk to Red Incense Burner Summit.',8) ,
 ('Black Hill(五桂山)','Black Hill lies between Lam Tin and Tiu Keng Leng on the eastern side of Kowloon. The mountain is infamous for being a haunted hike since its Cantonese name means ‘five ghosts’. But don’t be deceived by the spooky tale, as the view above says otherwise. Black Hill ridges offer several major peaks with the highest reaching 304 metres above sea level, so trek along to view the eastern harbour from above.',9);
+
+-- image_hiking_trail --
+
+INSERT INTO image_hiking_trail ( image, hiking_trail_id, is_default ) VALUES 
+( 'PoPinChan.jpg', 1, true),
+( 'po-toi-island.jpg', 2, true),
+( 'Tung Lung Chau.jpg', 3, true),
+( 'Dragon’s Back.jpg', 4, true),
+( 'Brick Hill (Nam Long Shan).jpg', 5, true),
+( 'Pok Fu Lam Reservoir to Aberdeen.jpg', 6, true),
+( 'Parkview to Jardine’s Lookout.png', 7, true),
+( 'Sir Cecil’s Ride and Red Incense Burner Summit.jpg', 8, true),
+( 'Black Hill.jpg', 9, true ) ;

@@ -82,3 +82,10 @@ const PORT = 8080
 server.listen(PORT, () => {
     console.log(`PORT: ${PORT} is Listening`)
 })
+
+export function checkUserIsLoginMiddleware(req:express.Request,res:express.Response,next:express.NextFunction){
+    if(req.session["user_id"]){
+        next()
+    }
+    res.redirect("/login.html")
+}
