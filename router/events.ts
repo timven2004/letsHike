@@ -22,7 +22,7 @@ events.get("/events/eventDetails/:id", async (req, res) => {
     try {
         const id = parseInt(req.params.id)
         const data = await client.query(`
-        SELECT image, event_name, meeting_point, date, time, max_number_of_member, detail FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
+        SELECT event.id, image, event_name, meeting_point, date, time, max_number_of_member, detail FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
             INNER JOIN image_hiking_trail ON image_id = image_hiking_trail.id WHERE event.id = $1
         `, [id])
         const eventData = data.rows[0]

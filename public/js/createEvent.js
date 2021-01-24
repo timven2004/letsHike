@@ -25,9 +25,9 @@ function createEventFormSubmit() {
         })
         let id = await res.json();
         console.log(id)
-        if (res.status === 200) {
-            window.location = `/eventDetails.html?id=${id}`
-        }
+        // if (res.status === 200) {
+        //     window.location = `/eventDetails.html?id=${id}`
+        // }
         console.log(formObject)
     })
 }
