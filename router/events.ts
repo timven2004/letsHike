@@ -4,9 +4,10 @@ import { Event } from '../class/database'
 
 export const events = express.Router()
 
+//events
 events.get("/events", async (req, res) => {
     try {
-        const data = await client.query(`
+        const data = await client.query<Event>(`
         SELECT event.id, image, event_name FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
             INNER JOIN image_hiking_trail ON image_id = image_hiking_trail.id;
         `)
@@ -18,6 +19,7 @@ events.get("/events", async (req, res) => {
     }
 })
 
+//event details
 events.get("/events/eventDetails/:id", async (req, res) => {
     try {
         const id = parseInt(req.params.id)
