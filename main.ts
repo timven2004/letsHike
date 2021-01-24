@@ -26,13 +26,21 @@ client.connect()
 
 // test()
 
-// Socket.io Setup
 const app = express()
 const server = new http.Server(app)
-const io = new SocketIO(server)
+export const io = new SocketIO(server)
 
+// Socket.io Setup
 io.on('connection', (socket) => {
     console.log("Connect")
+    socket.on('newMessage', async (data: string) => {
+        const newMessageID = parseInt(data)
+        const newMessage = await client.query(`
+            SELECT * FROM chatroom WHERE id = $1
+        `, [newMessageID])
+        const content = newMessage.rows[0]
+        io.emit("newMessage", content)
+    })
 })
 
 // Session Setup
@@ -83,8 +91,8 @@ server.listen(PORT, () => {
     console.log(`PORT: ${PORT} is Listening`)
 })
 
-export function checkUserIsLoginMiddleware(req:express.Request,res:express.Response,next:express.NextFunction){
-    if(req.session["user_id"]){
+export function checkUserIsLoginMiddleware(req: express.Request, res: express.Response, next: express.NextFunction) {
+    if (req.session["user_id"]) {
         next()
     }
     res.redirect("/login.html")

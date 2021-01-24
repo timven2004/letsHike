@@ -1,4 +1,13 @@
 window.onload = () => {
+    const socket = io.connect()
+    socket.on("newMessage", data => {
+        const showComments = document.querySelector(".show-comment")
+        showComments.innerHTML += `
+            <div class="col-12 col-md-10 comment">
+                <p>Comment:${data.content}</p>
+            </div>
+        `
+    })
     loadAndDisplayEvent()
     addChatroomMessage()
     getChatroomMessage()
@@ -57,6 +66,7 @@ async function deleteEvent(id) {
 }
 
 function addChatroomMessage() {
+    const socket = io.connect()
     const paramString = window.location.search
     const searchParams = new URLSearchParams(paramString)
     const event_id = searchParams.get("id")
@@ -72,6 +82,9 @@ function addChatroomMessage() {
         })
         let result = await res.json()
         console.log(result)
+        if (res.status === 200) {
+            socket.emit("newMessage", `${result}`)
+        }
     })
 }
 
@@ -86,19 +99,11 @@ async function getChatroomMessage() {
 
     let c = 0
     for (let data of datas) {
-        if (c % 2 === 0) {
-            showComments.innerHTML += `
-                <div class="col-12 col-md-10 comment">
-                    <p>Comment:${data.content}</p>
-                </div>
-            `
-        } else {
-            showComments.innerHTML += `
-                <div class="col-12 col-md-9 comment">
-                    <p>Comment:${data.content}</p>
-                </div>
-            `
-        }
+        showComments.innerHTML += `
+            <div class="col-12 col-md-10 comment">
+                <p>Comment:${data.content}</p>
+            </div>
+        `
     }
 }
 
