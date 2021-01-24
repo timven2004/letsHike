@@ -1,7 +1,8 @@
 console.log("connected js")
 
 const el = document.querySelector('body');
-const page = document.querySelector(".page")
+const page = document.querySelector(".page");
+const img = document.querySelectorAll(".img");
 let position = 0;
 
 el.addEventListener('wheel', function(event){
@@ -27,3 +28,4 @@ el.addEventListener('wheel', function(event){
     }
 
 });
+

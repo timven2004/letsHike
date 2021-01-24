@@ -8,12 +8,17 @@ const commentText = document.querySelector("#commentText")
 const currentURL = window.location.href;
 const stars = document.querySelectorAll(".star")
 const hiddenNumber = document.querySelector(".hidden")
+const date = document.querySelector("#date")
+const form = document.querySelector("#form")
+const params = new URLSearchParams(document.location.search.substring(1))
+const eventId = params.get("eventId")
 
 console.log(currentURL)
+console.log(eventId)
+// URL example http://localhost:8080/ratingOthers.html?eventId=1&userId=1 //
 
 window.onload = async()=>{
-
-    const res = await fetch('/ratingOthers/api/1',
+    const res = await fetch(`/ratingOthers/api/${eventId}`,
     {
     method: "GET", // Specific your HTTP method
     headers: {
@@ -27,8 +32,8 @@ window.onload = async()=>{
         userLevel.innerHTML = result.level;
         userRating.innerHTML = result.rating;
         numberOfEventsJoined.innerHTML=result.experience;
+        date.innerHTML=result.date.toLocaleDateString("en-US");
     })
-
     }
 
 for (let i=0;i<stars.length;i++){
@@ -42,4 +47,5 @@ for (let i=0;i<stars.length;i++){
     })
 }
 
+form.setAttribute("action",`/ratingOthers/api/${eventId}`);
 

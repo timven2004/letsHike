@@ -31,38 +31,43 @@ h2 {
   margin: 0 auto;
 }
 
-.eventDetails-wrapper {
+.content-wrapper {
   position: relative;
 }
 
-.eventDetails-wrapper img {
+#eventDetails-wrapper img {
   width: 80%;
+  height: 400px;
+  background: grey;
   justify-content: center;
 }
 
-.eventDetails-wrapper h1 {
+#eventDetails-wrapper h1 {
   font-family: 'Monument Extended', sans-serif;
   font-size: 100px;
   z-index: 2;
   color: #fff;
+  position: absolute;
+  right: 10%;
+  top: 60%;
 }
 
 #event-detail-form {
   background: #fff;
 }
 
-.eventDetails-wrapper .detail {
+#eventDetails-wrapper .detail {
   width: 90%;
   padding: 20px;
   margin: 80px auto;
   text-align: center;
 }
 
-.eventDetails-wrapper .detail-img {
+#eventDetails-wrapper .detail-img {
   margin: 50px auto;
 }
 
-.eventDetails-wrapper .detail-img img {
+#eventDetails-wrapper .detail-img img {
   width: 300px;
   height: 300px;
   background: grey;
@@ -94,14 +99,14 @@ h2 {
   margin: 10px auto;
 }
 
-.eventDetails-wrapper .show-comment .comment {
+.show-comment .comment {
   border: solid 1px #fff;
   border-radius: 2px;
   padding: 10px;
   color: #fff;
 }
 
-.eventDetails-wrapper .show-comment .comment:nth-child(even) {
+.show-comment .comment:nth-child(even) {
   /* right: 0; */
   background: rgb(255, 255, 255, 0.5);
   border: none;
@@ -109,12 +114,12 @@ h2 {
   margin: 20px;
 }
 
-.eventDetails-wrapper .add-comment-wrapper {
+.add-comment-wrapper {
   display: flex;
   justify-content: center;
 }
 
-.eventDetails-wrapper .add-comment-wrapper h2 {
+.add-comment-wrapper h2 {
   text-align: center;
   margin: 10px 0;
 }
