@@ -66,6 +66,7 @@ import { users } from './router/users'
 import { events } from './router/events'
 import { ratingOthers } from './router/ratingOthers'
 import { chatroom } from './router/chatroom'
+import {hikeTrails} from './router/hikeTrails'
 
 // Use Folder
 app.use(express.static('public'))
@@ -76,9 +77,17 @@ app.use(users)
 app.use(ratingOthers)
 app.use(events)
 app.use(chatroom)
+app.use(hikeTrails)
 
 const PORT = 8080
 
 server.listen(PORT, () => {
     console.log(`PORT: ${PORT} is Listening`)
 })
+
+export function checkUserIsLoginMiddleware(req:express.Request,res:express.Response,next:express.NextFunction){
+    if(req.session["user_id"]){
+        next()
+    }
+    res.redirect("/login.html")
+}

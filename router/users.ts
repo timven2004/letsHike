@@ -7,10 +7,8 @@ export const users = express.Router()
 
 users.post("/api/v1/usersRegister",upload.single("image"), async (req, res) => {
     try {
-        console.log(req.files)
         const data = req.body
         const imagePath = req.file.filename
-        console.log(imagePath)
         await client.query(`
         INSERT INTO users ( user_name , email, password, gender, introduction , user_icon ) VALUES ($1,$2,$3,$4,$5,$6)
         `, [data.name, data.email, data.password, data.gender, data.intro, imagePath])
