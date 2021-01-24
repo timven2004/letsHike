@@ -3,6 +3,7 @@ console.log("connected js")
 const el = document.querySelector('body');
 const page = document.querySelector(".page");
 const imgs = document.querySelectorAll(".img");
+const anchors = document.querySelectorAll(".imgAnchor")
 let position = 0;
 
 window.onload = async () => {
@@ -21,6 +22,7 @@ window.onload = async () => {
 
         for (let index in imgs) {
             imgs[index].setAttribute("src", `assets/9WalkingTrails/${urls[index].image}`)
+            anchors[index].setAttribute("href", `/9hiketrails/intro/${parseInt(index)+1}`)
         }
     }
     catch (e) {
