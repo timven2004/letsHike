@@ -5,13 +5,20 @@ import { upload } from "../main"
 
 export const users = express.Router()
 
-users.post("/api/v1/usersRegister",upload.single("image"), async (req, res) => {
+users.post("/api/v1/usersRegister", upload.single("image"), async (req, res) => {
     try {
-        const data = req.body
-        const imagePath = req.file.filename
+        let { name, email, password, gender, intro } = req.body
+        const imageName = req.file.filename
+        const usersName = await client.query(`
+            SELECT * FROM users WHERE user_name = $1
+        `, [name])
+        if (usersName.rows.length !== 0) {
+            res.status(400).json({ message: "username has been used" })
+            return
+        }
         await client.query(`
         INSERT INTO users ( user_name , email, password, gender, introduction , user_icon ) VALUES ($1,$2,$3,$4,$5,$6)
-        `, [data.name, data.email, data.password, data.gender, data.intro, imagePath])
+        `, [name, email, password, gender, intro, imageName])
         res.json({ message: "success" })
     } catch (err) {
         console.error(err.message)
@@ -38,7 +45,7 @@ users.post("/api/v1/userLogin", async (req, res) => {
     }
 })
 
-users.get("/userProfile/:id", async (req,res)=>{
+users.get("/userProfile/:id", async (req, res) => {
     try {
         let data = await client.query<User>(
             `SELECT * 
@@ -46,7 +53,7 @@ users.get("/userProfile/:id", async (req,res)=>{
             WHERE users.id=$1
             ;`, [req.params.id]);
 
-            let comments = await client.query(`
+        let comments = await client.query(`
             SELECT *
             FROM rating_event
             JOIN users
@@ -55,8 +62,8 @@ users.get("/userProfile/:id", async (req,res)=>{
             ;`, [req.params.id])
 
         data.rows[0]["comments"] = comments.rows
-        res.render("./userProfile.ejs", {transferred: data.rows[0]});
-            console.log(data.rows[0])
+        res.render("./userProfile.ejs", { transferred: data.rows[0] });
+        console.log(data.rows[0])
     } catch (err) {
         console.error(err.message)
         res.status(500).json({ message: "Internal server error" })
@@ -84,7 +91,7 @@ users.get("/api/v1/userProfile/self", async (req, res) => {
         // ON rating_event.event_id = event.id
 
         // `)
-            let comments = await client.query(`
+        let comments = await client.query(`
             SELECT *
             FROM rating_event
             JOIN users
@@ -116,11 +123,11 @@ users.get("/api/v1/getUserData", async (req, res) => {
     }
 })
 
-users.put("/api/v1/editUserData",upload.single('image'), async (req, res) => {
+users.put("/api/v1/editUserData", upload.single('image'), async (req, res) => {
     try {
         const updateUserData = req.body
         const imagePath = req.file.path
-        console.log("imagePath",imagePath)
+        console.log("imagePath", imagePath)
         const user_id = req.session["user_id"]
         const updateName = updateUserData.name
         const updateEmail = updateUserData.email
