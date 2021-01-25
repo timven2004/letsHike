@@ -40,7 +40,7 @@ CREATE TABLE event(
     date DATE,
     time TIME,
     max_number_of_member INTEGER,
-    joining_number_of_member INTEGER,
+    joining_number_of_member INTEGER DEFAULT 1,
     hiking_trail_id INTEGER,
     FOREIGN KEY (hiking_trail_id) REFERENCES hiking_trail(id),
     detail TEXT,

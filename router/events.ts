@@ -93,11 +93,21 @@ events.delete("/events/deleteEvent/:id", async (req, res) => {
 
 events.post("/userJoinEvent", async (req, res) => {
     try {
+        // Check login
+        if(!req.session["user_id"]){
+            res.status(400).json({message:"login"})
+            return
+        }
         const user_id = req.session["user_id"]
         const event_id = req.body.event_id
+        // User join event
         await client.query(`
             INSERT INTO user_joining_event (users_id,event_id) VALUES ($1,$2)
         `, [user_id, event_id])
+        // Increase event joining number
+        await client.query(`
+        UPDATE event SET joining_number_of_member = joining_number_of_member +1 WHERE id = $1
+        `,[event_id])
         res.json("success")
     } catch (err) {
         console.error(err.message)

@@ -80,7 +80,6 @@ function addChatroomMessage() {
             body: formData
         })
         let result = await res.json()
-        console.log(result)
         if (res.status === 200) {
             socket.emit("newMessage", `${result}`)
         }
@@ -120,7 +119,13 @@ function userJoinEvent() {
             },
             body: JSON.stringify({ "event_id": event_id })
         })
+
+        console.log(res)
         const result = await res.json()
+        if(res.status === 400){
+            console.log("hi")
+            window.location.assign("http://localhost:8080/login.html")
+        }
         console.log(result)
     })
 }
