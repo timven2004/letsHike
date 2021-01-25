@@ -9,7 +9,7 @@ export const events = express.Router()
 events.get("/events", async (req, res) => {
     try {
         const data = await client.query<Event>(`
-        SELECT event.id, image, event_name FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
+        SELECT * FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
         INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id;
         `)
         const eventsdata = data.rows
@@ -25,7 +25,7 @@ events.get("/events/eventDetails/:id", async (req, res) => {
     try {
         const id = parseInt(req.params.id)
         const data = await client.query(`
-        SELECT event.id, image, event_name, meeting_point, date, time, max_number_of_member, detail FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
+        SELECT * FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
         INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id WHERE event.id = $1
         `, [id])
         const eventData = data.rows[0]
@@ -42,7 +42,7 @@ events.get("/events/eventDetails/:id", async (req, res) => {
 
 events.post("/events/createEvent", async (req, res) => {
     try {
-        
+
         const { event_name, meeting_point, date, time, max_number_of_member, hiking_trail_id, detail } = req.body
 
         let id = await client.query<Event>(`
