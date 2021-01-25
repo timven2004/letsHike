@@ -100,7 +100,7 @@ async function getChatroomMessage() {
     for (let data of datas) {
         showComments.innerHTML += `
             <div class="col-12 col-md-10 comment">
-                <p>Comment:${data.content}</p>
+                <p>${data.content}</p>
             </div>
         `
     }
@@ -120,13 +120,14 @@ function userJoinEvent() {
             },
             body: JSON.stringify({ "event_id": event_id })
         })
-
-        console.log(res)
         const result = await res.json()
+        // User don't login
         if(res.status === 400){
             console.log("hi")
             window.location.assign("http://localhost:8080/login.html")
         }
-        console.log(result)
+
+        const joinResult = document.getElementById("joinResult")
+        joinResult.innerText = result
     })
 }
