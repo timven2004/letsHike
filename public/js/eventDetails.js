@@ -21,6 +21,7 @@ async function loadAndDisplayEvent() {
 
     const res = await fetch(`/events/eventDetails/${id}`)
     const data = await res.json()
+    console.log(data)
 
     let eventStr = `
         <div class="row">
@@ -32,8 +33,8 @@ async function loadAndDisplayEvent() {
         <div id="event-detail-form">
             <div class="row">
             <div class="edit-button">
-                <a href="/eventEdit.html?id=${data.id}">Edit</a>
-                <button onclick="deleteEvent(${data.id})">Delete</button>
+                <a href="/eventEdit.html?id=${id}">Edit</a>
+                <button onclick="deleteEvent(${id})">Delete</button>
             </div>
             <div class="col-12 col-md-7 detail">
                 <h5>meeting point: ${data.meeting_point}</h5>
@@ -59,6 +60,7 @@ async function deleteEvent(id) {
     });
     if (res.status === 200) {
         await loadAndDisplayEvent();
+        window.location = `/events.html`
     } else {
         const data = await res.json();
         alert(data.message);
@@ -122,7 +124,7 @@ function userJoinEvent() {
         })
         const result = await res.json()
         // User don't login
-        if(res.status === 400){
+        if (res.status === 400) {
             console.log("hi")
             window.location.assign("http://localhost:8080/login.html")
         }

@@ -34,6 +34,10 @@ h2 {
   position: relative;
 }
 
+#eventDetails-wrapper{
+  margin-top:100px;
+}
+
 #eventDetails-wrapper img {
   width: 80%;
   height: 400px;

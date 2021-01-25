@@ -34,9 +34,8 @@
               <label class="active" for="max_number_of_member">Max no. of member</label>
             </div>
             <div class="input-field col s6">
-              <p id="hiking_trail"></p>
               <select id="hiking_trail_id">
-                
+                  <!-- AJAX -->
               </select>
               <label>Choose a trail</label>
             </div>
@@ -52,11 +51,6 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/eventEdit.js"></script>
-    <script>
-         document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('select');
-            var instances = M.FormSelect.init(elems);
-        });
-    </script>
+
 </body>
 </html>

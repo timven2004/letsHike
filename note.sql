@@ -44,7 +44,7 @@ CREATE TABLE event(
     hiking_trail_id INTEGER,
     FOREIGN KEY (hiking_trail_id) REFERENCES hiking_trail(id),
     detail TEXT,
-    is_active BOOLEAN
+    is_active BOOLEAN DEFAULT true
 );
 
 CREATE TABLE chatroom(
