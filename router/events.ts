@@ -98,11 +98,42 @@ events.delete("/events/deleteEvent/:id", async (req, res) => {
 
 events.post("/userJoinEvent", async (req, res) => {
     try {
+        // Check login
+        if (!req.session["user_id"]) {
+            res.status(400).json({ message: "login" })
+            return
+        }
+
         const user_id = req.session["user_id"]
         const event_id = req.body.event_id
+
+        // Check User is (or not) join this event
+        const num = await client.query(`
+            SELECT COUNT(*) FROM user_joining_event WHERE users_id = $1 AND event_id = $2
+        `, [user_id, event_id])
+        console.log(num.rows[0].count)
+        if (num.rows[0].count == 1) {
+            res.status(401).json("You have been join")
+            return
+        }
+        // Check joining event fill
+        const eventData = await client.query(`
+            SELECT * FROM event WHERE id = $1
+        `, [event_id])
+        const joiningNumber = eventData.rows[0].joining_number_of_member
+        const maxNumber = eventData.rows[0].max_number_of_member
+        if (joiningNumber === maxNumber) {
+            res.status(401).json("Event joining fill")
+            return
+        }
+        // User join event
         await client.query(`
             INSERT INTO user_joining_event (users_id,event_id) VALUES ($1,$2)
         `, [user_id, event_id])
+        // Increase event joining number
+        await client.query(`
+        UPDATE event SET joining_number_of_member = joining_number_of_member +1 WHERE id = $1
+        `, [event_id])
         res.json("success")
     } catch (err) {
         console.error(err.message)

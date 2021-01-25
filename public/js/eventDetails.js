@@ -81,7 +81,6 @@ function addChatroomMessage() {
             body: formData
         })
         let result = await res.json()
-        console.log(result)
         if (res.status === 200) {
             socket.emit("newMessage", `${result}`)
         }
@@ -101,7 +100,7 @@ async function getChatroomMessage() {
     for (let data of datas) {
         showComments.innerHTML += `
             <div class="col-12 col-md-10 comment">
-                <p>Comment:${data.content}</p>
+                <p>${data.content}</p>
             </div>
         `
     }
@@ -122,6 +121,13 @@ function userJoinEvent() {
             body: JSON.stringify({ "event_id": event_id })
         })
         const result = await res.json()
-        console.log(result)
+        // User don't login
+        if(res.status === 400){
+            console.log("hi")
+            window.location.assign("http://localhost:8080/login.html")
+        }
+
+        const joinResult = document.getElementById("joinResult")
+        joinResult.innerText = result
     })
 }

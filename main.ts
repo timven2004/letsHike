@@ -30,6 +30,18 @@ const app = express()
 const server = new http.Server(app)
 export const io = new SocketIO(server)
 
+// Session Setup
+app.use(expressSession({
+    secret: 'This is session',
+    resave: true,
+    saveUninitialized: true
+}))
+
+app.use((req, res, next) => {
+    console.log("session['user_id'] = ", req.session["user_id"])
+    next()
+})
+
 // Socket.io Setup
 io.on('connection', (socket) => {
     console.log("Connect")
@@ -41,18 +53,6 @@ io.on('connection', (socket) => {
         const content = newMessage.rows[0]
         io.emit("newMessage", content)
     })
-})
-
-// Session Setup
-app.use(expressSession({
-    secret: 'This is session',
-    resave: true,
-    saveUninitialized: true
-}))
-
-app.use((req, res, next) => {
-    console.log("session['user_id'] = ", req.session["user_id"])
-    next()
 })
 
 // Form body Setup
