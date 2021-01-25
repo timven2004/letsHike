@@ -8,6 +8,7 @@ window.onload = () => {
             </div>
         `
     })
+    hiddenProfileNavbar()
     loadAndDisplayEvent()
     addChatroomMessage()
     getChatroomMessage()
@@ -132,4 +133,16 @@ function userJoinEvent() {
         const joinResult = document.getElementById("joinResult")
         joinResult.innerText = result
     })
+}
+
+//Nav-bar
+async function hiddenProfileNavbar() {
+    const res = await fetch("/api/v1/userLoggedIn")
+    const data = await res.json()
+
+    if (data === 'undefined') {
+        document.getElementById('hidden-propfile').innerHTML = '';
+    } else {
+        document.getElementById('switchToLogout').innerHTML = `<a id="switchToLogout" href="/index.html">Logout</a>`;
+    }
 }
