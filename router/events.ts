@@ -42,6 +42,7 @@ events.get("/events/eventDetails/:id", async (req, res) => {
 
 events.post("/events/createEvent", async (req, res) => {
     try {
+        
         const { event_name, meeting_point, date, time, max_number_of_member, hiking_trail_id, detail } = req.body
 
         let id = await client.query<Event>(`
