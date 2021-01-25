@@ -10,10 +10,12 @@ async function loadAndDisplayEvents() {
     for (const event of data) {
         eventsStr += `
             <div class="col-12 col-md-6 col-lg-4 effect">
-                <a href="/eventDetails.html?id=${event.id}"><img src=${event.image} alt=""></a>
+                <a href="/eventDetails.html?id=${event.id}"><img src="${event.image}" alt=""></a>
                 <h2>${event.event_name}</h2>
             </div>
+            
         `
+        console.log(event.image)
     }
 
     document.getElementById('events-wrapper').innerHTML = eventsStr

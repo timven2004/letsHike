@@ -116,8 +116,8 @@ INSERT INTO event ( event_name, meeting_point, date, time, max_number_of_member,
 INSERT INTO image_hiking_trail (image, hiking_trail_id) VALUES ($1,$2);
 
 -- GET events --
-SELECT * FROM event LEFT OUTER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail_id 
-LEFT OUTER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = image_id;
+SELECT event.id, image, event_name FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
+INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id;
 
 INSERT INTO hiking_trail (name,image_id,introduction,hardness) VALUES ('Tai Po Trail', '2','detail',3)
 
