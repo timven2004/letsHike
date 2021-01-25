@@ -26,6 +26,15 @@ function eventDetailEditSubmit() {
     const id = (searchParams.get('id'))
 
     const form = document.getElementById("edit-event-form")
+
+
+    // const option = document.querySelector('option')
+    // if(option.id = '1') {
+    //     document.
+    // }
+
+
+
     form.addEventListener("submit", async (e) => {
         e.preventDefault()
         formObject = {}
@@ -44,6 +53,8 @@ function eventDetailEditSubmit() {
             },
             body: JSON.stringify(formObject)
         });
+
+
         let result = await res.json()
         if (res.status === 200) {
             window.location = `/eventDetails.html?id=${id}`
