@@ -1,3 +1,8 @@
+*{
+    box-sizing: border-box;
+}
+
+
 body{
     margin:0;
     font-family: 'Abel', sans-serif;
@@ -46,9 +51,14 @@ body{
 
 }
 
-.section{
+.section1{
     position:relative;
-    height: 700px;
+    height: 500px;
+}
+
+.section2{
+    position:relative;
+    height: 200px;
 }
 
 .grey{
@@ -77,10 +87,51 @@ body{
     z-index:4;
     font-size: 1.5rem;
     text-align: end;
+    background-color: ivory;
 }
 
 .titledescription2{
     z-index:4;
     font-size: 1rem;
     text-align: end;
+    background-color: ivory;
 }
+
+.pointsCard{
+    background-color: #fe4323;
+    height:300px;
+    width:80%;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.pointsCardCircle{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.pointsCardTitle{
+font-size: 2rem;
+color:white;
+
+}
+
+.pointsCardDescription{
+color:white;
+font-size: 2rem;
+}
+
+.pointsCardText{
+    text-align: center;
+}
+
