@@ -74,11 +74,12 @@ import { users } from './router/users'
 import { events } from './router/events'
 import { ratingOthers } from './router/ratingOthers'
 import { chatroom } from './router/chatroom'
-import {hikeTrails} from './router/hikeTrails'
+import { hikeTrails } from './router/hikeTrails'
 
 // Use Folder
 app.use(express.static('public'))
 app.use(express.static("uploads"))
+app.use(express.static("hiking_trail_image"))
 
 // Router
 app.use(users)

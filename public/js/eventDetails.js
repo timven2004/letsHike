@@ -49,6 +49,7 @@ async function loadAndDisplayEvent() {
             </div>
             </div>
         </div>`
+
     document.getElementById('eventDetails-wrapper').innerHTML = eventStr
 }
 

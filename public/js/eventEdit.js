@@ -45,6 +45,8 @@ function eventDetailEditSubmit() {
             body: JSON.stringify(formObject)
         });
         let result = await res.json()
-        console.log(result)
+        if (res.status === 200) {
+            window.location = `/eventDetails.html?id=${id}`
+        }
     })
 }
