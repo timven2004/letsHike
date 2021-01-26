@@ -82,7 +82,7 @@ users.get("/userProfile/:id", async (req, res) => {
                 UPDATE users
                 SET rating=$1
                 WHERE users.id = $2
-            `, [avgRating, req.session["user_id"]])
+            `, [avgRating, req.params.id])
         console.log(update)
         data.rows[0]["rating"] = avgRating;
         if (!data.rows[0].user_icon) {
@@ -218,4 +218,14 @@ users.get("/api/v1/logout", async (req, res) => {
     }
 })
 
-
+users.get("/users/checkUserIsOrganizer/:id", async (req, res) => {
+    const event_id = parseInt(req.params.id)
+    const data = await client.query(`
+        SELECT * FROM event where organizer = $1 AND id = $2
+  `, [req.session["user_id"], event_id])
+  if(!data.rows[0]){
+    res.status(400).json({message:"Not organizer"})
+    return
+  }
+  res.json("Hi organizer")
+})

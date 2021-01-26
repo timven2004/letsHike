@@ -24,10 +24,7 @@ async function loadAndDisplayEvent() {
         </div>
         <div id="event-detail-form">
             <div class="row">
-            <div class="edit-button">
-                <a href="/eventEdit.html?id=${id}">Edit</a>
-                <button onclick="deleteEvent(${id})">Delete</button>
-            </div>
+            <div class="edit-button"></div>
             <div class="col-12 col-md-7 detail">
                 <h5>meeting point: ${data.meeting_point}</h5>
                 <h5>Date: ${data.date}</h5>
@@ -44,6 +41,15 @@ async function loadAndDisplayEvent() {
         </div>`
 
     document.getElementById('eventDetails-wrapper').innerHTML = eventStr
+
+    const resForCheckUserIsOrganizer = await fetch(`/users/checkUserIsOrganizer/${id}`)
+    if(resForCheckUserIsOrganizer.status===200){
+        let editButton = document.querySelector(".edit-button")
+        editButton.innerHTML = `
+            <a href="/eventEdit.html?id=${id}">Edit</a>
+            <button onclick="deleteEvent(${id})">Delete</button>
+        `
+    }
 }
 
 async function userJoiningEventData() {
