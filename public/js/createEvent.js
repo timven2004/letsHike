@@ -15,6 +15,14 @@ function createEventFormSubmit() {
         formObject["hiking_trail_id"] = parseInt(form.hiking_trail_id.value)
         formObject["detail"] = form.detail.value
 
+        const eventDate = new Date(form.date.value)
+        const now = new Date()
+        console.log(eventDate - now)
+        if(eventDate - now < 0){
+            console.log("date past")
+            return
+        }
+
         const res = await fetch("/events/createEvent", {
             method: "POST",
             headers: {
