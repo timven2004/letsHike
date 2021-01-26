@@ -3,29 +3,31 @@ import { client } from "../main"
 
 export const hikeTrails = express.Router()
 
-hikeTrails.get('/9hiketrails/api/index', async (req, res) => {
-    const images = await client.query(`
+hikeTrails.get('/9hiketrails/api/index', async (req,res)=>{
+    
+    try{    const images = await client.query(`
     SELECT * FROM image_hiking_trail
     JOIN hiking_trail
     ON image_hiking_trail.id = hiking_trail.id
     `)
     res.json(images.rows);
+} catch (e){
+    console.log(e)
+}
 
 })
 
-hikeTrails.get('/9hiketrails/intro/:id', async (req, res) => {
-    const data = await client.query(`
+hikeTrails.get('/9hiketrails/intro/:id', async (req,res)=>{
+    try{const data = await client.query(`
     SELECT * FROM hiking_trail 
-    WHERE id=$1
-    `, [req.params.id])
+    JOIN image_hiking_trail
+    ON hiking_trail.id=$1
+    WHERE image_hiking_trail.hiking_trail_id=$1
+    `,[req.params.id])
 
-    res.json(data["rows"]);
-})
+res.json(data["rows"]);}
 
-hikeTrails.get("/getTrailData/:id", async (req, res) => {
-    const id = req.params.id
-    const data = await client.query(`
-        SELECT * FROM image_hiking_trail LEFT JOIN hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id  WHERE hiking_trail.id = $1
-    `,[id])
-    res.json(data.rows[0])
+catch (e){
+    console.log(e)
+}
 })
