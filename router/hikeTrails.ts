@@ -13,6 +13,8 @@ hikeTrails.get('/9hiketrails/api/index', async (req,res)=>{
     res.json(images.rows);
 } catch (e){
     console.log(e)
+    res.status(500).json({ message: "Internal server error" })
+
 }
 
 })
@@ -29,5 +31,7 @@ res.json(data["rows"]);}
 
 catch (e){
     console.log(e)
+    res.status(500).json({ message: "Internal server error" })
+
 }
 })

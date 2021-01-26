@@ -22,7 +22,7 @@ window.onload = async () => {
 
   response.json().then(result => {
     console.log(result);
-    profilePic.setAttribute("src", `/assets/UserProfile/${(result).user_icon}`);
+    profilePic.setAttribute("src", `../${(result).user_icon}`);
     username.innerHTML = (result).user_name;
     rating.innerHTML = `Rating: ${result.rating}/5.0`
     level.innerHTML = "Skills Level: " + result.level;
