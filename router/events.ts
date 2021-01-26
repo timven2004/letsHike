@@ -155,20 +155,6 @@ events.post("/userJoinEvent", async (req, res) => {
     }
 })
 
-events.get("/api/v1/userLoggedIn", async (req, res) => {
-    try {
-        const user_id = req.session["user_id"]
-        if (!user_id) {
-            res.json('notLoggedIn')
-        } else {
-            res.json(user_id)
-        }
-    } catch (err) {
-        console.error(err.message)
-        res.status(500).json({ message: "Internal server error" })
-    }
-})
-
 
 // Middleware
 const checkSession = (req: Request, res: Response, next: NextFunction) => {
@@ -192,7 +178,7 @@ export async function checkEventIsActive() {
     for (const row of data.rows) {
         await client.query(`
             UPDATE event SET is_active = false WHERE id = $1
-        `,[row.id])
+        `, [row.id])
     }
     console.log(data.rows)
 }
