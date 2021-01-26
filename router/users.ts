@@ -1,9 +1,16 @@
-import express from "express"
 import { client } from "../main"
 import { User } from "../class/database"
 import { upload } from "../main"
+import express, { Request, Response, NextFunction } from "express"
+
 
 export const users = express.Router()
+
+const checkSession = (req: Request, res: Response, next: NextFunction) => {
+    if (req.session["user_id"]) {
+        next()
+    } else res.redirect("/login.html")
+}
 
 users.post("/api/v1/usersRegister", upload.single("image"), async (req, res) => {
     try {
@@ -78,7 +85,9 @@ users.get("/userProfile/:id", async (req, res) => {
             `, [avgRating,req.session["user_id"]])
             console.log(update)
             data.rows[0]["rating"] = avgRating;
-
+            if (!data.rows[0].user_icon){
+                data.rows[0].user_icon=`blank-profile-picture-973460_640.png`
+            }
         res.render("./userProfile.ejs", { transferred: data.rows[0] });
         console.log(data.rows[0])
     } catch (err) {
@@ -90,7 +99,7 @@ users.get("/userProfile/:id", async (req, res) => {
 })
 
 
-users.get("/api/v1/userProfile/self", async (req, res) => {
+users.get("/api/v1/userProfile/self",checkSession, async (req, res) => {
 
     try {
         let data = await client.query<User>(
@@ -133,6 +142,11 @@ users.get("/api/v1/userProfile/self", async (req, res) => {
 
             console.log(update);
         data.rows[0]["rating"] = avgRating;
+        if (!data.rows[0].user_icon){
+            data.rows[0].user_icon=`blank-profile-picture-973460_640.png`
+        }
+        console.log(data.rows[0].user_icon)
+
         res.json(data.rows[0]);
 
     } catch (err) {
@@ -176,20 +190,19 @@ users.put("/api/v1/editUserData", upload.single('image'), async (req, res) => {
 })
 
 // check session["user_id"]
-users.get("/api/v1/userLoggedIn", async (req, res) => {
-    try {
-        const user_id = req.session["user_id"]
-        if (!user_id) {
-            res.json('notLoggedIn')
-        } else {
-            res.json(user_id)
-        }
-
-    } catch (err) {
-        console.error(err.message)
-        res.status(500).json({ message: "Internal server error" })
-    }
-})
+// users.get("/api/v1/userLoggedIn", async (req, res) => {
+//     try {
+//         const user_id = req.session["user_id"]
+//         if (!user_id) {
+//             res.json('notLoggedIn')
+//         } else {
+//             res.json(user_id)
+//         }
+//     } catch (err) {
+//         console.error(err.message)
+//         res.status(500).json({ message: "Internal server error" })
+//     }
+// })
 
 users.get("/api/v1/logout", async (req, res) => {
 
@@ -205,3 +218,5 @@ users.get("/api/v1/logout", async (req, res) => {
         console.log('logout')
     }
 })
+
+

@@ -12,9 +12,11 @@ const date = document.querySelector("#date")
 const form = document.querySelector("#form")
 const params = new URLSearchParams(document.location.search.substring(1))
 const eventId = params.get("eventId")
+const userToBeRated =document.querySelector("#userToBeRated")
 
 console.log(currentURL)
 console.log(eventId)
+console.log(userToBeRated)
 // URL example http://localhost:8080/ratingOthers.html?eventId=1&userId=1 //
 
 window.onload = async()=>{
@@ -27,6 +29,8 @@ window.onload = async()=>{
     }})
 
     res.json().then(result=>{
+        console.log(result)
+        userToBeRated.setAttribute('href', `/UserProfile/${result.organizer}`);
         username.innerHTML = result.user_name;
         eventDescription.innerHTML = result.detail;
         userLevel.innerHTML = result.level;
