@@ -44,7 +44,7 @@ async function loadAndDisplayEvent() {
     document.getElementById('eventDetails-wrapper').innerHTML = eventStr
 
     const resForCheckUserIsOrganizer = await fetch(`/users/checkUserIsOrganizer/${id}`)
-    if(resForCheckUserIsOrganizer.status===200){
+    if (resForCheckUserIsOrganizer.status === 200) {
         let editButton = document.querySelector(".edit-button")
         editButton.innerHTML = `
             <a href="/eventEdit.html?id=${id}">Edit</a>
@@ -120,6 +120,7 @@ async function getChatroomMessage() {
     for (let data of datas) {
         showComments.innerHTML += `
             <div class="col-12 col-md-10 comment">
+                <h5>${data.user_name}:</h5>
                 <p>${data.content}</p>
             </div>
         `
