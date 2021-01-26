@@ -139,7 +139,6 @@ events.post("/userJoinEvent", async (req, res) => {
         res.status(500).json("Internal server error")
     }
 })
-<<<<<<< HEAD
 
 events.get("/api/v1/userLoggedIn", async (req, res) => {
     try {
@@ -167,5 +166,19 @@ const checkSession = (req: Request, res: Response, next: NextFunction) => {
 events.get("/goCreateEventPage", checkSession, (req, res) => {
     res.redirect("/createEvent.html")
 })
-=======
->>>>>>> 6d1256188f9046ed3de4fcb38bdc7bb8a99f0b9b
+
+// Check event  is active
+export async function checkEventIsActive() {
+    var now = new Date();
+    var date = moment(now).format("YYYY-MM-DD");
+    console.log(date)
+    const data = await client.query(`
+        SELECT id FROM event WHERE date < $1
+    `, [date])
+    for (const row of data.rows) {
+        await client.query(`
+            UPDATE event SET is_active = false WHERE id = $1
+        `,[row.id])
+    }
+    console.log(data.rows)
+}
