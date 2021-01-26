@@ -18,7 +18,6 @@ CREATE TABLE users(
 CREATE TABLE hiking_trail(
     id SERIAL primary key,
     name VARCHAR(255),
-    image_id INTEGER,
     introduction TEXT,
     hardness INTEGER
 );

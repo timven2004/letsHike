@@ -1,8 +1,8 @@
 @font-face {
   font-family: Monument Extended;
-  src: url('/public/assets/fonts/MonumentExtended-Regular.ttf') format('ttf'),
-    url('/public/assets/fonts/MonumentExtended-Regular.woff') format('woff'),
-    url('/public/assets/fonts/MonumentExtended.otf') format('otf');
+  src: url('/assets/fonts/MonumentExtended-Regular.ttf') format('ttf'),
+    url('/assets/fonts/MonumentExtended-Regular.woff') format('woff'),
+    url('/assets/fonts/MonumentExtended.otf') format('otf');
 }
 
 :root {

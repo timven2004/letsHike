@@ -1,14 +1,5 @@
 window.onload = () => {
-    const socket = io.connect()
-    socket.on("newMessage", data => {
-        const showComments = document.querySelector(".show-comment")
-        showComments.innerHTML += `
-            <div class="col-12 col-md-10 comment">
-                <p>Comment:${data.content}</p>
-            </div>
-        `
-    })
-    hiddenProfileNavbar()
+    getNewChatroomMessage()
     loadAndDisplayEvent()
     addChatroomMessage()
     getChatroomMessage()
@@ -22,7 +13,6 @@ async function loadAndDisplayEvent() {
 
     const res = await fetch(`/events/eventDetails/${id}`)
     const data = await res.json()
-    console.log(data)
 
     let eventStr = `
         <div class="row">
@@ -132,6 +122,18 @@ function userJoinEvent() {
 
         const joinResult = document.getElementById("joinResult")
         joinResult.innerText = result
+    })
+}
+
+function getNewChatroomMessage() {
+    const socket = io.connect()
+    socket.on("newMessage", data => {
+        const showComments = document.querySelector(".show-comment")
+        showComments.innerHTML += `
+            <div class="col-12 col-md-10 comment">
+                <p>Comment:${data.content}</p>
+            </div>
+        `
     })
 }
 

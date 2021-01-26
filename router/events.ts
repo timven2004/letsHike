@@ -43,7 +43,7 @@ events.get("/events/eventDetails/:id", async (req, res) => {
 events.post("/events/createEvent", async (req, res) => {
     try {
         const { event_name, meeting_point, date, time, max_number_of_member, hiking_trail_id, detail } = req.body
-
+        console.log(req.body)
         let id = await client.query<Event>(`
         INSERT INTO event ( event_name, meeting_point, date, time, max_number_of_member, hiking_trail_id, detail) 
         VALUES ($1,$2,$3,$4,$5,$6,$7) returning id
