@@ -32,7 +32,7 @@ async function loadAndDisplayEvent() {
                 <h5>Date: ${data.date}</h5>
                 <h5>Time: ${data.time}</h5>
                 <h5>Max number of member: ${data.max_number_of_member}</h5>
-                <h5>Joining number of member: </h5>
+                <h5>Joining number of member:${data.joining_number_of_member} </h5>
                 <br>
                 <p>Details: ${data.detail}</p>
             </div>
@@ -131,7 +131,7 @@ function getNewChatroomMessage() {
         const showComments = document.querySelector(".show-comment")
         showComments.innerHTML += `
             <div class="col-12 col-md-10 comment">
-                <p>Comment:${data.content}</p>
+                <p>${data.content}</p>
             </div>
         `
     })
