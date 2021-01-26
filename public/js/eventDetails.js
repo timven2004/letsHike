@@ -1,6 +1,7 @@
 window.onload = () => {
     getNewChatroomMessage()
     loadAndDisplayEvent()
+    userJoiningEventData()
     addChatroomMessage()
     getChatroomMessage()
     userJoinEvent()
@@ -43,6 +44,25 @@ async function loadAndDisplayEvent() {
         </div>`
 
     document.getElementById('eventDetails-wrapper').innerHTML = eventStr
+}
+
+async function userJoiningEventData() {
+    const paramString = window.location.search
+    const searchParams = new URLSearchParams(paramString)
+    const id = (searchParams.get('id'))
+
+    const res = await fetch(`/events/userJoiningEvent/${id}`)
+    const data = await res.json()
+
+    let joiningMemberStr = ``
+    for (const joiningMember of data) {
+        joiningMemberStr += `
+        <div class="col-12">
+            <p>${joiningMember.user_name}</p>
+        </div>`
+    }
+
+    document.getElementById('joiningMember').innerHTML = joiningMemberStr
 }
 
 async function deleteEvent(id) {
@@ -144,5 +164,5 @@ async function hiddenProfileNavbar() {
 
     if (data === 'undefined') {
         document.getElementById('hidden-propfile').innerHTML = '';
-    } 
+    }
 }

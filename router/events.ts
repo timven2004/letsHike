@@ -33,8 +33,23 @@ events.get("/events/eventDetails/:id", async (req, res) => {
         moment(eventData.date).format('YYYY-MM-DD')
         eventData.date = moment(eventData.date).format('YYYY-MM-DD')
         res.json(eventData)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).json({ message: "Internal server Error" })
     }
-    catch (err) {
+})
+
+// get name from user_joining_event 
+events.get("/events/userJoiningEvent/:id", async (req, res) => {
+    try {
+        const id = parseInt(req.params.id)
+        const data = await client.query(`
+        SELECT users.user_name FROM event INNER JOIN user_joining_event ON event.id = user_joining_event.event_id 
+        INNER JOIN users ON user_joining_event.users_id = users.id WHERE event.id = $1
+        `, [id])
+        const userJoiningEventData = data.rows
+        res.json(userJoiningEventData)
+    } catch (err) {
         console.error(err.message)
         res.status(500).json({ message: "Internal server Error" })
     }
@@ -148,13 +163,12 @@ events.get("/api/v1/userLoggedIn", async (req, res) => {
         } else {
             res.json(user_id)
         }
-
-
     } catch (err) {
         console.error(err.message)
         res.status(500).json({ message: "Internal server error" })
     }
 })
+
 
 // Middleware
 const checkSession = (req: Request, res: Response, next: NextFunction) => {

@@ -23,9 +23,10 @@ async function loadAndDisplayEvents() {
 
 //Nav-bar
 async function hiddenProfileNavbar() {
+    console.log('hi')
     const res = await fetch("/api/v1/userLoggedIn")
     const data = await res.json()
-    console.log(data)
+    console.log('hi')
 
     if (data === 'notLoggedIn') {
         document.getElementById('hidden-propfile').innerHTML = '';

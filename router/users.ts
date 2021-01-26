@@ -147,20 +147,19 @@ users.put("/api/v1/editUserData", upload.single('image'), async (req, res) => {
 })
 
 // check session["user_id"]
-users.get("/api/v1/userLoggedIn", async (req, res) => {
-    try {
-        const user_id = req.session["user_id"]
-        if (!user_id) {
-            res.json('notLoggedIn')
-        } else {
-            res.json(user_id)
-        }
-
-    } catch (err) {
-        console.error(err.message)
-        res.status(500).json({ message: "Internal server error" })
-    }
-})
+// users.get("/api/v1/userLoggedIn", async (req, res) => {
+//     try {
+//         const user_id = req.session["user_id"]
+//         if (!user_id) {
+//             res.json('notLoggedIn')
+//         } else {
+//             res.json(user_id)
+//         }
+//     } catch (err) {
+//         console.error(err.message)
+//         res.status(500).json({ message: "Internal server error" })
+//     }
+// })
 
 users.get("/api/v1/logout", async (req, res) => {
 
