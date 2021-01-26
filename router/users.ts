@@ -78,7 +78,9 @@ users.get("/userProfile/:id", async (req, res) => {
             `, [avgRating,req.session["user_id"]])
             console.log(update)
             data.rows[0]["rating"] = avgRating;
-
+            if (!data.rows[0].user_icon){
+                data.rows[0].user_icon=`blank-profile-picture-973460_640.png`
+            }
         res.render("./userProfile.ejs", { transferred: data.rows[0] });
         console.log(data.rows[0])
     } catch (err) {
@@ -133,6 +135,11 @@ users.get("/api/v1/userProfile/self", async (req, res) => {
 
             console.log(update);
         data.rows[0]["rating"] = avgRating;
+        if (!data.rows[0].user_icon){
+            data.rows[0].user_icon=`blank-profile-picture-973460_640.png`
+        }
+        console.log(data.rows[0].user_icon)
+
         res.json(data.rows[0]);
 
     } catch (err) {
