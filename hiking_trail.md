@@ -42,3 +42,4 @@ Spanning from Mount Butler to Braemar Hill, this is an easy and relatively flat 
 **Black Hill**(五桂山)
 
 Black Hill lies between Lam Tin and Tiu Keng Leng on the eastern side of Kowloon. The mountain is infamous for being a haunted hike since its Cantonese name means ‘five ghosts’. But don’t be deceived by the spooky tale, as the view above says otherwise. Black Hill ridges offer several major peaks with the highest reaching 304 metres above sea level, so trek along to view the eastern harbour from above.
+
