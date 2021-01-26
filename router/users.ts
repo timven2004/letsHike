@@ -82,7 +82,7 @@ users.get("/userProfile/:id", async (req, res) => {
                 UPDATE users
                 SET rating=$1
                 WHERE users.id = $2
-            `, [avgRating,req.session["user_id"]])
+            `, [avgRating,req.params.id])
             console.log(update)
             data.rows[0]["rating"] = avgRating;
             if (!data.rows[0].user_icon){
