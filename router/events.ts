@@ -9,7 +9,7 @@ export const events = express.Router()
 events.get("/events", async (req, res) => {
     try {
         const data = await client.query<Event>(`
-        SELECT event.id, image, event_name ,is_active FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
+        SELECT event.id, image, event_name ,is_active, hardness FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
         INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id WHERE is_active = true;
         `)
         const eventsdata = data.rows
@@ -148,7 +148,6 @@ events.get("/api/v1/userLoggedIn", async (req, res) => {
         } else {
             res.json(user_id)
         }
-
 
     } catch (err) {
         console.error(err.message)
