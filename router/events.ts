@@ -140,17 +140,17 @@ events.post("/userJoinEvent", async (req, res) => {
     }
 })
 
-events.get("/api/v1/userLoggedIn", async (req, res) => {
-    try {
-        const user_id = req.session["user_id"]
-        if (!user_id) {
-            res.json('notLoggedIn')
-        } else {
-            res.json(user_id)
-        }
+// events.get("/api/v1/userLoggedIn", async (req, res) => {
+//     try {
+//         const user_id = req.session["user_id"]
+//         if (!user_id) {
+//             res.json('notLoggedIn')
+//         } else {
+//             res.json(user_id)
+//         }
 
-    } catch (err) {
-        console.error(err.message)
-        res.status(500).json({ message: "Internal server error" })
-    }
-})
+//     } catch (err) {
+//         console.error(err.message)
+//         res.status(500).json({ message: "Internal server error" })
+//     }
+// })
