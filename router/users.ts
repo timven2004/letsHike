@@ -70,24 +70,33 @@ users.get("/userProfile/:id", async (req, res) => {
             WHERE rating_person_id = $1
             ;`, [req.params.id])
 
-            let sumRating = 0;
-            data.rows[0]["comments"] = comments.rows
-            console.log(data.rows[0].comments)
-            for (let comment of data.rows[0].comments){
-                sumRating += comment['single_rating'];
-            }
-            let avgRating = Math.round(sumRating*10/(data.rows[0]["comments"].length))/10;
-            console.log(avgRating);
-            let update = await client.query(`
+        let sumRating = 0;
+        data.rows[0]["comments"] = comments.rows
+        console.log(data.rows[0].comments)
+        for (let comment of data.rows[0].comments) {
+            sumRating += comment['single_rating'];
+        }
+        let avgRating = Math.round(sumRating * 10 / (data.rows[0]["comments"].length)) / 10;
+        console.log(avgRating);
+        let update = await client.query(`
                 UPDATE users
                 SET rating=$1
                 WHERE users.id = $2
+<<<<<<< HEAD
             `, [avgRating,req.params.id])
             console.log(update)
             data.rows[0]["rating"] = avgRating;
             if (!data.rows[0].user_icon){
                 data.rows[0].user_icon=`blank-profile-picture-973460_640.png`
             }
+=======
+            `, [avgRating, req.session["user_id"]])
+        console.log(update)
+        data.rows[0]["rating"] = avgRating;
+        if (!data.rows[0].user_icon) {
+            data.rows[0].user_icon = `blank-profile-picture-973460_640.png`
+        }
+>>>>>>> 290e5c5404cf147a3acb3c8efefca2eef4098aef
         res.render("./userProfile.ejs", { transferred: data.rows[0] });
         console.log(data.rows[0])
     } catch (err) {
@@ -99,7 +108,7 @@ users.get("/userProfile/:id", async (req, res) => {
 })
 
 
-users.get("/api/v1/userProfile/self",checkSession, async (req, res) => {
+users.get("/api/v1/userProfile/self", checkSession, async (req, res) => {
 
     try {
         let data = await client.query<User>(
@@ -129,21 +138,21 @@ users.get("/api/v1/userProfile/self",checkSession, async (req, res) => {
         data.rows[0]["comments"] = comments.rows;
         let sumRating = 0;
         console.log(data.rows[0].comments)
-        for (let comment of data.rows[0].comments){
+        for (let comment of data.rows[0].comments) {
             sumRating += comment['single_rating'];
         }
-        let avgRating = Math.round(sumRating*10/(data.rows[0]["comments"].length))/10;
+        let avgRating = Math.round(sumRating * 10 / (data.rows[0]["comments"].length)) / 10;
         console.log(avgRating);
         let update = await client.query(`
             UPDATE users
             SET rating=$1
             WHERE users.id = $2
-        `, [avgRating,req.session["user_id"]])
+        `, [avgRating, req.session["user_id"]])
 
-            console.log(update);
+        console.log(update);
         data.rows[0]["rating"] = avgRating;
-        if (!data.rows[0].user_icon){
-            data.rows[0].user_icon=`blank-profile-picture-973460_640.png`
+        if (!data.rows[0].user_icon) {
+            data.rows[0].user_icon = `blank-profile-picture-973460_640.png`
         }
         console.log(data.rows[0].user_icon)
 
@@ -190,19 +199,19 @@ users.put("/api/v1/editUserData", upload.single('image'), async (req, res) => {
 })
 
 // check session["user_id"]
-// users.get("/api/v1/userLoggedIn", async (req, res) => {
-//     try {
-//         const user_id = req.session["user_id"]
-//         if (!user_id) {
-//             res.json('notLoggedIn')
-//         } else {
-//             res.json(user_id)
-//         }
-//     } catch (err) {
-//         console.error(err.message)
-//         res.status(500).json({ message: "Internal server error" })
-//     }
-// })
+users.get("/api/v1/userLoggedIn", async (req, res) => {
+    try {
+        const user_id = req.session["user_id"]
+        if (!user_id) {
+            res.json('notLoggedIn')
+        } else {
+            res.json(user_id)
+        }
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).json({ message: "Internal server error" })
+    }
+})
 
 users.get("/api/v1/logout", async (req, res) => {
 
@@ -211,10 +220,9 @@ users.get("/api/v1/logout", async (req, res) => {
         req.session.destroy((err => {
             if (err) {
                 res.status(400).send('Unable to log out')
-            } else {
-                res.send('Logout successful')
             }
         }))
+        res.json('success')
         console.log('logout')
     }
 })
