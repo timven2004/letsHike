@@ -18,6 +18,16 @@
   font-family: 'Abel', sans-serif;
 }
 
+/*   ---- HERO ---- */
+nav {
+  position: absolute;
+  width: 80%;
+}
+
+.wrapper {
+  width: 100%;
+}
+
 body {
   background: var(--primary);
 }
@@ -41,6 +51,7 @@ h2 {
 #eventDetails-wrapper img {
   width: 80%;
   height: 400px;
+  object-fit: cover;
 }
 
 #eventDetails-wrapper h1 {
@@ -148,13 +159,13 @@ textarea {
   width: 100%;
 }
 
-.edit-button {
+.edit-button{
   position: absolute;
   right: 0;
   margin: 20px;
 }
 
-.edit-button a {
+.edit-button a, button {
   padding: 10px 20px;
   background: var(--pink);
   color: var(--primary);
@@ -164,3 +175,4 @@ textarea {
   text-transform: uppercase;
   text-align: center;
 }
+

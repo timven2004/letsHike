@@ -8,33 +8,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/userProfile.css">
 </head>
 
 <body>
-    <nav class=" fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Let's hike</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">User Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/events.html">Events Page</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/9walkingtrails.html">Hiking Trails</a>
-                    </li>
+    <div class="wrapper">
+        <div class="block"></div>
+        <nav id="nav">
+            <a href="/index.html"><h1 id="logo"><i class="fas fa-mountain"></i>Let's Hike</h1></a>
+            <div id="toggle" onclick="toggle()"><span></span></div>
+                <ul class="nav-bar">
+                    <li><a id="hidden-propfile" href="./userProfileSelf.html">My profile</a></li>
+                    <li><a href="./events.html">Events</a></li>
+                    <li><a href="./9walkingtrails.html">Hiking Trails</a></li>
+                    <li id="switchToLogout"><a href="./login.html">Login</a></li>
+                    <li id="logout"><a href="">Logout</a></li>
                 </ul>
-            </div>
-        </div>
-    </nav>
+        </nav>
 
     <div class="container">
         <div class="cardContainer">
@@ -130,10 +122,19 @@
         </div>
     </div>
 
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
         <script src="js/userProfileSelf.js"></script>
+        <script>
+            function toggle() {
+                document.getElementById('nav').classList.toggle('active');
+                document.querySelector('.nav-bar').classList.toggle('nav-bar-show')
+                document.querySelector('.block').classList.toggle('block-active')
+            }
+        </script>
 
 </body>
 

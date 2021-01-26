@@ -6,12 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>9 Walking Trails</title>
     <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="css/9WalkingTrails.css">
 
 </head>
 
 <body>
+    <div class="wrapper">
+        <div class="block"></div>
+        <nav id="nav">
+            <a href="/index.html"><h1 id="logo"><i class="fas fa-mountain"></i>Let's Hike</h1></a>
+            <div id="toggle" onclick="toggle()"><span></span></div>
+                <ul class="nav-bar">
+                    <li><a id="hidden-propfile" href="./userProfileSelf.html">My profile</a></li>
+                    <li><a href="./events.html">Events</a></li>
+                    <li><a href="./9walkingtrails.html">Hiking Trails</a></li>
+                    <li id="switchToLogout"><a href="./login.html">Login</a></li>
+                    <li id="logout"><a href="">Logout</a></li>
+                </ul>
+        </nav>
     <!-- <div class="pageContainer"> -->
     <!-- <div class="relative"> -->
     <div class="viewer">
@@ -96,7 +109,15 @@
 
         </div>
     </div>
+    </div>
     <script type="text/javascript" src="./js/9WalkingTrails.js"></script>
+    <script>
+        function toggle() {
+            document.getElementById('nav').classList.toggle('active');
+            document.querySelector('.nav-bar').classList.toggle('nav-bar-show')
+            document.querySelector('.block').classList.toggle('block-active')
+        }
+    </script>
 
 </body>
 
