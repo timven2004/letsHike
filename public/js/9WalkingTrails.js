@@ -19,20 +19,21 @@ window.onload = async () => {
                 }
             })
         let urls = await result.json()
-        
-            console.log(urls)
+
+        console.log(urls)
 
         for (let index in imgs) {
             imgs[index].setAttribute("src", `assets/9WalkingTrails/${urls[index].image}`)
-            anchors[index].setAttribute("href", `/hikeTrailsDetails.html?trailId=${parseInt(index)+1}`)
-            trailsnames[index].innerHTML= (`${urls[index].name}`)
-            traildifficulties[index].innerHTML= (`${urls[index].hardness}`)
+            anchors[index].setAttribute("href", `/hikeTrailsDetails.html?trailId=${parseInt(index) + 1}`)
+            trailsnames[index].innerHTML = (`${urls[index].name}`)
+            traildifficulties[index].innerHTML = (`${urls[index].hardness}`)
         }
 
     }
     catch (e) {
         console.log(e)
     }
+    logOut()
 }
 
 el.addEventListener('wheel', function (event) {
@@ -50,6 +51,16 @@ el.addEventListener('wheel', function (event) {
         position = position + event.deltaY * 0.7;
         page.style.left = `${position}px`;
     }
-
 });
 
+//logout
+function logOut() {
+    const logOut = document.getElementById('logout')
+    logOut.addEventListener("click", async (e) => {
+        e.preventDefault()
+        const res = await fetch("/api/v1/logout")
+        if (res.status === 200) {
+            window.location = '/events.html'
+        }
+    })
+}

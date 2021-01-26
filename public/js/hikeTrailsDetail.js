@@ -27,4 +27,19 @@ window.onload = async () => {
     catch (e) {
         console.log(e)
     }
+
+    logOut()
+}
+
+
+//Logout function
+function logOut() {
+    const logOut = document.getElementById('logout')
+    logOut.addEventListener("click", async (e) => {
+        e.preventDefault()
+        const res = await fetch("/api/v1/logout")
+        if (res.status === 200) {
+            window.location = '/events.html'
+        }
+    })
 }
