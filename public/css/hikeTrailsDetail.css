@@ -61,6 +61,10 @@ body{
     height: 200px;
 }
 
+.section3{
+    margin-top: 30px;
+}
+
 .grey{
     background-color: #e0e5eb;
     height:300px;
@@ -135,3 +139,16 @@ font-size: 2rem;
     text-align: center;
 }
 
+.trailImage{
+    border-radius: 50%;
+    border: #fe4323 10px solid;
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    
+}
+
+.trailImageContainer{
+    display: flex;
+    justify-content: center;
+}
