@@ -9,8 +9,8 @@ export const events = express.Router()
 events.get("/events", async (req, res) => {
     try {
         const data = await client.query<Event>(`
-        SELECT * FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
-        INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id;
+        SELECT event.id, image, event_name ,is_active FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
+        INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id WHERE is_active = true;
         `)
         const eventsdata = data.rows
         res.json(eventsdata)
@@ -29,7 +29,7 @@ events.get("/events/eventDetails/:id", async (req, res) => {
         INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id WHERE event.id = $1
         `, [id])
         const eventData = data.rows[0]
-
+        console.log(eventData, "hhhhhhh")
         moment(eventData.date).format('YYYY-MM-DD')
         eventData.date = moment(eventData.date).format('YYYY-MM-DD')
         res.json(eventData)

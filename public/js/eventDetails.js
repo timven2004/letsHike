@@ -140,7 +140,7 @@ async function hiddenProfileNavbar() {
     const res = await fetch("/api/v1/userLoggedIn")
     const data = await res.json()
 
-    if (data === 'undefined') {
+    if (data === 'notLoggedIn') {
         document.getElementById('hidden-propfile').innerHTML = '';
     } else {
         document.getElementById('switchToLogout').innerHTML = `<a id="switchToLogout" href="/index.html">Logout</a>`;
