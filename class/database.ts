@@ -9,6 +9,7 @@ export class User {
     introduction?:string
     rating:number
     user_icon?:string
+    comments:{}[];
 }
 
 export interface Event{
