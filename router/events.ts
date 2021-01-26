@@ -1,4 +1,4 @@
-import express from "express"
+import express, { Request, Response, NextFunction } from "express"
 import { client } from '../main'
 import { Event } from '../class/database'
 import moment from 'moment';
@@ -154,4 +154,15 @@ events.get("/api/v1/userLoggedIn", async (req, res) => {
         console.error(err.message)
         res.status(500).json({ message: "Internal server error" })
     }
+})
+
+// Middleware
+const checkSession = (req: Request, res: Response, next: NextFunction) => {
+    if (req.session["user_id"]) {
+        next()
+    } else res.redirect("/login.html")
+}
+
+events.get("/goCreateEventPage", checkSession, (req, res) => {
+    res.redirect("/createEvent.html")
 })
