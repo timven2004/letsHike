@@ -139,7 +139,6 @@ events.post("/userJoinEvent", async (req, res) => {
         res.status(500).json("Internal server error")
     }
 })
-<<<<<<< HEAD
 
 events.get("/api/v1/userLoggedIn", async (req, res) => {
     try {
@@ -167,5 +166,3 @@ const checkSession = (req: Request, res: Response, next: NextFunction) => {
 events.get("/goCreateEventPage", checkSession, (req, res) => {
     res.redirect("/createEvent.html")
 })
-=======
->>>>>>> 6d1256188f9046ed3de4fcb38bdc7bb8a99f0b9b
