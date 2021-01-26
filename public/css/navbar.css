@@ -13,9 +13,17 @@ nav {
   z-index: 99;
   width: 90%;
 }
+nav a {
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: none;
+}
 
 nav h1 {
   font-size: 25px;
+  color: #000;
 }
 
 nav i {

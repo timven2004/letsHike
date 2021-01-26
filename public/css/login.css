@@ -23,8 +23,6 @@ body {
 
 h1 {
   font-family: 'Monument Extended', sans-serif;
-  -webkit-text-stroke: 1px #fff;
-  color: transparent;
   letter-spacing: 6px;
   text-align: center;
   font-size: 60px;
@@ -76,6 +74,11 @@ p {
   margin: 2rem;
 }
 
+.button:hover{
+  background: #fda151da;
+  transition: 0.5s ease-in;
+}
+
 .align-center {
   display: flex;
   justify-content: center;
@@ -94,4 +97,21 @@ p {
 #user_icon {
   height: 200px;
   width: 200px;
+}
+
+@media only screen and (max-width: 480px) {
+  h1{
+    font-size: 50px;
+  }
+
+  .input-field >label {
+    margin-left: 0px !important;
+    font-size: 15px;
+  }
+
+  .redirect {
+    display: block;
+    width: 150px;
+    text-align: center;
+  }
 }
