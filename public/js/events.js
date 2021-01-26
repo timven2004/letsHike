@@ -1,6 +1,6 @@
 window.onload = () => {
     hiddenProfileNavbar()
-    loadAndDisplayEvents();
+    loadAndDisplayEvents()
 }
 
 async function loadAndDisplayEvents() {
@@ -20,15 +20,15 @@ async function loadAndDisplayEvents() {
     document.getElementById('events-wrapper').innerHTML = eventsStr
 }
 
+
 //Nav-bar
 async function hiddenProfileNavbar() {
     const res = await fetch("/api/v1/userLoggedIn")
     const data = await res.json()
+    console.log(data)
 
     if (data === 'notLoggedIn') {
         document.getElementById('hidden-propfile').innerHTML = '';
-    } else {
-        document.getElementById('switchToLogout').innerHTML = `<a id="switchToLogout" onClick="logout()">Logout</a>`;
     }
 }
 
@@ -72,10 +72,3 @@ async function hard() {
     }
     document.getElementById('events-wrapper').innerHTML = hardeventsStr
 }
-
-// async function logout() {
-//     const res = await fetch('/events')
-//     const data = await res.json()
-
-//     // console.log(data)
-// }

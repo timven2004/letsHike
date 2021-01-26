@@ -1,4 +1,4 @@
-import express from "express"
+import express, { Request, Response, NextFunction } from "express"
 import { client } from '../main'
 import { Event } from '../class/database'
 import moment from 'moment';
@@ -29,7 +29,7 @@ events.get("/events/eventDetails/:id", async (req, res) => {
         INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id WHERE event.id = $1
         `, [id])
         const eventData = data.rows[0]
-        console.log(eventData, "hhhhhhh")
+
         moment(eventData.date).format('YYYY-MM-DD')
         eventData.date = moment(eventData.date).format('YYYY-MM-DD')
         res.json(eventData)
@@ -149,8 +149,20 @@ events.get("/api/v1/userLoggedIn", async (req, res) => {
             res.json(user_id)
         }
 
+
     } catch (err) {
         console.error(err.message)
         res.status(500).json({ message: "Internal server error" })
     }
+})
+
+// Middleware
+const checkSession = (req: Request, res: Response, next: NextFunction) => {
+    if (req.session["user_id"]) {
+        next()
+    } else res.redirect("/login.html")
+}
+
+events.get("/goCreateEventPage", checkSession, (req, res) => {
+    res.redirect("/createEvent.html")
 })

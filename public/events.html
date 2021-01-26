@@ -22,6 +22,7 @@
                     <li><a href="./events.html">Events</a></li>
                     <li><a href="./9walkingtrails.html">Hiking Trails</a></li>
                     <li id="switchToLogout"><a href="./login.html">Login</a></li>
+                    <li id="logout"><a href="">Logout</a></li>
                 </ul>
         </nav>
         <div class="hero">
@@ -29,7 +30,7 @@
             <a href="#events-wrapper">Discover</a>
         </div>
         <div class="add-event-btn">
-            <a onclick="checkSession()" href="/createEvent.html">Create Event</a>
+            <a href="/goCreateEventPage">Create Event</a>
             <button onclick="loadAndDisplayEvents()">all</button>
             <button onclick="easy()">esay</button>
             <button onclick="hard()">hard</button>
@@ -39,6 +40,7 @@
         </div>
     </div>
     <script src="js/events.js"></script>
+    <script src="js/logoutfunction.js"></script>
     <script>
         function toggle() {
             document.getElementById('nav').classList.toggle('active');
