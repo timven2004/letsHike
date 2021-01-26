@@ -15,20 +15,24 @@
     <div class="wrapper">
         <div class="block"></div>
         <nav id="nav">
-            <h1 id="logo"><i class="fas fa-mountain"></i>Let's Hike</h1>
+            <a href="/index.html"><h1 id="logo"><i class="fas fa-mountain"></i>Let's Hike</h1></a>
             <div id="toggle" onclick="toggle()"><span></span></div>
                 <ul class="nav-bar">
+                    <li><a id="hidden-propfile" href="./userProfileSelf.html">My profile</a></li>
                     <li><a href="./events.html">Events</a></li>
-                    <li><a href="./userProfileSelf.html">My profile</a></li>
                     <li><a href="./9walkingtrails.html">Hiking Trails</a></li>
+                    <li id="switchToLogout"><a href="./login.html">Login</a></li>
                 </ul>
         </nav>
         <div class="hero">
             <h3 class="slogan">Slogan here!! </h3>
-            <a href="#events-wrapper">Join now</a>
+            <a href="#events-wrapper">Discover</a>
         </div>
         <div class="add-event-btn">
-            <a href="/createEvent.html">Create Event</a>
+            <a onclick="checkSession()" href="/createEvent.html">Create Event</a>
+            <button onclick="loadAndDisplayEvents()">all</button>
+            <button onclick="easy()">esay</button>
+            <button onclick="hard()">hard</button>
         </div>
         <div class="row" id="events-wrapper">
             <!-- AJAX -->

@@ -1,6 +1,24 @@
-window.onload = () => {
-    getEventDataIntoEditForm()
+window.onload = async () => {
+    await displayOptionForm()
+    await getEventDataIntoEditForm()
     eventDetailEditSubmit()
+
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+}
+
+async function displayOptionForm() {
+    const res = await fetch(`/9hiketrails/api/index`)
+    const data = await res.json()
+
+    let optionStr = ``
+    for (const option of data) {
+        optionStr += `
+        <option id="${option.id}" value="${option.id}">${option.name}</option>
+        `
+    }
+    document.getElementById('hiking_trail_id').innerHTML = optionStr
+
 }
 
 async function getEventDataIntoEditForm() {
@@ -26,14 +44,6 @@ function eventDetailEditSubmit() {
     const id = (searchParams.get('id'))
 
     const form = document.getElementById("edit-event-form")
-
-
-    // const option = document.querySelector('option')
-    // if(option.id = '1') {
-    //     document.
-    // }
-
-
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault()

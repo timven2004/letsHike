@@ -18,7 +18,6 @@ CREATE TABLE users(
 CREATE TABLE hiking_trail(
     id SERIAL primary key,
     name VARCHAR(255),
-    image_id INTEGER,
     introduction TEXT,
     hardness INTEGER
 );
@@ -44,7 +43,7 @@ CREATE TABLE event(
     hiking_trail_id INTEGER,
     FOREIGN KEY (hiking_trail_id) REFERENCES hiking_trail(id),
     detail TEXT,
-    is_active BOOLEAN
+    is_active BOOLEAN DEFAULT true
 );
 
 CREATE TABLE chatroom(

@@ -38,7 +38,7 @@ nav ul li {
 nav ul li a {
   text-decoration: none;
   margin-left: 50px;
-  color: var(--primary);
+  color: #000;
   font-size: 20px;
 }
 

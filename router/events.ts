@@ -9,7 +9,7 @@ export const events = express.Router()
 events.get("/events", async (req, res) => {
     try {
         const data = await client.query<Event>(`
-        SELECT event.id, image, event_name FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
+        SELECT * FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
         INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id;
         `)
         const eventsdata = data.rows
@@ -25,7 +25,7 @@ events.get("/events/eventDetails/:id", async (req, res) => {
     try {
         const id = parseInt(req.params.id)
         const data = await client.query(`
-        SELECT event.id, image, event_name, meeting_point, date, time, max_number_of_member, detail FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
+        SELECT * FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
         INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id WHERE event.id = $1
         `, [id])
         const eventData = data.rows[0]
@@ -42,9 +42,8 @@ events.get("/events/eventDetails/:id", async (req, res) => {
 
 events.post("/events/createEvent", async (req, res) => {
     try {
-
         const { event_name, meeting_point, date, time, max_number_of_member, hiking_trail_id, detail } = req.body
-
+        console.log(req.body)
         let id = await client.query<Event>(`
         INSERT INTO event ( event_name, meeting_point, date, time, max_number_of_member, hiking_trail_id, detail) 
         VALUES ($1,$2,$3,$4,$5,$6,$7) returning id
@@ -138,5 +137,21 @@ events.post("/userJoinEvent", async (req, res) => {
     } catch (err) {
         console.error(err.message)
         res.status(500).json("Internal server error")
+    }
+})
+
+events.get("/api/v1/userLoggedIn", async (req, res) => {
+    try {
+        const user_id = req.session["user_id"]
+        if (!user_id) {
+            res.json('notLoggedIn')
+        } else {
+            res.json(user_id)
+        }
+
+
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).json({ message: "Internal server error" })
     }
 })
