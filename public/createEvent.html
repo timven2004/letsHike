@@ -14,27 +14,27 @@
         <div class="form-wrapper">
           <form id="create-event-form">
             <div class="input-field col s6">
-              <input id="event_name" type="text" class="validate">
+              <input id="event_name" type="text" class="validate" required>
               <label class="active" for="event_name">Event name</label>
             </div>
             <div class="input-field col s6">
-              <input id="meeting_point" type="text" class="validate">
+              <input id="meeting_point" type="text" class="validate" required>
               <label class="active" for="meeting_point">Meeting Point</label>
             </div>
             <div class="input-field col s6">
-              <input id="date" type="date" class="validate">
+              <input id="date" type="date" class="validate" required>
               <label class="active" for="date">Date</label>
             </div>
             <div class="input-field col s6">
-              <input id="time" type="time" class="validate">
+              <input id="time" type="time" class="validate" required>
               <label class="active" for="time">Time</label>
             </div>
             <div class="input-field col s6">
-              <input id="max_number_of_member" type="number" min="1" max="20" class="validate">
+              <input id="max_number_of_member" type="number" min="1" max="20" class="validate" required>
               <label class="active" for="max_number_of_member">Max no. of member</label>
             </div>
             <div class="input-field col s6">
-              <select id="hiking_trail_id">
+              <select id="hiking_trail_id" required>
                 <option value="1">1. Po Pin Chau 破邊洲</option>
                 <option value="2">2. Po Toi 蒲台島</option>
                 <option value="3">3. Tung Lung Chau 東龍島</option>
@@ -49,7 +49,7 @@
             </div>
           <div class="input-field col s6">
             <label class="active" for="detail" >Detail</label>
-            <textarea id="detail" name="detail"></textarea>
+            <textarea id="detail" name="detail" required></textarea>
           </div>
           <div class="align-center">
             <input class="button" type="submit" value="submit">

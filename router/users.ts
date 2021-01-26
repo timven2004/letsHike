@@ -16,9 +16,11 @@ users.post("/api/v1/usersRegister", upload.single("image"), async (req, res) => 
             res.status(400).json({ message: "username has been used" })
             return
         }
-        await client.query(`
-        INSERT INTO users ( user_name , email, password, gender, introduction , user_icon ) VALUES ($1,$2,$3,$4,$5,$6)
+        const data = await client.query(`
+        INSERT INTO users ( user_name , email, password, gender, introduction , user_icon ) VALUES ($1,$2,$3,$4,$5,$6) RETURNING id
         `, [name, email, password, gender, intro, imageName])
+        console.log(data.rows[0].id)
+        req.session["user_id"] = data.rows[0].id
         res.json({ message: "success" })
     } catch (err) {
         console.error(err.message)

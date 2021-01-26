@@ -9,8 +9,8 @@ export const events = express.Router()
 events.get("/events", async (req, res) => {
     try {
         const data = await client.query<Event>(`
-        SELECT event.id, image, event_name ,is_active, hardness FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
-        INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id WHERE is_active = true;
+        SELECT * FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
+        INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id;
         `)
         const eventsdata = data.rows
         res.json(eventsdata)
@@ -29,7 +29,7 @@ events.get("/events/eventDetails/:id", async (req, res) => {
         INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id WHERE event.id = $1
         `, [id])
         const eventData = data.rows[0]
-        console.log(eventData, "hhhhhhh")
+
         moment(eventData.date).format('YYYY-MM-DD')
         eventData.date = moment(eventData.date).format('YYYY-MM-DD')
         res.json(eventData)
@@ -139,18 +139,3 @@ events.post("/userJoinEvent", async (req, res) => {
         res.status(500).json("Internal server error")
     }
 })
-
-// events.get("/api/v1/userLoggedIn", async (req, res) => {
-//     try {
-//         const user_id = req.session["user_id"]
-//         if (!user_id) {
-//             res.json('notLoggedIn')
-//         } else {
-//             res.json(user_id)
-//         }
-
-//     } catch (err) {
-//         console.error(err.message)
-//         res.status(500).json({ message: "Internal server error" })
-//     }
-// })
