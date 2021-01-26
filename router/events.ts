@@ -9,8 +9,8 @@ export const events = express.Router()
 events.get("/events", async (req, res) => {
     try {
         const data = await client.query<Event>(`
-        SELECT * FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
-        INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id;
+        SELECT event.id, image, event_name ,is_active, hardness FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
+        INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id WHERE is_active = true;
         `)
         const eventsdata = data.rows
         res.json(eventsdata)
@@ -139,6 +139,7 @@ events.post("/userJoinEvent", async (req, res) => {
         res.status(500).json("Internal server error")
     }
 })
+<<<<<<< HEAD
 
 events.get("/api/v1/userLoggedIn", async (req, res) => {
     try {
@@ -166,3 +167,5 @@ const checkSession = (req: Request, res: Response, next: NextFunction) => {
 events.get("/goCreateEventPage", checkSession, (req, res) => {
     res.redirect("/createEvent.html")
 })
+=======
+>>>>>>> 6d1256188f9046ed3de4fcb38bdc7bb8a99f0b9b

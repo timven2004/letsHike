@@ -144,7 +144,5 @@ async function hiddenProfileNavbar() {
 
     if (data === 'undefined') {
         document.getElementById('hidden-propfile').innerHTML = '';
-    } else {
-        document.getElementById('switchToLogout').innerHTML = `<a id="switchToLogout" href="/index.html">Logout</a>`;
-    }
+    } 
 }
