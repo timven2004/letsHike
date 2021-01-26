@@ -82,21 +82,12 @@ users.get("/userProfile/:id", async (req, res) => {
                 UPDATE users
                 SET rating=$1
                 WHERE users.id = $2
-<<<<<<< HEAD
             `, [avgRating,req.params.id])
             console.log(update)
             data.rows[0]["rating"] = avgRating;
             if (!data.rows[0].user_icon){
                 data.rows[0].user_icon=`blank-profile-picture-973460_640.png`
             }
-=======
-            `, [avgRating, req.session["user_id"]])
-        console.log(update)
-        data.rows[0]["rating"] = avgRating;
-        if (!data.rows[0].user_icon) {
-            data.rows[0].user_icon = `blank-profile-picture-973460_640.png`
-        }
->>>>>>> 290e5c5404cf147a3acb3c8efefca2eef4098aef
         res.render("./userProfile.ejs", { transferred: data.rows[0] });
         console.log(data.rows[0])
     } catch (err) {
