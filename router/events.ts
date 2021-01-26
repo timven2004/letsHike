@@ -166,6 +166,7 @@ const checkSession = (req: Request, res: Response, next: NextFunction) => {
 events.get("/goCreateEventPage", checkSession, (req, res) => {
     res.redirect("/createEvent.html")
 })
+<<<<<<< HEAD
 
 // Check event  is active
 export async function checkEventIsActive() {
@@ -182,3 +183,5 @@ export async function checkEventIsActive() {
     }
     console.log(data.rows)
 }
+=======
+>>>>>>> 99905287e5c36da247c4e4ea688b9b6c4257ed18

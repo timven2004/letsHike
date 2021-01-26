@@ -63,7 +63,22 @@ users.get("/userProfile/:id", async (req, res) => {
             WHERE rating_person_id = $1
             ;`, [req.params.id])
 
-        data.rows[0]["comments"] = comments.rows
+            let sumRating = 0;
+            data.rows[0]["comments"] = comments.rows
+            console.log(data.rows[0].comments)
+            for (let comment of data.rows[0].comments){
+                sumRating += comment['single_rating'];
+            }
+            let avgRating = Math.round(sumRating*10/(data.rows[0]["comments"].length))/10;
+            console.log(avgRating);
+            let update = await client.query(`
+                UPDATE users
+                SET rating=$1
+                WHERE users.id = $2
+            `, [avgRating,req.session["user_id"]])
+            console.log(update)
+            data.rows[0]["rating"] = avgRating;
+
         res.render("./userProfile.ejs", { transferred: data.rows[0] });
         console.log(data.rows[0])
     } catch (err) {
@@ -101,11 +116,25 @@ users.get("/api/v1/userProfile/self", async (req, res) => {
             WHERE rating_person_id = $1
             ;`, [req.session["user_id"]])
 
-        console.log(data.rows[0]);
-        console.log(comments.rows);
-        data.rows[0]["comments"] = comments.rows
-        console.log(req.session["user_id"])
+
+        data.rows[0]["comments"] = comments.rows;
+        let sumRating = 0;
+        console.log(data.rows[0].comments)
+        for (let comment of data.rows[0].comments){
+            sumRating += comment['single_rating'];
+        }
+        let avgRating = Math.round(sumRating*10/(data.rows[0]["comments"].length))/10;
+        console.log(avgRating);
+        let update = await client.query(`
+            UPDATE users
+            SET rating=$1
+            WHERE users.id = $2
+        `, [avgRating,req.session["user_id"]])
+
+            console.log(update);
+        data.rows[0]["rating"] = avgRating;
         res.json(data.rows[0]);
+
     } catch (err) {
         console.error(err.message)
         res.status(500).json({ message: "Internal server error" })
