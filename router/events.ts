@@ -9,8 +9,8 @@ export const events = express.Router()
 events.get("/events", async (req, res) => {
     try {
         const data = await client.query<Event>(`
-        SELECT * FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
-        INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id;
+        SELECT event.id, image, event_name ,is_active, hardness FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
+        INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id WHERE is_active = true;
         `)
         const eventsdata = data.rows
         res.json(eventsdata)
@@ -29,7 +29,7 @@ events.get("/events/eventDetails/:id", async (req, res) => {
         INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id WHERE event.id = $1
         `, [id])
         const eventData = data.rows[0]
-
+        console.log(eventData, "hhhhhhh")
         moment(eventData.date).format('YYYY-MM-DD')
         eventData.date = moment(eventData.date).format('YYYY-MM-DD')
         res.json(eventData)
@@ -43,7 +43,7 @@ events.get("/events/eventDetails/:id", async (req, res) => {
 events.post("/events/createEvent", async (req, res) => {
     try {
         const { event_name, meeting_point, date, time, max_number_of_member, hiking_trail_id, detail } = req.body
-
+        console.log(req.body)
         let id = await client.query<Event>(`
         INSERT INTO event ( event_name, meeting_point, date, time, max_number_of_member, hiking_trail_id, detail) 
         VALUES ($1,$2,$3,$4,$5,$6,$7) returning id
@@ -148,7 +148,6 @@ events.get("/api/v1/userLoggedIn", async (req, res) => {
         } else {
             res.json(user_id)
         }
-
 
     } catch (err) {
         console.error(err.message)

@@ -1,14 +1,5 @@
 window.onload = () => {
-    const socket = io.connect()
-    socket.on("newMessage", data => {
-        const showComments = document.querySelector(".show-comment")
-        showComments.innerHTML += `
-            <div class="col-12 col-md-10 comment">
-                <p>Comment:${data.content}</p>
-            </div>
-        `
-    })
-    hiddenProfileNavbar()
+    getNewChatroomMessage()
     loadAndDisplayEvent()
     addChatroomMessage()
     getChatroomMessage()
@@ -22,7 +13,6 @@ async function loadAndDisplayEvent() {
 
     const res = await fetch(`/events/eventDetails/${id}`)
     const data = await res.json()
-    console.log(data)
 
     let eventStr = `
         <div class="row">
@@ -135,12 +125,24 @@ function userJoinEvent() {
     })
 }
 
+function getNewChatroomMessage() {
+    const socket = io.connect()
+    socket.on("newMessage", data => {
+        const showComments = document.querySelector(".show-comment")
+        showComments.innerHTML += `
+            <div class="col-12 col-md-10 comment">
+                <p>Comment:${data.content}</p>
+            </div>
+        `
+    })
+}
+
 //Nav-bar
 async function hiddenProfileNavbar() {
     const res = await fetch("/api/v1/userLoggedIn")
     const data = await res.json()
 
-    if (data === 'undefined') {
+    if (data === 'notLoggedIn') {
         document.getElementById('hidden-propfile').innerHTML = '';
     } else {
         document.getElementById('switchToLogout').innerHTML = `<a id="switchToLogout" href="/index.html">Logout</a>`;
