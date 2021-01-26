@@ -24,7 +24,7 @@ window.onload = async () => {
 
         for (let index in imgs) {
             imgs[index].setAttribute("src", `assets/9WalkingTrails/${urls[index].image}`)
-            anchors[index].setAttribute("href", `/9hiketrails/intro/${parseInt(index)+1}`)
+            anchors[index].setAttribute("href", `/hikeTrailsDetails.html?trailId=${parseInt(index)+1}`)
             trailsnames[index].innerHTML= (`${urls[index].name}`)
             traildifficulties[index].innerHTML= (`${urls[index].hardness}`)
         }

@@ -59,6 +59,11 @@ body{
 .section2{
     position:relative;
     height: 200px;
+    margin-bottom: 100px;
+}
+
+.mountainIcon{
+    background-color: white;
 }
 
 .section3{
@@ -94,7 +99,12 @@ body{
     background-color: ivory;
 }
 
-.titledescription2{
+.pointsCardText{
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.trailDescriptionLonger{
     z-index:4;
     font-size: 1rem;
     text-align: end;
@@ -145,7 +155,7 @@ font-size: 2rem;
     width: 400px;
     height: 400px;
     object-fit: cover;
-    
+    margin: 20px 0px
 }
 
 .trailImageContainer{
