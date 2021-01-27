@@ -114,8 +114,6 @@ function logOut() {
             window.location = '/events.html'
         }
     })
-<<<<<<< HEAD
-=======
 }
 
 
@@ -135,5 +133,4 @@ async function checkRatingRemember(){
     for(const event_id of events_id){
         console.log(event_id)
     }
->>>>>>> 86e752ac1a53310f5dad10655fda9f8f260dcddb
 }
