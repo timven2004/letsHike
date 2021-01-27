@@ -85,13 +85,13 @@ async function hard() {
 
 
 async function showCreateEventBtnChecking() {
-        const res = await fetch("/api/v1/getUserData")
-        const data = await res.json()
+    const res = await fetch("/api/v1/getUserData")
+    const data = await res.json()
 
-        console.log(data)
-        if (data.level >= 3) {
-            document.querySelector('.add-event-btn').innerHTML = '<a href="/goCreateEventPage">Create Event</a>'
-        }
+    console.log(data)
+    if (data.level >= 3) {
+        document.querySelector('.add-event-btn').innerHTML = '<a href="/goCreateEventPage">Create Event</a>'
+    }
 }
 
 //NavBar
