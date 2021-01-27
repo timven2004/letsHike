@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { Request, Response, NextFunction } from 'express'
 import expressSession from 'express-session'
 import http from 'http'
 import { Server as SocketIO } from 'socket.io'
@@ -75,6 +75,25 @@ import { events } from './router/events'
 import { ratingOthers } from './router/ratingOthers'
 import { chatroom } from './router/chatroom'
 import { hikeTrails } from './router/hikeTrails'
+
+
+// create event rules : user level >= 3 
+const checkUserLevel = async (req: Request, res: Response, next: NextFunction) => {
+    console.log('hi')
+    const user_id = req.session["user_id"]
+    const data = await client.query(`
+        SELECT * FROM users WHERE id = $1
+    `, [user_id])
+
+    const userLevel = data.rows[0].level
+    if (userLevel >= 3) {
+        next()
+    } else {
+        res.redirect("/events.html")
+    }
+}
+
+app.use("/createEvent.html", checkUserLevel)
 
 // Use Folder
 app.use(express.static('public'))
