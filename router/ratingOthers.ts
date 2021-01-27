@@ -1,7 +1,14 @@
-import express from "express"
+import express, {Request,Response,NextFunction} from "express"
 import { client } from "../main"
 
 export const ratingOthers = express.Router()
+
+
+const checkSession = (req: Request, res: Response, next: NextFunction) => {
+    if (req.session["user_id"]) {
+        next()
+    } else res.redirect("/login.html")
+}
 
 ratingOthers.get('/ratingOthers/api/:id', async (req, res) => {
     try {
@@ -22,7 +29,7 @@ ratingOthers.get('/ratingOthers/api/:id', async (req, res) => {
 
 })
 
-ratingOthers.post('/ratingOthers/api/:eventId', async (req, res) => {
+ratingOthers.post('/ratingOthers/api/:eventId',checkSession ,async (req, res) => {
     try {
         let data = req.body;
         let eventId = req.params.eventId;
@@ -56,7 +63,7 @@ ratingOthers.post('/ratingOthers/api/:eventId', async (req, res) => {
             response
         }
 
-        res.status(500).json({message:"You have rated already!"})
+        res.render("somethingWentWrong.ejs", {message: "You have rated this event already!"})
         }
      catch (e) {
         console.error(e);
