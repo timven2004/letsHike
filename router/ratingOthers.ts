@@ -93,7 +93,7 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
 
 })
 
-ratingOthers.get("/checkRatingRemember", async (req, res) => {
+ratingOthers.get("/ratingOthers/checkRatingRemember", async (req, res) => {
     const user_id = req.session["user_id"]
     let eventId: { id: Number }[] = []
     if(!user_id){

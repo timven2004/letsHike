@@ -168,12 +168,9 @@ events.get("/checkEventOrganizer", async (req, res) => {
             SELECT COUNT(*) FROM event WHERE organizer = $1
         `, [user_id])
         const count = parseInt(data.rows[0].count)
-        console.log(count)
         if (count !== 0) {
-            console.log("true")
             res.json(true)
         } else {
-            console.log("false")
             res.json(false)
         }
     } catch (err) {
