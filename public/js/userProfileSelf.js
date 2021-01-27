@@ -26,10 +26,10 @@ window.onload = async () => {
     username.innerHTML = (result).user_name;
     rating.innerHTML = `Rating: ${result.rating}/5.0`
     level.innerHTML = "Skills Level: " + result.level;
-    email.innerHTML = result.email;
-    gender.innerHTML = result.gender;
+    email.innerHTML = "Email: " + result.email;
+    gender.innerHTML = "Gender: " + result.gender;
     experience.innerHTML = `${result.experience} experience point accumulated`
-    userIntro.innerHTML = result.introduction;
+    userIntro.innerHTML = "Introduction:<br>" + result.introduction;
 
 
     let string = ""
