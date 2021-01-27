@@ -12,7 +12,8 @@ CREATE TABLE users(
     experience INTEGER DEFAULT 0,
     introduction TEXT,
     rating DECIMAL(2,1) DEFAULT 0,
-    user_icon VARCHAR(255)
+    user_icon VARCHAR(255),
+    is_admin BOOLEAN
 );
 
 CREATE TABLE hiking_trail(
@@ -52,7 +53,8 @@ CREATE TABLE chatroom(
     FOREIGN KEY (users_id) REFERENCES users(id),
     event_id INTEGER,
     FOREIGN KEY (event_id ) REFERENCES event(id),
-    content TEXT
+    content TEXT,
+    date TIMESTAMP
 );
 
 CREATE TABLE user_joining_event(
@@ -86,6 +88,7 @@ INSERT INTO users ( user_name , email, password, gender, introduction ) VALUES (
 INSERT INTO users ( user_name , email, password, gender, introduction ) VALUES ('b','b@b','b','?','bbb');
 INSERT INTO users ( user_name , email, password, gender, introduction ) VALUES ('c','c@c','c','?','ccc');
 INSERT INTO users ( user_name , email, password, gender, introduction ) VALUES ('d','d@d','d','?','ddd');
+INSERT INTO users ( user_name , email, password, gender, introduction, is_admin ) VALUES ('admin','admin@admin.com','admin','?','Im admin',true);
 
 
 -- GET
@@ -118,7 +121,6 @@ INSERT INTO image_hiking_trail (image, hiking_trail_id) VALUES ($1,$2);
 SELECT event.id, image, event_name FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
 INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id;
 
-INSERT INTO hiking_trail (name,image_id,introduction,hardness) VALUES ('Tai Po Trail', '2','detail',3)
 
 -- chatroom --
 

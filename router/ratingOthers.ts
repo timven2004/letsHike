@@ -72,3 +72,4 @@ ratingOthers.post('/ratingOthers/api/:eventId',checkSession ,async (req, res) =>
     }
 
 })
+
