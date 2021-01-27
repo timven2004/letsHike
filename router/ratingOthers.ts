@@ -49,15 +49,22 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
             let allParticipants = [];
 
             for (let pairs of organizerAndParticipants.rows){
-                allParticipants.push(pairs.user_id)
+                allParticipants.push(pairs["users_id"])
             }
-
+            
+            console.log(allParticipants)
             if (allParticipants.indexOf(userId) == -1){
-                res.render("somethingWentWrong.ejs", {message: "You are not participant for this event!"})
+                res.render("somethingWentWrong.ejs", {message: "You are not a participant for this event!"})
                 return
             }
 
+
         let organizer1 = organizerAndParticipants.rows[0].organizer
+
+            if(organizer1==userId){
+                res.render("somethingWentWrong.ejs", {message: "You can't rate yourself!"});
+                return
+            }
 
         let checkingIfRepeatedRating = await client.query(
             `SELECT * FROM rating_event
@@ -86,3 +93,32 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
 
 })
 
+ratingOthers.get("/checkRatingRemember", async (req, res) => {
+    const user_id = req.session["user_id"]
+    let eventId: { id: Number }[] = []
+    if(!user_id){
+        res.json({message:"Don't Login"})
+        return
+    }
+    // Get eventUserJoining
+    const data = await client.query(`
+        SELECT event.id FROM user_joining_event 
+        LEFT JOIN event ON user_joining_event.event_id = event.id 
+        WHERE users_id = $1 
+        AND auto_rating_msg = true 
+    `, [user_id])
+    const eventUserJoining = data.rows
+    // Check user don't rating
+    for (const event of eventUserJoining) {
+        const event_id = event.id
+        const res = await client.query(`
+            SELECT COUNT(*) FROM rating_event 
+            WHERE users_id = $1 
+            AND event_id = $2
+        `, [user_id, event_id])
+        if(res.rows){
+            eventId.push(event)
+        }
+    }
+    res.json(eventId)
+})

@@ -29,6 +29,7 @@ function createEventFormSubmit() {
             console.log("At least 2 member")
         }
 
+        // Form submit
         const res = await fetch("/events/createEvent", {
             method: "POST",
             headers: {

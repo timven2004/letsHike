@@ -63,8 +63,7 @@ CREATE TABLE user_joining_event(
     FOREIGN KEY (users_id) REFERENCES users(id),
     event_id INTEGER,
     FOREIGN KEY (event_id ) REFERENCES event(id),
-    is_default BOOLEAN,
-    auto_rating_msg BOOLEAN
+    auto_rating_msg BOOLEAN DEFAULT true
 );
 
 CREATE TABLE rating_event(

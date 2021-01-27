@@ -3,6 +3,7 @@ window.onload = async () => {
     showCreateEventBtnChecking()//error here
     showProfileNavbar()
     logOut()
+    checkRatingRemember()
 }
 
 async function loadAndDisplayEvents() {
@@ -113,4 +114,26 @@ function logOut() {
             window.location = '/events.html'
         }
     })
+<<<<<<< HEAD
+=======
+}
+
+
+async function showCreateEventBtnChecking() {
+    const res = await fetch("/api/v1/getUserData")
+    const data = await res.json()
+
+    // console.log(data)
+    if (data.level >= 3) {
+        document.querySelector('.add-event-btn').innerHTML = '<a href="/goCreateEventPage">Create Event</a>'
+    }
+}
+
+async function checkRatingRemember(){
+    const data = await fetch("/checkRatingRemember")
+    const events_id = await data.json()
+    for(const event_id of events_id){
+        console.log(event_id)
+    }
+>>>>>>> 86e752ac1a53310f5dad10655fda9f8f260dcddb
 }
