@@ -116,12 +116,17 @@ async function getChatroomMessage() {
     const datas = await res.json()
     const showComments = document.querySelector(".show-comment")
 
+
     let c = 0
     for (let data of datas) {
+        const now = new Date();
+        // const date = moment(now).format("YYYY-MM-DD");
+
         showComments.innerHTML += `
             <div class="col-12 col-md-10 comment">
                 <h5>${data.user_name}:</h5>
                 <p>${data.content}</p>
+                <p>${now}</p>
             </div>
         `
     }
