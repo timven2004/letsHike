@@ -45,7 +45,8 @@ async function loadAndDisplayEvent() {
     document.getElementById('eventDetails-wrapper').innerHTML = eventStr
 
     const resForCheckUserIsOrganizer = await fetch(`/users/checkUserIsOrganizer/${id}`)
-    if (resForCheckUserIsOrganizer.status === 200) {
+    const result = await resForCheckUserIsOrganizer.json()
+    if (result) {
         let editButton = document.querySelector(".edit-button")
         editButton.innerHTML = `
             <a href="/eventEdit.html?id=${id}">Edit</a>

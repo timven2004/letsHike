@@ -231,10 +231,10 @@ users.get("/users/checkUserIsOrganizer/:id", async (req, res) => {
         SELECT * FROM event where organizer = $1 AND id = $2
   `, [req.session["user_id"], event_id])
     if (!data.rows[0]) {
-        res.status(400).json({ message: "Not organizer" })
+        res.json(false)
         return
     }
-    res.json("Hi organizer")
+    res.json(true)
 })
 
 
