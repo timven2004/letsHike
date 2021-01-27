@@ -35,7 +35,7 @@ window.onload = async () => {
     let string = ""
     result.comments.forEach(element => {
       string = string +
-      `<div class="card" style="width: 20rem;">
+        `<div class="card" style="width: 20rem;">
         <div class="card-body">
         <h5 class="card-title">${element.single_rating}/5</h5>
         <h6 class="card-subtitle mb-2 text-muted">by ${element.user_name} <span
@@ -45,22 +45,22 @@ window.onload = async () => {
       </div>`
 
     });
-    commentCardsHolder.innerHTML=string;
+    commentCardsHolder.innerHTML = string;
 
   })
 
   logOut()
 }
 
-  
+
 //logout
 function logOut() {
   const logOut = document.getElementById('logout')
   logOut.addEventListener("click", async (e) => {
-      e.preventDefault()
-      const res = await fetch("/api/v1/logout")
-      if (res.status === 200) {
-          window.location = '/events.html'
-      }
+    e.preventDefault()
+    const res = await fetch("/api/v1/logout")
+    if (res.status === 200) {
+      window.location = '/events.html'
+    }
   })
 }

@@ -236,3 +236,27 @@ users.get("/users/checkUserIsOrganizer/:id", async (req, res) => {
 })
 
 
+//updateLevel !!only count one time need to fix the problem
+users.post("/users/updateLevel", async (req, res) => {
+    const id = req.session["user_id"]
+    const getExp = await client.query(`
+        SELECT experience FROM users WHERE id = $1
+        `, [id])
+    res.json(getExp.rows[0].experience)
+    const exp = getExp.rows[0].experience
+
+
+    if (exp === 10) {
+        const getLevel = await client.query(`
+        SELECT level FROM users WHERE id = $1
+        `, [id])
+        const level = getLevel.rows[0].level
+
+        let curlevel = level + 1
+        
+        await client.query(`
+            UPDATE users SET LEVEL = $1 WHERE id = $2
+            `, [curlevel, id])
+        
+    }
+})
