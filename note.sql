@@ -12,7 +12,8 @@ CREATE TABLE users(
     experience INTEGER DEFAULT 0,
     introduction TEXT,
     rating DECIMAL(2,1) DEFAULT 0,
-    user_icon VARCHAR(255)
+    user_icon VARCHAR(255),
+    is_admin BOOLEAN
 );
 
 CREATE TABLE hiking_trail(
@@ -52,7 +53,8 @@ CREATE TABLE chatroom(
     FOREIGN KEY (users_id) REFERENCES users(id),
     event_id INTEGER,
     FOREIGN KEY (event_id ) REFERENCES event(id),
-    content TEXT
+    content TEXT,
+    date TIMESTAMP
 );
 
 CREATE TABLE user_joining_event(
@@ -86,6 +88,7 @@ INSERT INTO users ( user_name , email, password, gender, introduction ) VALUES (
 INSERT INTO users ( user_name , email, password, gender, introduction ) VALUES ('b','b@b','b','?','bbb');
 INSERT INTO users ( user_name , email, password, gender, introduction ) VALUES ('c','c@c','c','?','ccc');
 INSERT INTO users ( user_name , email, password, gender, introduction ) VALUES ('d','d@d','d','?','ddd');
+INSERT INTO users ( user_name , email, password, gender, introduction, is_admin ) VALUES ('admin','admin@admin.com','admin','?','Im admin',true);
 
 
 -- GET
