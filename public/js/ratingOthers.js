@@ -36,7 +36,7 @@ window.onload = async()=>{
         userLevel.innerHTML = result.level;
         userRating.innerHTML = result.rating;
         numberOfEventsJoined.innerHTML=result.experience;
-        date.innerHTML=result.date.toLocaleDateString("en-US");
+        date.innerHTML= new Date(result.date).toLocaleDateString("en-US");
     })
     }
 
