@@ -94,3 +94,32 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
 
 })
 
+ratingOthers.get("/checkRatingRemember", async (req, res) => {
+    const user_id = req.session["user_id"]
+    let eventId: { id: Number }[] = []
+    if(!user_id){
+        res.json({message:"Don't Login"})
+        return
+    }
+    // Get eventUserJoining
+    const data = await client.query(`
+        SELECT event.id FROM user_joining_event 
+        LEFT JOIN event ON user_joining_event.event_id = event.id 
+        WHERE users_id = $1 
+        AND auto_rating_msg = true 
+    `, [user_id])
+    const eventUserJoining = data.rows
+    // Check user don't rating
+    for (const event of eventUserJoining) {
+        const event_id = event.id
+        const res = await client.query(`
+            SELECT COUNT(*) FROM rating_event 
+            WHERE users_id = $1 
+            AND event_id = $2
+        `, [user_id, event_id])
+        if(res.rows){
+            eventId.push(event)
+        }
+    }
+    res.json(eventId)
+})

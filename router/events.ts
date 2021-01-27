@@ -1,7 +1,8 @@
-import express, { Request, Response, NextFunction } from "express"
+import express from "express"
 import { client } from '../main'
 import { Event } from '../class/database'
 import moment from 'moment';
+import { checkSession } from "./middleware"
 
 export const events = express.Router()
 
@@ -155,14 +156,6 @@ events.post("/userJoinEvent", async (req, res) => {
         res.status(500).json("Internal server error")
     }
 })
-
-
-// Middleware
-const checkSession = (req: Request, res: Response, next: NextFunction) => {
-    if (req.session["user_id"]) {
-        next()
-    } else res.redirect("/login.html")
-}
 
 events.get("/goCreateEventPage", checkSession, (req, res) => {
     res.redirect("/createEvent.html")
