@@ -55,6 +55,7 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
 
             if (allParticipants.indexOf(userId) == -1){
                 res.render("somethingWentWrong.ejs", {message: "You are not participant for this event!"})
+                return
             }
 
         let organizer1 = organizerAndParticipants.rows[0].organizer
