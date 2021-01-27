@@ -1,7 +1,7 @@
 window.onload = async () => {
     loadAndDisplayEvents()
-    hiddenProfileNavbar()//error here
     showCreateEventBtnChecking()//error here
+    showProfileNavbar()
     logOut()
 }
 
@@ -22,16 +22,6 @@ async function loadAndDisplayEvents() {
     document.getElementById('events-wrapper').innerHTML = eventsStr
 }
 
-
-//Nav-bar
-async function hiddenProfileNavbar() {
-    const res = await fetch("/api/v1/userLoggedIn")
-    const data = await res.json()
-
-    if (data === 'notLoggedIn') {
-        document.getElementById('hidden-propfile').innerHTML = '';
-    }
-}
 
 async function easy() {
     const res = await fetch('/events')
@@ -93,7 +83,27 @@ async function hard() {
 }
 
 
-//Logout function
+async function showCreateEventBtnChecking() {
+        const res = await fetch("/api/v1/getUserData")
+        const data = await res.json()
+
+        console.log(data)
+        if (data.level >= 3) {
+            document.querySelector('.add-event-btn').innerHTML = '<a href="/goCreateEventPage">Create Event</a>'
+        }
+}
+
+//NavBar
+async function showProfileNavbar() {
+    const res = await fetch("/api/v1/userLoggedIn")
+    const data = await res.json()
+    console.log(data)
+
+    if (data !== 'noLogin') {
+        document.getElementById('hidden-propfile').innerHTML = '<a href="./userProfileSelf.html">My profile</a>';
+    }
+}
+
 function logOut() {
     const logOut = document.getElementById('logout')
     logOut.addEventListener("click", async (e) => {
@@ -103,15 +113,4 @@ function logOut() {
             window.location = '/events.html'
         }
     })
-}
-
-
-async function showCreateEventBtnChecking() {
-    const res = await fetch("/api/v1/getUserData")
-    const data = await res.json()
-
-    // console.log(data)
-    if (data.level >= 3) {
-        document.querySelector('.add-event-btn').innerHTML = '<a href="/goCreateEventPage">Create Event</a>'
-    }
 }
