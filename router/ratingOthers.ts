@@ -46,7 +46,6 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
             , [eventId])
 
 
-        console.log(organizerAndParticipants.rows)    
             let allParticipants = [];
 
             for (let pairs of organizerAndParticipants.rows){
@@ -73,7 +72,7 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
             let response = await client.query(
                 `INSERT INTO rating_event(users_id, event_id,rating_person_id,single_rating,comment) VALUES ($1,$2, $3, $4,$5)`, [userId, eventId, organizer1, parseInt(data.rating), data.comment]);
 
-            res.send("Rated Successfully")
+            res.redirect(`/userProfile/${organizer1}`)
             response
         }
 
