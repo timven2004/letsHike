@@ -1,6 +1,7 @@
 window.onload = async () => {
     loadAndDisplayEvents()
     hiddenProfileNavbar()
+    showCreateEventBtnChecking()
     logOut()
 }
 
@@ -102,4 +103,15 @@ function logOut() {
             window.location = '/events.html'
         }
     })
+}
+
+
+async function showCreateEventBtnChecking() {
+    const res = await fetch("/api/v1/getUserData")
+    const data = await res.json()
+
+    // console.log(data)
+    if (data.level >= 3) {
+        document.querySelector('.add-event-btn').innerHTML = '<a href="/goCreateEventPage">Create Event</a>'
+    }
 }

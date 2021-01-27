@@ -205,16 +205,20 @@ users.get("/api/v1/userLoggedIn", async (req, res) => {
 })
 
 users.get("/api/v1/logout", async (req, res) => {
-
-    const id = req.session["user_id"]
-    if (id !== undefined) {
-        req.session.destroy((err => {
-            if (err) {
-                res.status(400).send('Unable to log out')
-            }
-        }))
-        res.json('success')
-        console.log('logout')
+    try {
+        const id = req.session["user_id"]
+        if (id !== undefined) {
+            req.session.destroy((err => {
+                if (err) {
+                    res.status(400).send('Unable to log out')
+                }
+            }))
+            res.json('success')
+            console.log('logout')
+        }
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).json({ message: "Internal server error" })
     }
 })
 

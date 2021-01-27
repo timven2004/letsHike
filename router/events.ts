@@ -55,7 +55,29 @@ events.get("/events/userJoiningEvent/:id", async (req, res) => {
     }
 })
 
+
+// trying
+// const checkUserLevel = async (req: Request, res: Response, next: NextFunction) => {
+//     console.log('hi')
+//     const user_id = req.session["user_id"]
+//     const data = await client.query(`
+//         SELECT * FROM users WHERE id = $1
+//     `[user_id])
+
+//     const userLevel = data.rows[0].level
+//     if (userLevel >= 3) {
+//         next()
+//     } else {
+//         res.redirect("/events.html")
+//     }
+// }
+
+// events.post("/events/createEvent",checkUserLevel())
+
 events.post("/events/createEvent", async (req, res) => {
+
+
+// events.post("/events/createEvent", async (req, res) => {
     try {
         const { event_name, meeting_point, date, time, max_number_of_member, hiking_trail_id, detail } = req.body
         const organizerID = req.session["user_id"]
@@ -183,3 +205,6 @@ export async function checkEventIsActive() {
     }
     console.log(data.rows)
 }
+
+
+

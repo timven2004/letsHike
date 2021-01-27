@@ -15,12 +15,18 @@ function createEventFormSubmit() {
         formObject["hiking_trail_id"] = parseInt(form.hiking_trail_id.value)
         formObject["detail"] = form.detail.value
 
+        // Check Date is not past
         const eventDate = new Date(form.date.value)
         const now = new Date()
         console.log(eventDate - now)
-        if(eventDate - now < 0){
+        if (eventDate - now < 0) {
             console.log("date past")
             return
+        }
+
+        // Check member number >= 2
+        if(parseInt(form.max_number_of_member.value) < 2){
+            console.log("At least 2 member")
         }
 
         const res = await fetch("/events/createEvent", {
