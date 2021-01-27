@@ -83,22 +83,10 @@ async function hard() {
     document.getElementById('events-wrapper').innerHTML = hardeventsStr
 }
 
-
-async function showCreateEventBtnChecking() {
-    const res = await fetch("/api/v1/getUserData")
-    const data = await res.json()
-
-    console.log(data)
-    if (data.level >= 3) {
-        document.querySelector('.add-event-btn').innerHTML = '<a href="/goCreateEventPage">Create Event</a>'
-    }
-}
-
 //NavBar
 async function showProfileNavbar() {
     const res = await fetch("/api/v1/userLoggedIn")
     const data = await res.json()
-    console.log(data)
 
     if (data !== 'noLogin') {
         document.getElementById('hidden-propfile').innerHTML = '<a href="./userProfileSelf.html">My profile</a>';
@@ -121,7 +109,6 @@ async function showCreateEventBtnChecking() {
     const res = await fetch("/api/v1/getUserData")
     const data = await res.json()
 
-    // console.log(data)
     if (data.level >= 3) {
         document.querySelector('.add-event-btn').innerHTML = '<a href="/goCreateEventPage">Create Event</a>'
     }
