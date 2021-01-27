@@ -132,7 +132,17 @@ async function getChatroomMessage() {
     }
 }
 
-function userJoinEvent() {
+async function userJoinEvent() {
+    // Check organizer
+    const res = await fetch("/checkEventOrganizer")
+    const result = await res.json()
+    console.log(result)
+    if (result === true) {
+        document.querySelector("div.join").innerHTML = ""
+        return
+    }
+
+    // Join event
     const join = document.querySelector("div.join > a")
     join.addEventListener("click", async (event) => {
         event.preventDefault()

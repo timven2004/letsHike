@@ -161,6 +161,27 @@ events.get("/goCreateEventPage", checkSession, (req, res) => {
     res.redirect("/createEvent.html")
 })
 
+events.get("/checkEventOrganizer", async (req, res) => {
+    try {
+        const user_id = req.session["user_id"]
+        const data = await client.query(`
+            SELECT COUNT(*) FROM event WHERE organizer = $1
+        `, [user_id])
+        const count = parseInt(data.rows[0].count)
+        console.log(count)
+        if (count !== 0) {
+            console.log("true")
+            res.json(true)
+        } else {
+            console.log("false")
+            res.json(false)
+        }
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).json({ message: "Internal server error" })
+    }
+})
+
 // Check event  is active
 export async function checkEventIsActive() {
     var now = new Date();
