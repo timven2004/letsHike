@@ -83,17 +83,6 @@ async function hard() {
     document.getElementById('events-wrapper').innerHTML = hardeventsStr
 }
 
-
-async function showCreateEventBtnChecking() {
-        const res = await fetch("/api/v1/getUserData")
-        const data = await res.json()
-
-        console.log(data)
-        if (data.level >= 3) {
-            document.querySelector('.add-event-btn').innerHTML = '<a href="/goCreateEventPage">Create Event</a>'
-        }
-}
-
 //NavBar
 async function showProfileNavbar() {
     const res = await fetch("/api/v1/userLoggedIn")
@@ -114,8 +103,6 @@ function logOut() {
             window.location = '/events.html'
         }
     })
-<<<<<<< HEAD
-=======
 }
 
 
@@ -135,5 +122,4 @@ async function checkRatingRemember(){
     for(const event_id of events_id){
         console.log(event_id)
     }
->>>>>>> 86e752ac1a53310f5dad10655fda9f8f260dcddb
 }
