@@ -1,6 +1,5 @@
 import express, { Request, Response, NextFunction } from "express"
 import { client } from "../main"
-import moment from "moment";
 
 export const ratingOthers = express.Router()
 
