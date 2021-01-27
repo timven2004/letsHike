@@ -87,7 +87,6 @@ async function hard() {
 async function showProfileNavbar() {
     const res = await fetch("/api/v1/userLoggedIn")
     const data = await res.json()
-    console.log(data)
 
     if (data !== 'noLogin') {
         document.getElementById('hidden-propfile').innerHTML = '<a href="./userProfileSelf.html">My profile</a>';
@@ -110,16 +109,15 @@ async function showCreateEventBtnChecking() {
     const res = await fetch("/api/v1/getUserData")
     const data = await res.json()
 
-    // console.log(data)
     if (data.level >= 3) {
         document.querySelector('.add-event-btn').innerHTML = '<a href="/goCreateEventPage">Create Event</a>'
     }
 }
 
-async function checkRatingRemember(){
+async function checkRatingRemember() {
     const data = await fetch("/checkRatingRemember")
     const events_id = await data.json()
-    for(const event_id of events_id){
+    for (const event_id of events_id) {
         console.log(event_id)
     }
 }

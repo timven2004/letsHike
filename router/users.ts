@@ -157,11 +157,13 @@ users.get("/api/v1/userProfile/self", checkSession, async (req, res) => {
 
 users.get("/api/v1/getUserData", async (req, res) => {
     try {
-        const user_id = req.session["user_id"]
-        const userData = await client.query<User>(`
-            SELECT * FROM users WHERE id = $1
-        `, [user_id])
-        res.json(userData.rows[0])
+        if (req.session["user_id"]) {
+            const user_id = req.session["user_id"]
+            const userData = await client.query<User>(`
+                SELECT * FROM users WHERE id = $1
+            `, [user_id])
+            res.json(userData.rows[0])
+        }
     } catch (err) {
         console.error(err.message)
         res.status(500).json({ message: "Internal server error" })
@@ -188,21 +190,6 @@ users.put("/api/v1/editUserData", upload.single('image'), async (req, res) => {
         res.status(500).json({ message: "Internal server error" })
     }
 })
-
-// check session["user_id"]
-// users.get("/api/v1/userLoggedIn", async (req, res) => {
-//     try {
-//         const user_id = req.session["user_id"]
-//         if (!user_id) {
-//             res.json('notLoggedIn')
-//         } else {
-//             res.json(user_id)
-//         }
-//     } catch (err) {
-//         console.error(err.message)
-//         res.status(500).json({ message: "Internal server error" })
-//     }
-// })
 
 users.get("/api/v1/userLoggedIn", async (req, res) => {
     try {
@@ -241,9 +228,11 @@ users.get("/users/checkUserIsOrganizer/:id", async (req, res) => {
     const data = await client.query(`
         SELECT * FROM event where organizer = $1 AND id = $2
   `, [req.session["user_id"], event_id])
-  if(!data.rows[0]){
-    res.status(400).json({message:"Not organizer"})
-    return
-  }
-  res.json("Hi organizer")
+    if (!data.rows[0]) {
+        res.status(400).json({ message: "Not organizer" })
+        return
+    }
+    res.json("Hi organizer")
 })
+
+
