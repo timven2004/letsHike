@@ -158,6 +158,10 @@ users.get("/api/v1/userProfile/self", checkSession, async (req, res) => {
 users.get("/api/v1/getUserData", async (req, res) => {
     try {
         const user_id = req.session["user_id"]
+        if(!user_id){
+            res.json("don't login")
+            return
+        }
         const userData = await client.query<User>(`
             SELECT * FROM users WHERE id = $1
         `, [user_id])

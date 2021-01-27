@@ -128,8 +128,11 @@ async function showCreateEventBtnChecking() {
 }
 
 async function checkRatingRemember(){
-    const data = await fetch("/checkRatingRemember")
+    const data = await fetch("/ratingOthers/checkRatingRemember")
     const events_id = await data.json()
+    if(events_id.message==="Don't Login"){
+        return
+    }
     for(const event_id of events_id){
         console.log(event_id)
     }
