@@ -118,7 +118,6 @@ INSERT INTO image_hiking_trail (image, hiking_trail_id) VALUES ($1,$2);
 SELECT event.id, image, event_name FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
 INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id;
 
-INSERT INTO hiking_trail (name,image_id,introduction,hardness) VALUES ('Tai Po Trail', '2','detail',3)
 
 -- chatroom --
 
