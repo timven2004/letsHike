@@ -12,6 +12,8 @@ nav {
   position: fixed;
   z-index: 99;
   width: 90%;
+  /* right:0px;
+  left:0px; */
 }
 nav a {
   text-decoration: none;
@@ -37,6 +39,7 @@ nav i {
 
 .nav-bar {
   display: flex;
+  margin-right: 10%;
 }
 
 nav ul li {
