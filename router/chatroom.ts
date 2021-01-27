@@ -22,7 +22,7 @@ chatroom.get("/chatroom/getMessage/:event_id", async (req, res) => {
     try {
         const event_id = req.params.event_id
         const chatMessage = await client.query(`
-        SELECT * FROM chatroom WHERE event_id = $1
+        SELECT * FROM chatroom INNER JOIN users ON chatroom.users_id = users.id WHERE event_id = $1
         `, [event_id])
         res.json(chatMessage.rows)
     } catch (err) {

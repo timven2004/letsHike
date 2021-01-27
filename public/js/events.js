@@ -99,7 +99,7 @@ function logOut() {
         e.preventDefault()
         const res = await fetch("/api/v1/logout")
         if (res.status === 200) {
-            window.location.reload()
+            window.location = '/events.html'
         }
     })
 }

@@ -10,175 +10,164 @@
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/hikeTrailsDetail.css">
+    <link rel="stylesheet" href="css/navbar.css">
 
 </head>
 
 <body>
-    <nav class=" fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid fixed">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
+    <div class="wrapper">
+        <div class="block"></div>
+        <nav id="nav">
+            <a href="/index.html"><h1 id="logo"><i class="fas fa-mountain"></i>Let's Hike</h1></a>
+            <div id="toggle" onclick="toggle()"><span></span></div>
+                <ul class="nav-bar">
+                    <li><a id="hidden-propfile" href="./userProfileSelf.html">My profile</a></li>
+                    <li><a href="./events.html">Events</a></li>
+                    <li><a href="./9walkingtrails.html">Hiking Trails</a></li>
+                    <li id="switchToLogout"><a href="./login.html">Login</a></li>
+                    <li id="logout"><a href="">Logout</a></li>
                 </ul>
-            </div>
-        </div>
-    </nav>
+        </nav>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="section1">
-                    <img id="trailImg1" src="./assets/9WalkingTrails/Black Hill.jpg" class="circles sizeBig topMain">
-                    <img src="./assets/9WalkingTrails/mountainicon.jpg"
-                        class="circles sizeMedium topLeft mountainIcon">
-                    <div class="grey circles"></div>
-                    <h1 class="absolute title">Let's hike</h1>
-                </div>
-
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-lg-4">
-
-            </div>
-            <div class="col-12 col-lg-8">
-                <div class="section2">
-
-                    <div class=" titledescription">Climbing mountains is fun!
-                        ...
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section1">
+                        <img id="trailImg1" src="./assets/9WalkingTrails/Black Hill.jpg" class="circles sizeBig topMain">
+                        <img src="./assets/9WalkingTrails/mountainicon.jpg"
+                            class="circles sizeMedium topLeft mountainIcon">
+                        <div class="grey circles"></div>
+                        <h1 class="absolute title">Let's hike</h1>
                     </div>
-                    <div class=" trailDescriptionLonger">
-                        Nisl purus in mollis nunc sed id. Aenean vel elit scelerisque mauris pellentesque pulvinar
-                        pellentesque. Turpis egestas sed tempus urna et pharetra. Id aliquet risus feugiat in ante metus
-                        dictum.
-                    </div>
-                </div>
 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 col-lg-3  ">
-                <div class="pointsCard">
-                    <div class="pointsCardCircle">
-                        01
-                    </div>
-                    <div class="pointsCardText">
-                        <div class="pointsCardTitle">
-                            Name:
-
-                        </div>
-                        <div class="pointsCardDescription">
-                            <span id ="trailName">Kau Wah Trail</span>
-
-                        </div>
-                    </div>
                 </div>
             </div>
-            <div class="col-6 col-lg-3  ">
-                <div class="pointsCard">
-                    <div class="pointsCardCircle">
-                        02
-                    </div>
-                    <div class="pointsCardText">
+            <div class="row">
+                <div class="col-12 col-lg-4">
 
-                        <div class="pointsCardTitle">
-                            Location:
+                </div>
+                <div class="col-12 col-lg-8">
+                    <div class="section2">
 
+                        <div class=" titledescription">Climbing mountains is fun!
+                            ...
                         </div>
+                        <div class=" trailDescriptionLonger">
+                            Nisl purus in mollis nunc sed id. Aenean vel elit scelerisque mauris pellentesque pulvinar
+                            pellentesque. Turpis egestas sed tempus urna et pharetra. Id aliquet risus feugiat in ante metus
+                            dictum.
+                        </div>
+                    </div>
 
-                        <div class="pointsCardDescription">
-                            HKSAR
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 col-lg-3  ">
+                    <div class="pointsCard">
+                        <div class="pointsCardCircle">
+                            01
+                        </div>
+                        <div class="pointsCardText">
+                            <div class="pointsCardTitle">
+                                Name:
+
+                            </div>
+                            <div class="pointsCardDescription">
+                                <span id ="trailName">Kau Wah Trail</span>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-6 col-lg-3 ">
-                <div class="pointsCard">
-                    <div class="pointsCardCircle">
-                        03
-                    </div>
-                    <div class="pointsCardText">
-
-                        <div class="pointsCardTitle">
-                            Hardness:
-
+                <div class="col-6 col-lg-3  ">
+                    <div class="pointsCard">
+                        <div class="pointsCardCircle">
+                            02
                         </div>
+                        <div class="pointsCardText">
 
-                        <div class="pointsCardDescription">
-                            <span id="hardness"> 1</span>
+                            <div class="pointsCardTitle">
+                                Location:
+
+                            </div>
+
+                            <div class="pointsCardDescription">
+                                HKSAR
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3 ">
+                    <div class="pointsCard">
+                        <div class="pointsCardCircle">
+                            03
+                        </div>
+                        <div class="pointsCardText">
+
+                            <div class="pointsCardTitle">
+                                Hardness:
+
+                            </div>
+
+                            <div class="pointsCardDescription">
+                                <span id="hardness"> 1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="pointsCard">
+                        <div class="pointsCardCircle">
+                            04
+                        </div>
+                        <div class="pointsCardText">
+
+                            <div class="pointsCardTitle">
+                                Suitable for:
+
+                            </div>
+
+                            <div class="pointsCardDescription">
+                                HongKonger
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-lg-3  ">
-                <div class="pointsCard">
-                    <div class="pointsCardCircle">
-                        04
-                    </div>
-                    <div class="pointsCardText">
+            <div class="row section3">
+                <div class="col-12 col-lg-6 trailImageContainer">
+                        <img class="trailImage" src="assets/9WalkingTrails/sunsetPeak.jpg">
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div>                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus dictum sem. Aliquam at tortor sed ex convallis varius non vel ante. Phasellus sit amet lorem eu lacus posuere tincidunt id et arcu. Curabitur ullamcorper odio nec pellentesque ullamcorper. Vestibulum eget nulla nunc. Maecenas leo ipsum, tristique id elit ut, vehicula faucibus velit. Nunc vehicula eros vel dolor dapibus, eget tristique massa fringilla. Donec eu lacus ac leo mollis aliquet. Sed vel fringilla nisi, at ornare justo. Nunc eu mi lacus. Curabitur ac orci at diam vehicula dictum eget ut justo.
 
-                        <div class="pointsCardTitle">
-                            Suitable for:
+    Integer fringilla eu purus sit amet sollicitudin. Praesent ullamcorper mi dictum, fringilla ex et, pulvinar magna. Praesent fringilla dui in turpis blandit porta. Aliquam pharetra tempor dui, nec faucibus felis luctus at. In bibendum lectus non dolor suscipit fringilla. Sed ultrices commodo nulla et vulputate. Praesent fermentum non risus fringilla aliquet.
 
-                        </div>
+    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras luctus eget justo at congue. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin convallis dui nec bibendum rutrum. Maecenas ornare in mauris ut faucibus. Nam pretium vulputate mattis. Etiam fringilla ultricies diam, a efficitur enim.
 
-                        <div class="pointsCardDescription">
-                            HongKonger
-                        </div>
+
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row section3">
-            <div class="col-12 col-lg-6 trailImageContainer">
+            <div class="row section3">
+                <div class="col-12 col-lg-6">
+                    <div class="">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus dictum sem. Aliquam at tortor sed ex convallis varius non vel ante. Phasellus sit amet lorem eu lacus posuere tincidunt id et arcu. Curabitur ullamcorper odio nec pellentesque ullamcorper. Vestibulum eget nulla nunc. Maecenas leo ipsum, tristique id elit ut, vehicula faucibus velit. Nunc vehicula eros vel dolor dapibus, eget tristique massa fringilla. Donec eu lacus ac leo mollis aliquet. Sed vel fringilla nisi, at ornare justo. Nunc eu mi lacus. Curabitur ac orci at diam vehicula dictum eget ut justo.
+
+    Integer fringilla eu purus sit amet sollicitudin. Praesent ullamcorper mi dictum, fringilla ex et, pulvinar magna. Praesent fringilla dui in turpis blandit porta. Aliquam pharetra tempor dui, nec faucibus felis luctus at. In bibendum lectus non dolor suscipit fringilla. Sed ultrices commodo nulla et vulputate. Praesent fermentum non risus fringilla aliquet.
+
+    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras luctus eget justo at congue. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin convallis dui nec bibendum rutrum. Maecenas ornare in mauris ut faucibus. Nam pretium vulputate mattis. Etiam fringilla ultricies diam, a efficitur enim.
+
+
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 trailImageContainer">
                     <img class="trailImage" src="assets/9WalkingTrails/sunsetPeak.jpg">
             </div>
-            <div class="col-12 col-lg-6">
-                <div>                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus dictum sem. Aliquam at tortor sed ex convallis varius non vel ante. Phasellus sit amet lorem eu lacus posuere tincidunt id et arcu. Curabitur ullamcorper odio nec pellentesque ullamcorper. Vestibulum eget nulla nunc. Maecenas leo ipsum, tristique id elit ut, vehicula faucibus velit. Nunc vehicula eros vel dolor dapibus, eget tristique massa fringilla. Donec eu lacus ac leo mollis aliquet. Sed vel fringilla nisi, at ornare justo. Nunc eu mi lacus. Curabitur ac orci at diam vehicula dictum eget ut justo.
 
-Integer fringilla eu purus sit amet sollicitudin. Praesent ullamcorper mi dictum, fringilla ex et, pulvinar magna. Praesent fringilla dui in turpis blandit porta. Aliquam pharetra tempor dui, nec faucibus felis luctus at. In bibendum lectus non dolor suscipit fringilla. Sed ultrices commodo nulla et vulputate. Praesent fermentum non risus fringilla aliquet.
-
-Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras luctus eget justo at congue. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin convallis dui nec bibendum rutrum. Maecenas ornare in mauris ut faucibus. Nam pretium vulputate mattis. Etiam fringilla ultricies diam, a efficitur enim.
-
-
-                </div>
             </div>
-        </div>
-        <div class="row section3">
-            <div class="col-12 col-lg-6">
-                <div class="">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus dictum sem. Aliquam at tortor sed ex convallis varius non vel ante. Phasellus sit amet lorem eu lacus posuere tincidunt id et arcu. Curabitur ullamcorper odio nec pellentesque ullamcorper. Vestibulum eget nulla nunc. Maecenas leo ipsum, tristique id elit ut, vehicula faucibus velit. Nunc vehicula eros vel dolor dapibus, eget tristique massa fringilla. Donec eu lacus ac leo mollis aliquet. Sed vel fringilla nisi, at ornare justo. Nunc eu mi lacus. Curabitur ac orci at diam vehicula dictum eget ut justo.
-
-Integer fringilla eu purus sit amet sollicitudin. Praesent ullamcorper mi dictum, fringilla ex et, pulvinar magna. Praesent fringilla dui in turpis blandit porta. Aliquam pharetra tempor dui, nec faucibus felis luctus at. In bibendum lectus non dolor suscipit fringilla. Sed ultrices commodo nulla et vulputate. Praesent fermentum non risus fringilla aliquet.
-
-Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras luctus eget justo at congue. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin convallis dui nec bibendum rutrum. Maecenas ornare in mauris ut faucibus. Nam pretium vulputate mattis. Etiam fringilla ultricies diam, a efficitur enim.
-
-
-                </div>
-            </div>
-            <div class="col-12 col-lg-6 trailImageContainer">
-                <img class="trailImage" src="assets/9WalkingTrails/sunsetPeak.jpg">
-        </div>
 
         </div>
-
-    </div>
 
 
 
@@ -186,7 +175,15 @@ Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
 
 
     </div>
+</div>
     <script type="text/javascript" src="./js/hikeTrailsDetail.js"></script>
+    <script>
+        function toggle() {
+            document.getElementById('nav').classList.toggle('active');
+            document.querySelector('.nav-bar').classList.toggle('nav-bar-show')
+            document.querySelector('.block').classList.toggle('block-active')
+        }
+    </script>
 
 </body>
 

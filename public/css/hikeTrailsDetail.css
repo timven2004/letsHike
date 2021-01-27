@@ -1,164 +1,167 @@
-*{
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Abel', sans-serif;
 }
 
-
-body{
-    margin:0;
-    font-family: 'Abel', sans-serif;
+nav {
+  position: absolute;
+  width: 80%;
+  left: -40px;
 }
 
-.circles{
-    border-radius: 50%;
+.wrapper {
+  width: 100%;
 }
 
-.sizeMedium{
-    width:300px;
-    height: 300px;
-    object-fit: cover;
-
+.circles {
+  border-radius: 50%;
 }
 
-.boxShadow{
-    box-shadow: black 5px 5px 10px;
-
+.sizeMedium {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
 }
 
-.sizeBig{
-    width: 600px;
-    height: 600px;
-    object-fit: cover;
+.boxShadow {
+  box-shadow: black 5px 5px 10px;
 }
 
-.topMain{
-    position:absolute;
-    left:45%;
-    transform:translateX(-50%);
-    z-index:0;
+.sizeBig {
+  width: 600px;
+  height: 600px;
+  object-fit: cover;
 }
 
-.container{
-    margin-top: 56px;
+.topMain {
+  position: absolute;
+  left: 45%;
+  transform: translateX(-50%);
+  z-index: 0;
 }
 
-.topLeft{
-    position:absolute;
-    left:20%;
-    transform:translateX(-50%);
-    z-index:1;
-    bottom:0;
-    border:white 10px solid
-
+.container .section1{
+  margin-top: 56px;
 }
 
-.section1{
-    position:relative;
-    height: 500px;
+.topLeft {
+  position: absolute;
+  left: 20%;
+  transform: translateX(-50%);
+  z-index: 1;
+  bottom: 0;
+  border: white 10px solid;
 }
 
-.section2{
-    position:relative;
-    height: 200px;
-    margin-bottom: 100px;
+.section1 {
+  position: relative;
+  height: 500px;
 }
 
-.mountainIcon{
-    background-color: white;
+.section2 {
+  position: relative;
+  height: 200px;
+  margin-bottom: 100px;
 }
 
-.section3{
-    margin-top: 30px;
+.mountainIcon {
+  background-color: white;
 }
 
-.grey{
-    background-color: #e0e5eb;
-    height:300px;
-    width:300px;
-    z-index:-1;
-    position:absolute;
-    right:20%;
-    bottom:10%
+.section3 {
+  margin-top: 30px;
 }
 
-.absolute{
-    position:absolute;
+.grey {
+  background-color: #e0e5eb;
+  height: 300px;
+  width: 300px;
+  z-index: -1;
+  position: absolute;
+  right: 20%;
+  bottom: 10%;
 }
 
-.title{
-    color:#fe4323;
-    font-size: 9rem;
-    bottom:0;
-    right:10%;
-    z-index:3;
+.absolute {
+  position: absolute;
 }
 
-.titledescription{
-    z-index:4;
-    font-size: 1.5rem;
-    text-align: end;
-    background-color: ivory;
+.title {
+  color: #fe4323;
+  font-size: 9rem;
+  bottom: 0;
+  right: 10%;
+  z-index: 3;
 }
 
-.pointsCardText{
-    max-height: 200px;
-    overflow: hidden;
+.titledescription {
+  z-index: 4;
+  font-size: 1.5rem;
+  text-align: end;
+  background-color: ivory;
 }
 
-.trailDescriptionLonger{
-    z-index:4;
-    font-size: 1rem;
-    text-align: end;
-    background-color: ivory;
+.pointsCardText {
+  max-height: 200px;
+  overflow: hidden;
 }
 
-.pointsCard{
-    background-color: #fe4323;
-    height:300px;
-    width:80%;
-    display: flex;
-    justify-content: space-around;
-    flex-flow: column;
-    align-items: center;
-    position: relative;
-    margin-bottom: 20px;
+.trailDescriptionLonger {
+  z-index: 4;
+  font-size: 1rem;
+  text-align: end;
+  background-color: ivory;
 }
 
-.pointsCardCircle{
-    border-radius: 50%;
-    height: 50px;
-    width: 50px;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
+.pointsCard {
+  background-color: #fe4323;
+  height: 300px;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20px;
 }
 
-.pointsCardTitle{
-font-size: 2rem;
-color:white;
-
+.pointsCardCircle {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
 }
 
-.pointsCardDescription{
-color:white;
-font-size: 2rem;
+.pointsCardTitle {
+  font-size: 2rem;
+  color: white;
 }
 
-.pointsCardText{
-    text-align: center;
+.pointsCardDescription {
+  color: white;
+  font-size: 2rem;
 }
 
-.trailImage{
-    border-radius: 50%;
-    border: #fe4323 10px solid;
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
-    margin: 20px 0px
+.pointsCardText {
+  text-align: center;
 }
 
-.trailImageContainer{
-    display: flex;
-    justify-content: center;
+.trailImage {
+  border-radius: 50%;
+  border: #fe4323 10px solid;
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  margin: 20px 0px;
+}
+
+.trailImageContainer {
+  display: flex;
+  justify-content: center;
 }
