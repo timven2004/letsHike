@@ -49,15 +49,22 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
             let allParticipants = [];
 
             for (let pairs of organizerAndParticipants.rows){
-                allParticipants.push(pairs.user_id)
+                allParticipants.push(pairs["users_id"])
             }
-
+            
+            console.log(allParticipants)
             if (allParticipants.indexOf(userId) == -1){
-                res.render("somethingWentWrong.ejs", {message: "You are not participant for this event!"})
+                res.render("somethingWentWrong.ejs", {message: "You are not a participant for this event!"})
                 return
             }
 
+
         let organizer1 = organizerAndParticipants.rows[0].organizer
+
+            if(organizer1==userId){
+                res.render("somethingWentWrong.ejs", {message: "You can't rate yourself!"});
+                return
+            }
 
         let checkingIfRepeatedRating = await client.query(
             `SELECT * FROM rating_event
