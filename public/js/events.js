@@ -1,7 +1,7 @@
 window.onload = async () => {
     loadAndDisplayEvents()
-    hiddenProfileNavbar()
-    showCreateEventBtnChecking()
+    hiddenProfileNavbar()//error here
+    showCreateEventBtnChecking()//error here
     logOut()
 }
 

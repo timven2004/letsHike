@@ -87,6 +87,7 @@ nav{
     border-radius: 10px;
 }
 
+
 .commentCardsHolder{
     display:flex;
     flex-flow: row wrap;
