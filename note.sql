@@ -54,7 +54,7 @@ CREATE TABLE chatroom(
     event_id INTEGER,
     FOREIGN KEY (event_id ) REFERENCES event(id),
     content TEXT,
-    date TIMESTAMP
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE user_joining_event(
@@ -77,7 +77,7 @@ CREATE TABLE rating_event(
     FOREIGN KEY (rating_person_id) REFERENCES users(id),
     single_rating  INTEGER,
     comment TEXT,
-    date TIMESTAMP
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- users --
