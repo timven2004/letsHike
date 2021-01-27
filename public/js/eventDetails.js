@@ -6,6 +6,7 @@ window.onload = () => {
     addChatroomMessage()
     getChatroomMessage()
     userJoinEvent()
+    showProfileNavbar()
     logOut()
 }
 
@@ -16,6 +17,7 @@ async function loadAndDisplayEvent() {
 
     const res = await fetch(`/events/eventDetails/${id}`)
     const data = await res.json()
+    console.log(data)
 
     let eventStr = `
         <div class="row">
@@ -28,6 +30,7 @@ async function loadAndDisplayEvent() {
             <div class="row">
             <div class="edit-button"></div>
             <div class="col-12 col-md-7 detail">
+                <h4></h4>
                 <h5>meeting point: ${data.meeting_point}</h5>
                 <h5>Date: ${data.date}</h5>
                 <h5>Time: ${data.time}</h5>
@@ -179,17 +182,19 @@ function getNewChatroomMessage() {
     })
 }
 
-//Nav-bar
-async function hiddenProfileNavbar() {
+//NavBar
+async function showProfileNavbar() {
     const res = await fetch("/api/v1/userLoggedIn")
     const data = await res.json()
 
-    if (data === 'undefined') {
-        document.getElementById('hidden-propfile').innerHTML = '';
+    if (data !== 'noLogin') {
+        document.getElementById('hidden-propfile').innerHTML = '<a href="./userProfileSelf.html">My profile</a>';
+        document.getElementById('logout').innerHTML = '<a href="">Logout</a>'
+    } else {
+        document.getElementById('login').innerHTML = '<a href="/login.html">Login/Sign up</a>'
     }
 }
 
-//logout
 function logOut() {
     const logOut = document.getElementById('logout')
     logOut.addEventListener("click", async (e) => {

@@ -94,13 +94,10 @@ users.get("/userProfile/:id", async (req, res) => {
         console.error(err.message)
         res.status(500).json({ message: "Internal server error" })
     }
-
-
 })
 
 
 users.get("/api/v1/userProfile/self", checkSession, async (req, res) => {
-
     try {
         let data = await client.query<User>(
             `SELECT * 
