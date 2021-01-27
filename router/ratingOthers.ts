@@ -38,7 +38,7 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
         // console.log(eventId);
         // console.log(userId);
 
-        let organizer = await client.query(
+        let organizerAndParticipants = await client.query(
             `SELECT event.organizer,user_joining_event.users_id 
             FROM event JOIN user_joining_event
             ON event.id=user_joining_event.event_id
@@ -46,22 +46,33 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
             , [eventId])
 
 
-        console.log(organizer.rows[0])    
-        let organizer1 = organizer.rows[0].organizer
+            let allParticipants = [];
+
+            for (let pairs of organizerAndParticipants.rows){
+                allParticipants.push(pairs.user_id)
+            }
+
+            if (allParticipants.indexOf(userId) == -1){
+                res.render("somethingWentWrong.ejs", {message: "You are not participant for this event!"})
+                return
+            }
+
+        let organizer1 = organizerAndParticipants.rows[0].organizer
 
         let checkingIfRepeatedRating = await client.query(
             `SELECT * FROM rating_event
         WHERE rating_event.event_id = $1 and rating_event.users_id =$2`,
             [eventId, userId]
         );
-
-        console.log(checkingIfRepeatedRating)
+        
+        
+        // console.log(checkingIfRepeatedRating)
 
         if (!checkingIfRepeatedRating.rows[0]) {
             let response = await client.query(
                 `INSERT INTO rating_event(users_id, event_id,rating_person_id,single_rating,comment) VALUES ($1,$2, $3, $4,$5)`, [userId, eventId, organizer1, parseInt(data.rating), data.comment]);
 
-            res.send("Rated Successfully")
+            res.redirect(`/userProfile/${organizer1}`)
             response
         }
 
