@@ -116,16 +116,14 @@ async function getChatroomMessage() {
 
     const res = await fetch(`/chatroom/getMessage/${event_id}`)
     const datas = await res.json()
-    const showComments = document.querySelector(".show-comment")
+    const showComments = document.getElementById('show-comment-form')
 
-
-    let c = 0
     for (let data of datas) {
         const msgDate = moment(data.date).format('YYYY-MM-DD h:mm:ss a');
 
         showComments.innerHTML += `
             <div class="col-12 col-md-10 comment">
-                <h5>${data.user_name}:</h5>
+                <a href="/userProfileSelf.html">${data.user_name}:</a>
                 <p>${data.content}</p>
                 <p>${msgDate}</p>
             </div>

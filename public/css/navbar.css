@@ -11,9 +11,7 @@ nav {
   text-transform: uppercase;
   position: fixed;
   z-index: 99;
-  width: 90%;
-  /* right:0px;
-  left:0px; */
+  width: 100%;
 }
 
 nav a {

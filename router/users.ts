@@ -158,7 +158,7 @@ users.get("/api/v1/userProfile/self", checkSession, async (req, res) => {
 users.get("/api/v1/getUserData", async (req, res) => {
     try {
         const user_id = req.session["user_id"]
-        if(!user_id){
+        if (!user_id) {
             res.json("don't login")
             return
         }
@@ -238,27 +238,27 @@ users.get("/users/checkUserIsOrganizer/:id", async (req, res) => {
 })
 
 
-//updateLevel !!only count one time need to fix the problem
-users.post("/users/updateLevel", async (req, res) => {
-    const id = req.session["user_id"]
-    const getExp = await client.query(`
-        SELECT experience FROM users WHERE id = $1
-        `, [id])
-    res.json(getExp.rows[0].experience)
-    const exp = getExp.rows[0].experience
-
-
-    if (exp === 10) {
-        const getLevel = await client.query(`
-        SELECT level FROM users WHERE id = $1
-        `, [id])
-        const level = getLevel.rows[0].level
-
-        let curlevel = level + 1
-        
-        await client.query(`
-            UPDATE users SET LEVEL = $1 WHERE id = $2
-            `, [curlevel, id])
-        
+// //updateLevel   //POST?
+users.get("/users/updateLevel", async (req, res) => {
+    if(req.session["user_id"]){
+        const id = req.session["user_id"]
+        const getExp = await client.query(`
+            SELECT experience FROM users WHERE id = $1
+            `, [id])
+        const exp = getExp.rows[0].experience
+    
+        if (exp % 10 === 0) {
+            const x = exp/10
+            const getLevel = await client.query(`
+            SELECT level FROM users WHERE id = $1
+            `, [id])
+            const level = getLevel.rows[0].level
+    
+            let curlevel = level + x
+    
+            await client.query(`
+                UPDATE users SET LEVEL = $1 WHERE id = $2
+                `, [curlevel, id])
+        }
     }
 })

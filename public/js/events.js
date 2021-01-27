@@ -124,4 +124,3 @@ async function checkRatingRemember(){
         console.log(event_id)
     }
 }
-
