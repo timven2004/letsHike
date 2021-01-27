@@ -12,7 +12,8 @@ CREATE TABLE users(
     experience INTEGER DEFAULT 0,
     introduction TEXT,
     rating DECIMAL(2,1) DEFAULT 0,
-    user_icon VARCHAR(255)
+    user_icon VARCHAR(255),
+    is_admin BOOLEAN
 );
 
 CREATE TABLE hiking_trail(
@@ -52,7 +53,8 @@ CREATE TABLE chatroom(
     FOREIGN KEY (users_id) REFERENCES users(id),
     event_id INTEGER,
     FOREIGN KEY (event_id ) REFERENCES event(id),
-    content TEXT
+    content TEXT,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE user_joining_event(
@@ -74,7 +76,7 @@ CREATE TABLE rating_event(
     FOREIGN KEY (rating_person_id) REFERENCES users(id),
     single_rating  INTEGER,
     comment TEXT,
-    date TIMESTAMP
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- users --
@@ -85,6 +87,7 @@ INSERT INTO users ( user_name , email, password, gender, introduction ) VALUES (
 INSERT INTO users ( user_name , email, password, gender, introduction ) VALUES ('b','b@b','b','?','bbb');
 INSERT INTO users ( user_name , email, password, gender, introduction ) VALUES ('c','c@c','c','?','ccc');
 INSERT INTO users ( user_name , email, password, gender, introduction ) VALUES ('d','d@d','d','?','ddd');
+INSERT INTO users ( user_name , email, password, gender, introduction, is_admin ) VALUES ('admin','admin@admin.com','admin','?','Im admin',true);
 
 
 -- GET
@@ -103,7 +106,10 @@ INSERT INTO rating_event (users_id,rating_person_id,single_rating,comment) VALUE
 INSERT INTO rating_event (users_id,rating_person_id,single_rating,comment) VALUES (4, 2, 4.0, 'This is a on_ hiker! I hate it');
 INSERT INTO rating_event (users_id,rating_person_id,single_rating,comment) VALUES (1, 3, 2.0, 'This guy is ugly, so I gave it 2 stars');
 
-
+INSERT INTO user_joining_event (users_id, event_id,auto_rating_msg) VALUES (1,1,true);
+INSERT INTO user_joining_event (users_id, event_id,auto_rating_msg) VALUES (2,1,true);
+INSERT INTO user_joining_event (users_id, event_id,auto_rating_msg) VALUES (3,1,true);
+INSERT INTO user_joining_event (users_id, event_id,auto_rating_msg) VALUES (4,1,true);
 
 -- POST
 INSERT INTO event ( event_name, meeting_point, date, time, max_number_of_member, hiking_trail_id, detail) VALUES ($1,$2,$3,$4,$5,$6,$7)

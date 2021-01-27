@@ -1,3 +1,4 @@
+
 window.onload = () => {
     getNewChatroomMessage()
     loadAndDisplayEvent()
@@ -116,12 +117,16 @@ async function getChatroomMessage() {
     const datas = await res.json()
     const showComments = document.querySelector(".show-comment")
 
+
     let c = 0
     for (let data of datas) {
+        const msgDate = moment(data.date).format('YYYY-MM-DD h:mm:ss a');
+
         showComments.innerHTML += `
             <div class="col-12 col-md-10 comment">
                 <h5>${data.user_name}:</h5>
                 <p>${data.content}</p>
+                <p>${msgDate}</p>
             </div>
         `
     }
