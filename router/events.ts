@@ -1,7 +1,8 @@
-import express, { Request, Response, NextFunction } from "express"
+import express from "express"
 import { client } from '../main'
 import { Event } from '../class/database'
 import moment from 'moment';
+import { checkSession } from "./middleware"
 
 export const events = express.Router()
 
@@ -77,7 +78,7 @@ events.get("/events/userJoiningEvent/:id", async (req, res) => {
 events.post("/events/createEvent", async (req, res) => {
 
 
-// events.post("/events/createEvent", async (req, res) => {
+    // events.post("/events/createEvent", async (req, res) => {
     try {
         const { event_name, meeting_point, date, time, max_number_of_member, hiking_trail_id, detail } = req.body
         const organizerID = req.session["user_id"]
@@ -177,14 +178,6 @@ events.post("/userJoinEvent", async (req, res) => {
         res.status(500).json("Internal server error")
     }
 })
-
-
-// Middleware
-const checkSession = (req: Request, res: Response, next: NextFunction) => {
-    if (req.session["user_id"]) {
-        next()
-    } else res.redirect("/login.html")
-}
 
 events.get("/goCreateEventPage", checkSession, (req, res) => {
     res.redirect("/createEvent.html")
