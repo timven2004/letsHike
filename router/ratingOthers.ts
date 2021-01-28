@@ -83,7 +83,7 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
             )
 
 
-            let response = await client.query(
+            await client.query(
                 `INSERT INTO rating_event(users_id, event_id,rating_person_id,single_rating,comment) VALUES ($1,$2, $3, $4,$5)`, [userId, eventId, organizer1, parseInt(data.rating), data.comment]);
 
 
@@ -101,19 +101,58 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
                 UPDATE users
                 SET experience = experience + $1
                 WHERE users.id = $2;
+<<<<<<< HEAD
                 `, [retrieveHardness.rows[0].hardness, organizer1])
             }
 
 
             let addExp = await client.query(`
+=======
+                `,[retrieveHardness.rows[0].hardness, organizer1])
+
+                let organizerExp= await client.query(`
+                SELECT experience FROM users
+                WHERE users.id = $1
+                `, [organizer1])
+
+                let newLevel = Math.floor(organizerExp.rows[0].experience/10);
+
+                await client.query(`
+                UPDATE users
+                SET level = $1
+                WHERE users.id = $2
+                `,[newLevel, organizer1])
+            }
+
+
+            await client.query(`
+>>>>>>> a26f564412e956dc5669d507d5766fb201b6ef19
                 UPDATE users
                 SET experience = experience + $1
                 WHERE users.id = $2;
                 `, [retrieveHardness.rows[0].hardness, userId])
 
+<<<<<<< HEAD
             response;
             addExp;
 
+=======
+                let userExp= await client.query(`
+                SELECT experience FROM users
+                WHERE users.id = $1
+                `, [userId])
+
+                let newLevel = Math.floor(userExp.rows[0].experience/10);
+
+                await client.query(`
+                UPDATE users
+                SET level = $1
+                WHERE users.id = $2
+                `,[newLevel, userId])
+
+
+                
+>>>>>>> a26f564412e956dc5669d507d5766fb201b6ef19
             res.redirect(`/userProfile/${organizer1}`)
         }
 
