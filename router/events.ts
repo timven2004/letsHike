@@ -112,16 +112,16 @@ events.delete("/events/deleteEvent/:id", async (req, res) => {
     }
 })
 
-events.post("/userJoinEvent", async (req, res) => {
+events.get("/userJoinEvent/:id", async (req, res) => {
     try {
+        const user_id = req.session["user_id"]
+        const event_id = req.params.id
+
         // Check login
-        if (!req.session["user_id"]) {
+        if (!user_id) {
             res.status(400).json({ message: "login" })
             return
         }
-
-        const user_id = req.session["user_id"]
-        const event_id = req.body.event_id
 
         // Check User is (or not) join this event
         const num = await client.query(`
@@ -177,6 +177,52 @@ events.get("/checkEventOrganizer", async (req, res) => {
         console.error(err.message)
         res.status(500).json({ message: "Internal server error" })
     }
+})
+
+events.get("/checkUserHaveBeenJoin/:id", async (req, res) => {
+    try {
+        const event_id = parseInt(req.params.id)
+        const user_id = parseInt(req.session["user_id"])
+        if (!user_id) {
+            res.json("don't login")
+            return
+        }
+        const data = await client.query(`
+            Select COUNT(*) FROM user_joining_event WHERE users_id = $1 AND event_id = $2
+        `, [user_id, event_id])
+        const userJoin = (data.rows[0].count !== "0")
+        if (userJoin) {
+            res.json(true)
+        } else res.json(false)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).json({ message: "Internal Server Error" })
+    }
+})
+
+events.delete("/userLeaveEvent/:id", async (req, res) => {
+    try {
+        const event_id = parseInt(req.params.id)
+        const user_id = parseInt(req.session["user_id"])
+        await client.query(`
+            DELETE FROM user_joining_event WHERE users_id = $1 AND event_id = $2
+        `, [user_id, event_id])
+        await client.query(`
+            UPDATE event SET joining_number_of_member = joining_number_of_member - 1
+        `)
+        res.json("user leave")
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).json("Internal server error")
+    }
+})
+
+events.get("/getJoiningNumber/:id", async (req, res) => {
+    const event_id = req.params.id
+    const joiningNumber = (await client.query(`
+        SELECT joining_number_of_member FROM event WHERE id = $1
+    `,[event_id])).rows[0].joining_number_of_member
+    res.json(joiningNumber)
 })
 
 // Check event  is active
