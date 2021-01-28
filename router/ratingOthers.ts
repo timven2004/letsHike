@@ -52,7 +52,6 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
                 allParticipants.push(pairs["users_id"])
             }
             
-            console.log(allParticipants)
             if (allParticipants.indexOf(userId) == -1){
                 res.render("somethingWentWrong.ejs", {message: "You are not a participant for this event!"})
                 return
@@ -78,9 +77,28 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
         if (!checkingIfRepeatedRating.rows[0]) {
             let response = await client.query(
                 `INSERT INTO rating_event(users_id, event_id,rating_person_id,single_rating,comment) VALUES ($1,$2, $3, $4,$5)`, [userId, eventId, organizer1, parseInt(data.rating), data.comment]);
+                
+            
 
+            let retrieveHardness = await client.query(
+                `SELECT hardness FROM hiking_trail
+                JOIN event
+                ON event.hiking_trail_id = hiking_trail.id
+                WHERE event.id=$1;
+                `,[eventId]
+            )
+
+            console.log(retrieveHardness.rows[0].hardness);
+                let addExp = await client.query(`
+                UPDATE users
+                SET experience = experience + $1
+                WHERE users.id = $2;
+                `,[retrieveHardness.rows[0].hardness, userId])
+
+            response;
+            addExp;
+            
             res.redirect(`/userProfile/${organizer1}`)
-            response
         }
 
         res.render("somethingWentWrong.ejs", { message: "You have rated this event already!" })

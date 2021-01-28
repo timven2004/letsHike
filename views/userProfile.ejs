@@ -72,7 +72,7 @@
                                  <div class="card" style="width: 20rem;">
                                     <div class="card-body">
                                         <h5 class="card-title"><%=comment.single_rating %>/5</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">by <%= comment.user_name %>
+                                        <h6 class="card-subtitle mb-2 text-muted">by <a href="/userProfile/<%=comment.users_id%>"><%= comment.user_name %></a>
                                             <span id="date"><%= new Date(comment.date).toLocaleDateString() %></span></span></h6>
                                         <p class="card-text"><%= comment.comment %></p>
                                     </div>
