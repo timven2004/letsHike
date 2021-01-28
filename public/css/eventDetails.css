@@ -162,6 +162,7 @@ textarea {
   position: absolute;
   right: 0;
   margin: 100px 20px;
+  z-index: 4;
 }
 
 .edit-button a,
@@ -212,5 +213,10 @@ button {
   .detail-img {
     object-fit: cover;
     left: 30px;
+  }
+
+  .edit-button {
+    position: absolute;
+    margin: 100% 4rem;
   }
 }

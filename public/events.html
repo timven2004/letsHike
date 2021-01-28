@@ -28,6 +28,8 @@
         </nav>
         <div class="notice"></div>
         <div class="hero">
+            <i onclick="shownotice()" class="far fa-bell"></i>
+            <div id="remember"></div>
             <h3 class="slogan">Slogan here!! </h3>
             <a href="#events-wrapper">Discover</a>
         </div>
@@ -44,7 +46,6 @@
             <!-- AJAX -->
         </div>
     </div>
-    <div id="remember"></div>
     <script src="js/events.js"></script>
     
     <script>
@@ -55,7 +56,7 @@
         }
 
         function shownotice(){
-            document.querySelector('.notice').classList.toggle('notice-active')
+            document.getElementById('remember').classList.toggle('remember-active')
         }
     </script>
 </body>

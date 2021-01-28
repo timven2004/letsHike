@@ -92,8 +92,6 @@ async function showProfileNavbar() {
     if (data !== 'noLogin') {
         document.getElementById('hidden-propfile').innerHTML = '<a href="./userProfileSelf.html">My profile</a>';
         document.getElementById('logout').innerHTML = '<a href="">Logout</a>'
-        document.getElementById('show-username').innerHTML = '<a id="username" onclick="shownotice()">notice</a>'
-
     } else {
         document.getElementById('login').innerHTML = '<a href="/login.html">Login</a>'
     }
@@ -130,8 +128,8 @@ async function checkRatingRemember() {
         console.log(event)
         const remember = document.getElementById("remember")
         remember.innerHTML += `
-            <div id="${event.id}">
-                <a href="ratingOthers.html?eventId=${event.id}"></a>
+            <div class="" id="${event.id}">
+                <a href="ratingOthers.html?eventId=${event.id}">Event name</a>
                 <a onclick="neverShowRemember(${event.id})">Never Show</a>
             </div>
         `
