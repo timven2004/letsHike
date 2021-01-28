@@ -161,3 +161,17 @@ INSERT INTO image_hiking_trail ( image, hiking_trail_id, is_default ) VALUES
 ( 'Parkview to Jardine’s Lookout.png', 7, true),
 ( 'Sir Cecil’s Ride and Red Incense Burner Summit.jpg', 8, true),
 ( 'Black Hill.jpg', 9, true ) ;
+
+-- SELECT event_id in TABLE user_joining_event without have be rating in TABLE rating_event
+SELECT event_id FROM user_joining_event WHERE users_id = 2;
+
+(SELECT event_id FROM rating_event WHERE users_id = 2 ) as event_rating
+(SELECT event_id FROM user_joining_event WHERE users_id = 2) as user_joining
+
+SELECT event_id 
+FROM (SELECT event_id FROM user_joining_event WHERE users_id = 2) as user_joining
+WHERE NOT EXISTS (
+    SELECT event_id 
+    FROM (SELECT event_id FROM rating_event WHERE users_id = 2 ) as event_rating
+    WHERE event_id = user_joining.event_id
+);
