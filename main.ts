@@ -5,6 +5,7 @@ import { Server as SocketIO } from 'socket.io'
 import { Client } from 'pg'
 import dotenv from 'dotenv'
 import multer from "multer"
+import { checkSession, checkEventOrganizer } from "./router/middleware"
 
 dotenv.config()
 
@@ -93,7 +94,8 @@ const checkUserLevel = async (req: Request, res: Response, next: NextFunction) =
     }
 }
 
-app.use("/createEvent.html", checkUserLevel)
+app.use("/createEvent.html", checkSession, checkUserLevel)
+app.use("/eventEdit.html", checkSession, checkEventOrganizer)
 
 // Use Folder
 app.use(express.static('public'))
