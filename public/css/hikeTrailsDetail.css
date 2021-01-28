@@ -165,3 +165,18 @@ nav {
   display: flex;
   justify-content: center;
 }
+
+@media screen and (max-width:800px){
+  .title{
+    display:none
+  }
+
+  .mountainIcon{
+    display: none;
+  }
+
+  #trailImg1{
+    border-radius: 0% !important;
+  }
+
+}
