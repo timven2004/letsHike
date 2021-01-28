@@ -39,7 +39,12 @@
                         <h1 id="username">
                             <%=transferred.user_name%>
                         </h1>
-                        <h4 id="rating">User Rating: <%=transferred.rating %>/5</h4>
+                        <h4 id="rating">User Rating: <% if(isNaN(transferred.rating)){ %>
+                              <span>N.A</span>
+                        <% } else { %>
+                            <span><%= transferred.rating %>/5</span>
+                        <% } %>
+                        </h4>
                         <h4 id="level">Skills Level: <%=transferred.level%>
                         </h4>
                     </div>

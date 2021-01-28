@@ -22,6 +22,9 @@ window.onload = async () => {
 
   response.json().then(result => {
     console.log(result);
+
+    if(result.rating=="NaN"){result.rating="N/A"}
+
     profilePic.setAttribute("src", `../${(result).user_icon}`);
     username.innerHTML = (result).user_name;
     rating.innerHTML = `Rating: ${result.rating}/5.0`

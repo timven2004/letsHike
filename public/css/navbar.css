@@ -83,12 +83,12 @@ nav ul li a:hover {
 
   .nav-bar {
     position: absolute;
-    display: block;
     z-index: 3;
     top: 300px;
     right: -120px;
     opacity: 0;
     transform: translate(-50%, -50%);
+    display: none;
   }
 
   .nav-bar-show {
@@ -97,6 +97,7 @@ nav ul li a:hover {
     transition: all 1s cubic-bezier(0.84, 0, 0.08, 0.99);
     transition-delay: 0.8s;
     transition-duration: 0.35s;
+    display: block;
   }
 
   .nav-bar a {
@@ -104,6 +105,9 @@ nav ul li a:hover {
     font-size: 40px;
     letter-spacing: 2px;
     margin: 10px;
+    transition-delay: 0.8s;
+    transition-duration: 0.35s;
+
   }
 
   #toggle {
