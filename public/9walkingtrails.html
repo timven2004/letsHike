@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>9 Walking Trails</title>
     <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="css/9WalkingTrails.css">
 
@@ -15,100 +16,171 @@
     <div class="wrapper">
         <div class="block"></div>
         <nav id="nav">
-            <a href="/index.html"><h1 id="logo"><i class="fas fa-mountain"></i>Let's Hike</h1></a>
+            <a href="/index.html">
+                <h1 id="logo"><i class="fas fa-mountain"></i>Let's Hike</h1>
+            </a>
             <div id="toggle" onclick="toggle()"><span></span></div>
-                <ul class="nav-bar">
-                    <li><a id="hidden-propfile" href="./userProfileSelf.html">My profile</a></li>
-                    <li><a href="./events.html">Events</a></li>
-                    <li><a href="./9walkingtrails.html">Hiking Trails</a></li>
-                    <li id="switchToLogout"><a href="./login.html">Login</a></li>
-                    <li id="logout"><a href="">Logout</a></li>
-                </ul>
+            <ul class="nav-bar">
+                <li id="hidden-propfile"></li>
+                <li><a href="./events.html">Events</a></li>
+                <li><a href="./9walkingtrails.html">Hiking Trails</a></li>
+                <li id="login"></li>
+                <li id="logout"></li>
+            </ul>
         </nav>
-    <!-- <div class="pageContainer"> -->
-    <!-- <div class="relative"> -->
-    <div class="viewer">
-        <div class="page">
-            <div class="oneUnit">
-                <a class="imgAnchor"> 
-                    <img src="assets/index/tiutanglunglaichiwo.jpg" class="left img" id="img1">
-                    <div class="intro left">
-                        <div class="name ">Name</div>
-                        <div>Hardness: <span class="hardness">0</span></div>
-                    </div>
-                </a>
-                <a class="imgAnchor"> <img src="assets/index/sunsetPeak.jpg" class="topRight img" id="img2">
-                    <div class="topRight intro">
-                        <div class="name ">Name</div>
-                        <div>Hardness: <span class="hardness">0</span></div>
-                    </div>
+        <!-- <div class="pageContainer"> -->
+        <!-- <div class="relative"> -->
+        <div class="viewerBigScreen">
+            <div class="page">
+                <div class="oneUnit">
+                    <a class="imgAnchor">
+                        <img src="assets/index/tiutanglunglaichiwo.jpg" class="left img" id="img1">
+                        <div class="intro left">
+                            <div class="name ">Name</div>
+                            <div>Hardness: <span class="hardness">0</span></div>
+                        </div>
+                    </a>
+                    <a class="imgAnchor"> <img src="assets/index/sunsetPeak.jpg" class="topRight img" id="img2">
+                        <div class="topRight intro">
+                            <div class="name ">Name</div>
+                            <div>Hardness: <span class="hardness">0</span></div>
+                        </div>
 
-                </a>
+                    </a>
 
-                <a class="imgAnchor"> <img src="assets/index/Sheklungkung.jpg" class="topbottom img" id="img3">
-                    <div class="topbottom intro">
-                        <div class="name ">Name</div>
-                        <div>Hardness: <span class="hardness">0</span></div>
-                    </div>
+                    <a class="imgAnchor"> <img src="assets/index/Sheklungkung.jpg" class="topbottom img" id="img3">
+                        <div class="topbottom intro">
+                            <div class="name ">Name</div>
+                            <div>Hardness: <span class="hardness">0</span></div>
+                        </div>
 
-                </a>
+                    </a>
+
+                </div>
+
+                <div class="oneUnit">
+                    <a class="imgAnchor"> <img src="assets/index/tiutanglunglaichiwo.jpg" class="left img" id="img1">
+                        <div class="left intro">
+                            <div class="name ">Name</div>
+                            <div>Hardness: <span class="hardness">0</span></div>
+                        </div>
+                    </a>
+                    <a class="imgAnchor"> <img src="assets/index/sunsetPeak.jpg" class="topRight img" id="img2">
+                        <div class="topRight intro">
+                            <div class="name ">Name</div>
+                            <div>Hardness: <span class="hardness">0</span></div>
+                        </div>
+
+                    </a>
+
+                    <a class="imgAnchor"> <img src="assets/index/Sheklungkung.jpg" class="topbottom img" id="img3">
+                        <div class="topbottom intro">
+                            <div class="name ">Name</div>
+                            <div>Hardness: <span class="hardness">0</span></div>
+                        </div>
+
+                    </a>
+
+                </div>
+
+                <div class="oneUnit">
+                    <a class="imgAnchor"> <img src="assets/index/tiutanglunglaichiwo.jpg" class="left img" id="img1">
+                        <div class="left intro">
+                            <div class="name ">Name</div>
+                            <div>Hardness: <span class="hardness">0</span></div>
+                        </div>
+                    </a>
+                    <a class="imgAnchor"> <img src="assets/index/sunsetPeak.jpg" class="topRight img" id="img2">
+                        <div class="topRight intro">
+                            <div class="name ">Name</div>
+                            <div>Hardness: <span class="hardness">0</span></div>
+                        </div>
+
+                    </a>
+
+                    <a class="imgAnchor"> <img src="assets/index/Sheklungkung.jpg" class="topbottom img" id="img3">
+                        <div class="topbottom intro">
+                            <div class="name ">Name</div>
+                            <div>Hardness: <span class="hardness">0</span></div>
+                        </div>
+
+                    </a>
+
+                </div>
+
+
 
             </div>
+        </div>
 
-            <div class="oneUnit">
-                <a class="imgAnchor"> <img src="assets/index/tiutanglunglaichiwo.jpg" class="left img" id="img1">
-                    <div class="left intro">
-                        <div class="name ">Name</div>
-                        <div>Hardness: <span class="hardness">0</span></div>
-                    </div>
-                </a>
-                <a class="imgAnchor"> <img src="assets/index/sunsetPeak.jpg" class="topRight img" id="img2">
-                    <div class="topRight intro">
-                        <div class="name ">Name</div>
-                        <div>Hardness: <span class="hardness">0</span></div>
-                    </div>
+        <div class="viewerSmallScreen">
+            <div class="containerMobile">
+            <a class="imgAnchorMobile"> <img src="assets/index/tiutanglunglaichiwo.jpg" class="imgMobile" id="img1">
+                <div class="intro">
+                    <div class="nameMobile">Name</div>
+                    <div>Hardness: <span class="hardnessMobile">0</span></div>
+                </div>
+            </a>
+            <a class="imgAnchorMobile"> <img src="assets/index/sunsetPeak.jpg" class="imgMobile" id="img2">
+                <div class=" intro">
+                    <div class="nameMobile ">Name</div>
+                    <div>Hardness: <span class="hardnessMobile">0</span></div>
+                </div>
 
-                </a>
+            </a>
 
-                <a class="imgAnchor"> <img src="assets/index/Sheklungkung.jpg" class="topbottom img" id="img3">
-                    <div class="topbottom intro">
-                        <div class="name ">Name</div>
-                        <div>Hardness: <span class="hardness">0</span></div>
-                    </div>
+            <a class="imgAnchorMobile"> <img src="assets/index/Sheklungkung.jpg" class="imgMobile" id="img3">
+                <div class=" intro">
+                    <div class="nameMobile ">Name</div>
+                    <div>Hardness: <span class="hardnessMobile">0</span></div>
+                </div>
 
-                </a>
+            </a>
+            <a class="imgAnchorMobile"> <img src="assets/index/tiutanglunglaichiwo.jpg" class="imgMobile" id="img1">
+                <div class="intro">
+                    <div class="nameMobile">Name</div>
+                    <div>Hardness: <span class="hardnessMobile">0</span></div>
+                </div>
+            </a>
+            <a class="imgAnchorMobile"> <img src="assets/index/sunsetPeak.jpg" class="imgMobile" id="img2">
+                <div class=" intro">
+                    <div class="nameMobile ">Name</div>
+                    <div>Hardness: <span class="hardnessMobile">0</span></div>
+                </div>
 
-            </div>
+            </a>
 
-            <div class="oneUnit">
-                <a class="imgAnchor"> <img src="assets/index/tiutanglunglaichiwo.jpg" class="left img" id="img1">
-                    <div class="left intro">
-                        <div class="name ">Name</div>
-                        <div>Hardness: <span class="hardness">0</span></div>
-                    </div>
-                </a>
-                <a class="imgAnchor"> <img src="assets/index/sunsetPeak.jpg" class="topRight img" id="img2">
-                    <div class="topRight intro">
-                        <div class="name ">Name</div>
-                        <div>Hardness: <span class="hardness">0</span></div>
-                    </div>
+            <a class="imgAnchorMobile"> <img src="assets/index/Sheklungkung.jpg" class="imgMobile" id="img3">
+                <div class=" intro">
+                    <div class="nameMobile ">Name</div>
+                    <div>Hardness: <span class="hardnessMobile">0</span></div>
+                </div>
 
-                </a>
+            </a> <a class="imgAnchorMobile"> <img src="assets/index/tiutanglunglaichiwo.jpg" class="imgMobile" id="img1">
+                <div class="intro">
+                    <div class="nameMobile">Name</div>
+                    <div>Hardness: <span class="hardnessMobile">0</span></div>
+                </div>
+            </a>
+            <a class="imgAnchorMobile"> <img src="assets/index/sunsetPeak.jpg" class="imgMobile" id="img2">
+                <div class="intro">
+                    <div class="nameMobile ">Name</div>
+                    <div>Hardness: <span class="hardnessMobile">0</span></div>
+                </div>
 
-                <a class="imgAnchor"> <img src="assets/index/Sheklungkung.jpg" class="topbottom img" id="img3">
-                    <div class="topbottom intro">
-                        <div class="name ">Name</div>
-                        <div>Hardness: <span class="hardness">0</span></div>
-                    </div>
+            </a>
 
-                </a>
+            <a class="imgAnchorMobile"> <img src="assets/index/Sheklungkung.jpg" class="imgMobile" id="img3">
+                <div class=" intro">
+                    <div class="nameMobile ">Name</div>
+                    <div>Hardness: <span class="hardnessMobile">0</span></div>
+                </div>
 
-            </div>
-
+            </a>
 
 
         </div>
-    </div>
+        </div>
     </div>
     <script type="text/javascript" src="./js/9WalkingTrails.js"></script>
     <script>

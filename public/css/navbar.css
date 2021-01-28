@@ -11,9 +11,7 @@ nav {
   text-transform: uppercase;
   position: fixed;
   z-index: 99;
-  width: 90%;
-  /* right:0px;
-  left:0px; */
+  width: 100%;
 }
 
 nav a {
@@ -76,7 +74,7 @@ nav ul li a:hover {
   }
 
   #nav {
-    z-index: 99;
+    z-index: 10;
   }
 
   #nav h1 {
@@ -86,10 +84,9 @@ nav ul li a:hover {
   .nav-bar {
     position: absolute;
     display: block;
-    transform: translate(0, 300px);
     z-index: 3;
     top: 300px;
-    right: -90px;
+    right: -120px;
     opacity: 0;
     transform: translate(-50%, -50%);
   }
@@ -161,4 +158,9 @@ nav ul li a:hover {
     left: 50%;
     transform: translate(-50%, -50%) rotate(-45deg);
   }
+
+  .notice{
+    z-index: 20;
+  }
+
 }

@@ -35,32 +35,44 @@ window.onload = async () => {
     let string = ""
     result.comments.forEach(element => {
       string = string +
-      `<div class="card" style="width: 20rem;">
+        `<div class="card" style="width: 20rem;">
         <div class="card-body">
         <h5 class="card-title">${element.single_rating}/5</h5>
-        <h6 class="card-subtitle mb-2 text-muted">by ${element.user_name} <span
-                id="date">${new Date(element.date).toLocaleDateString()}</span></h6>
+        <h6 class="card-subtitle mb-2 text-muted">by <a href="/userProfile/${element.users_id}">${element.user_name} <span
+                id="date"></a>${new Date(element.date).toLocaleDateString()}</span></h6>
         <p class="card-text" >${element.comment}</p>
         </div>
       </div>`
 
     });
-    commentCardsHolder.innerHTML=string;
+    commentCardsHolder.innerHTML = string;
 
   })
-
+  showProfileNavbar()
   logOut()
 }
 
-  
-//logout
+
+//NavBar
+async function showProfileNavbar() {
+  const res = await fetch("/api/v1/userLoggedIn")
+  const data = await res.json()
+
+  if (data !== 'noLogin') {
+    document.getElementById('hidden-propfile').innerHTML = '<a href="./userProfileSelf.html">My profile</a>';
+    document.getElementById('logout').innerHTML = '<a href="">Logout</a>'
+  } else {
+    document.getElementById('login').innerHTML = '<a href="/login.html">Login/Sign up</a>'
+  }
+}
+
 function logOut() {
   const logOut = document.getElementById('logout')
   logOut.addEventListener("click", async (e) => {
-      e.preventDefault()
-      const res = await fetch("/api/v1/logout")
-      if (res.status === 200) {
-          window.location = '/events.html'
-      }
+    e.preventDefault()
+    const res = await fetch("/api/v1/logout")
+    if (res.status === 200) {
+      window.location = '/events.html'
+    }
   })
 }

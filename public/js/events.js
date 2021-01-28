@@ -1,6 +1,6 @@
 window.onload = async () => {
     loadAndDisplayEvents()
-    showCreateEventBtnChecking()//error here
+    showCreateEventBtnChecking()
     showProfileNavbar()
     logOut()
     checkRatingRemember()
@@ -87,9 +87,15 @@ async function hard() {
 async function showProfileNavbar() {
     const res = await fetch("/api/v1/userLoggedIn")
     const data = await res.json()
+    console.log(data)
 
     if (data !== 'noLogin') {
         document.getElementById('hidden-propfile').innerHTML = '<a href="./userProfileSelf.html">My profile</a>';
+        document.getElementById('logout').innerHTML = '<a href="">Logout</a>'
+        document.getElementById('show-username').innerHTML = '<a id="username" onclick="shownotice()">notice</a>'
+
+    } else {
+        document.getElementById('login').innerHTML = '<a href="/login.html">Login/Sign up</a>'
     }
 }
 
@@ -124,3 +130,14 @@ async function checkRatingRemember(){
         console.log(event_id)
     }
 }
+
+
+
+
+async function weatherApi() {
+    const api = await fetch("https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=en")
+    const data = await api.json()
+    console.log(data)
+
+}
+weatherApi()

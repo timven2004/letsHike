@@ -77,30 +77,27 @@ users.get("/userProfile/:id", async (req, res) => {
             sumRating += comment['single_rating'];
         }
         let avgRating = Math.round(sumRating * 10 / (data.rows[0]["comments"].length)) / 10;
-        console.log(avgRating);
+        // console.log(avgRating);
         let update = await client.query(`
                 UPDATE users
                 SET rating=$1
-                WHERE users.id = $2
-            `, [avgRating, req.params.id])
-        console.log(update)
+                WHERE users.id = $2;
+            `, [avgRating, req.params.id]);
+        update;
         data.rows[0]["rating"] = avgRating;
         if (!data.rows[0].user_icon) {
             data.rows[0].user_icon = `blank-profile-picture-973460_640.png`
         }
         res.render("./userProfile.ejs", { transferred: data.rows[0] });
-        console.log(data.rows[0])
+        // console.log(data.rows[0])
     } catch (err) {
         console.error(err.message)
         res.status(500).json({ message: "Internal server error" })
     }
-
-
 })
 
 
 users.get("/api/v1/userProfile/self", checkSession, async (req, res) => {
-
     try {
         let data = await client.query<User>(
             `SELECT * 
@@ -128,24 +125,25 @@ users.get("/api/v1/userProfile/self", checkSession, async (req, res) => {
 
         data.rows[0]["comments"] = comments.rows;
         let sumRating = 0;
-        console.log(data.rows[0].comments)
+        // console.log(data.rows[0].comments)
         for (let comment of data.rows[0].comments) {
             sumRating += comment['single_rating'];
         }
         let avgRating = Math.round(sumRating * 10 / (data.rows[0]["comments"].length)) / 10;
-        console.log(avgRating);
+        // console.log(avgRating);
         let update = await client.query(`
             UPDATE users
             SET rating=$1
             WHERE users.id = $2
         `, [avgRating, req.session["user_id"]])
+        update;
 
-        console.log(update);
+        // console.log(update);
         data.rows[0]["rating"] = avgRating;
         if (!data.rows[0].user_icon) {
             data.rows[0].user_icon = `blank-profile-picture-973460_640.png`
         }
-        console.log(data.rows[0].user_icon)
+        // console.log(data.rows[0].user_icon)
 
         res.json(data.rows[0]);
 
@@ -158,7 +156,7 @@ users.get("/api/v1/userProfile/self", checkSession, async (req, res) => {
 users.get("/api/v1/getUserData", async (req, res) => {
     try {
         const user_id = req.session["user_id"]
-        if(!user_id){
+        if (!user_id) {
             res.json("don't login")
             return
         }
@@ -238,3 +236,27 @@ users.get("/users/checkUserIsOrganizer/:id", async (req, res) => {
 })
 
 
+// //updateLevel   //POST?
+users.get("/users/updateLevel", async (req, res) => {
+    if(req.session["user_id"]){
+        const id = req.session["user_id"]
+        const getExp = await client.query(`
+            SELECT experience FROM users WHERE id = $1
+            `, [id])
+        const exp = getExp.rows[0].experience
+    
+        if (exp % 10 === 0) {
+            const x = exp/10
+            const getLevel = await client.query(`
+            SELECT level FROM users WHERE id = $1
+            `, [id])
+            const level = getLevel.rows[0].level
+    
+            let curlevel = level + x
+    
+            await client.query(`
+                UPDATE users SET LEVEL = $1 WHERE id = $2
+                `, [curlevel, id])
+        }
+    }
+})

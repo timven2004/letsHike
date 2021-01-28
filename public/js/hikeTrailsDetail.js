@@ -22,17 +22,32 @@ window.onload = async () => {
         trailImg1.setAttribute("src",`/assets/9WalkingTrails/${details[0].image}`)
         hardness.innerHTML = details[0].hardness;
         trailDescriptionLonger.innerHTML = details[0].introduction;
+
+        showProfileNavbar()
+        logOut()
     }
 
     catch (e) {
         console.log(e)
     }
 
-    logOut()
 }
 
 
-//Logout function
+
+//NavBar
+async function showProfileNavbar() {
+    const res = await fetch("/api/v1/userLoggedIn")
+    const data = await res.json()
+
+    if (data !== 'noLogin') {
+        document.getElementById('hidden-propfile').innerHTML = '<a href="./userProfileSelf.html">My profile</a>';
+        document.getElementById('logout').innerHTML = '<a href="">Logout</a>'
+    } else {
+        document.getElementById('login').innerHTML = '<a href="/login.html">Login/Sign up</a>'
+    }
+}
+
 function logOut() {
     const logOut = document.getElementById('logout')
     logOut.addEventListener("click", async (e) => {
