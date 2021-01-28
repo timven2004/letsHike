@@ -9,6 +9,8 @@ const email = document.querySelector("#email");
 const gender = document.querySelector("#gender");
 const experience = document.querySelector("#experience");
 const commentCardsHolder = document.querySelector(".commentCardsHolder")
+const notYetRateCardsHolder = document.querySelector(".notYetRateCardsHolder")
+
 
 window.onload = async () => {
 
@@ -20,14 +22,44 @@ window.onload = async () => {
     }
   })
 
-  response.json().then(result => {
+  const notYetRate = await fetch(`/ratingOthers/checkRatingRememberUserProfile`,{
+    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    }
+  })
+
+  let rateString = "";
+
+
+  notYetRate.json().then(result =>{
     console.log(result);
 
-    if(result.rating=="NaN"){result.rating="N/A"}
+  for (notYetRatedEvent of result[0]){
+    console.log(notYetRatedEvent)
+    rateString = rateString + 
+  `<div class="card" style="width: 20rem;">
+  <div class="card-body">
+  <h5 class="card-title"> <a href="/ratingOthers.html?eventId=${notYetRatedEvent.id}"> ${notYetRatedEvent.event_name} </a></h5>
+  <h6 class="card-subtitle mb-2 text-muted">by <a href=userProfile/${notYetRatedEvent.organizer}>${notYetRatedEvent.user_name}</a> <span
+          id="date">${new Date(notYetRatedEvent.date).toLocaleDateString()}</span></h6>
+  <p class="card-text" >${notYetRatedEvent.detail}</p>
+  </div>
+</div>`};
+
+notYetRateCardsHolder.innerHTML = rateString;
+})
+
+
+
+  response.json().then(result => {
+
+    if(isNaN(result.rating)||result.rating==null){result.rating="N/A"}
 
     profilePic.setAttribute("src", `../${(result).user_icon}`);
     username.innerHTML = (result).user_name;
-    rating.innerHTML = `Rating: ${result.rating}/5.0`
+    rating.innerHTML = `Rating: ${result.rating} ${result.rating=="N/A"?"":"/5.0"}`
     level.innerHTML = "Skills Level: " + result.level;
     email.innerHTML = "Email: " + result.email;
     gender.innerHTML = "Gender: " + result.gender;
