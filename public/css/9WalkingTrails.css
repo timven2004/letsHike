@@ -42,7 +42,7 @@ body {
   position: relative;
 }
 
-.viewer {
+.viewerBigScreen {
   width: 100vw;
   overflow: hidden;
   position: absolute;
@@ -96,6 +96,12 @@ body {
   box-shadow: 5px 5px 10px #000000;
 }
 
+.imgMobile{
+  object-fit: cover;
+  box-shadow: 5px 5px 10px #000000;
+  position:relative;
+}
+
 .imgAnchor:hover .img {
   filter: brightness(70%);
   transition: 0.5s ease-in-out;
@@ -122,6 +128,10 @@ body {
   color: white;
 }
 
+.viewerSmallScreen{
+  display: none;
+}
+
 @keyframes moveInFromLeft {
   0% {
     transform: translateX(-500px);
@@ -144,4 +154,56 @@ body {
     transform: translateX(0px);
     opacity: 1;
   }
+}
+
+@media only screen and (max-width:800px){
+
+.viewerBigScreen {
+  display:none;}
+  
+  .page{
+    width: 100%;
+  }
+
+.viewerSmallScreen{
+  display:block;
+  width:100vw;
+
+}
+  
+*{
+  max-width: 100vw !important;
+  box-sizing: border-box;
+}
+
+.intro{
+  opacity: 100%;
+  z-index: 99;
+  position:absolute;
+  bottom:9px;
+  left:5px;
+  font-size:1.3rem;
+  background-color: rgba(0,0,0,0.3);
+  right:5px;
+}
+
+.imgMobile{
+  width: 100%;
+  height: 33vh;
+  margin:0;
+  border: 5px solid deepskyblue;
+}
+
+a{
+  margin:-5px;
+  position: relative;
+}
+
+.containerMobile{
+  top:56px;
+  display:flex;
+  flex-flow: column;
+  align-items: center;
+}
+
 }

@@ -13,7 +13,7 @@
     <div class="container">
         <div class="form-wrapper">
         <h1>ADMIN LOGIN</h1>
-        <form id="login-form">
+        <form id="login-form" action="/user/adminlogin" method="POST">
             <div class="input-field col s6">
                 <input id="name" type="text" class="validate" name="name" required>
                 <label class="active" for="name">Name</label>
@@ -25,12 +25,6 @@
             <p id="message">hi</p>
             <div class="align-center">
                 <input class="button" type="submit" value="submit">
-            </div>
-            <div class="align-center">
-                <div class="redirect">
-                    <h8>Not registered? |</h8>
-                    <a href="/register.html">Create an account</a>
-                </div>
             </div>
         </form>
         </div>
