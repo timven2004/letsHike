@@ -46,32 +46,32 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
             , [eventId])
 
 
-            let allParticipants = [];
+        let allParticipants = [];
 
-            for (let pairs of organizerAndParticipants.rows){
-                allParticipants.push(pairs["users_id"])
-            }
-            
-            if (allParticipants.indexOf(userId) == -1){
-                res.render("somethingWentWrong.ejs", {message: "You are not a participant for this event!"})
-                return
-            }
+        for (let pairs of organizerAndParticipants.rows) {
+            allParticipants.push(pairs["users_id"])
+        }
+
+        if (allParticipants.indexOf(userId) == -1) {
+            res.render("somethingWentWrong.ejs", { message: "You are not a participant for this event!" })
+            return
+        }
 
 
         let organizer1 = organizerAndParticipants.rows[0].organizer
 
-            if(organizer1==userId){
-                res.render("somethingWentWrong.ejs", {message: "You can't rate yourself!"});
-                return
-            }
+        if (organizer1 == userId) {
+            res.render("somethingWentWrong.ejs", { message: "You can't rate yourself!" });
+            return
+        }
 
         let checkingIfRepeatedRating = await client.query(
             `SELECT * FROM rating_event
         WHERE rating_event.event_id = $1 and rating_event.users_id =$2`,
             [eventId, userId]
         );
-        
-        
+
+
         // console.log(checkingIfRepeatedRating)
 
         if (!checkingIfRepeatedRating.rows[0]) {
@@ -79,41 +79,41 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
             let checkOrganizerIfAddedExp = await client.query(
                 `SELECT users_id FROM rating_event
                 Where event_id=$1
-                `,[eventId]
+                `, [eventId]
             )
 
 
             let response = await client.query(
                 `INSERT INTO rating_event(users_id, event_id,rating_person_id,single_rating,comment) VALUES ($1,$2, $3, $4,$5)`, [userId, eventId, organizer1, parseInt(data.rating), data.comment]);
-                
-            
+
+
 
             let retrieveHardness = await client.query(
                 `SELECT hardness FROM hiking_trail
                 JOIN event
                 ON event.hiking_trail_id = hiking_trail.id
                 WHERE event.id=$1;
-                `,[eventId]
+                `, [eventId]
             )
 
-            if (!checkOrganizerIfAddedExp.rows[0]){
+            if (!checkOrganizerIfAddedExp.rows[0]) {
                 await client.query(`
                 UPDATE users
                 SET experience = experience + $1
                 WHERE users.id = $2;
-                `,[retrieveHardness.rows[0].hardness, organizer1])
+                `, [retrieveHardness.rows[0].hardness, organizer1])
             }
 
 
-                let addExp = await client.query(`
+            let addExp = await client.query(`
                 UPDATE users
                 SET experience = experience + $1
                 WHERE users.id = $2;
-                `,[retrieveHardness.rows[0].hardness, userId])
+                `, [retrieveHardness.rows[0].hardness, userId])
 
             response;
             addExp;
-            
+
             res.redirect(`/userProfile/${organizer1}`)
         }
 
@@ -130,8 +130,8 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
 ratingOthers.get("/ratingOthers/checkRatingRemember", async (req, res) => {
     const user_id = req.session["user_id"]
     let eventId: { id: Number }[] = []
-    if(!user_id){
-        res.json({message:"Don't Login"})
+    if (!user_id) {
+        res.json({ message: "Don't Login" })
         return
     }
     // Get eventUserJoining
@@ -150,9 +150,26 @@ ratingOthers.get("/ratingOthers/checkRatingRemember", async (req, res) => {
             WHERE users_id = $1 
             AND event_id = $2
         `, [user_id, event_id])
-        if(res.rows){
+        if (res.rows) {
             eventId.push(event)
         }
     }
     res.json(eventId)
+})
+
+ratingOthers.put("/neverShowRemember/:id", async (req, res) => {
+    try {
+        const event_id = req.params.id
+        const user_id = req.session["user_id"]
+        await client.query(`
+            UPDATE user_joining_event 
+            SET auto_rating_msg = false 
+            WHERE users_id = $1 
+            AND event_id =$2
+        `, [user_id, event_id])
+        res.json("ok")
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).json({message:"Internal server error"})
+    }
 })

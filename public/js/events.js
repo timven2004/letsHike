@@ -120,15 +120,33 @@ async function showCreateEventBtnChecking() {
     }
 }
 
-async function checkRatingRemember(){
+async function checkRatingRemember() {
     const data = await fetch("/ratingOthers/checkRatingRemember")
-    const events_id = await data.json()
-    if(events_id.message==="Don't Login"){
+    const events = await data.json()
+    if (events.message === "Don't Login") {
         return
     }
-    for(const event_id of events_id){
-        console.log(event_id)
+    for (const event of events) {
+        console.log(event)
+        const remember = document.getElementById("remember")
+        remember.innerHTML += `
+            <div id="${event.id}">
+                <a href="ratingOthers.html?eventId=${event.id}"></a>
+                <a onclick="neverShowRemember(${event.id})">Never Show</a>
+            </div>
+        `
     }
+}
+
+async function neverShowRemember(event_id) {
+    const res = await fetch(`/neverShowRemember/${event_id}`,{
+        method:"PUT"
+    })
+    if(res.status!==200){
+        console.log("???")
+        return
+    }
+    document.getElementById(event_id).innerHTML = ""
 }
 
 
