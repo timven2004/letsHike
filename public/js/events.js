@@ -95,7 +95,7 @@ async function showProfileNavbar() {
         document.getElementById('show-username').innerHTML = '<a id="username" onclick="shownotice()">notice</a>'
 
     } else {
-        document.getElementById('login').innerHTML = '<a href="/login.html">Login/Sign up</a>'
+        document.getElementById('login').innerHTML = '<a href="/login.html">Login</a>'
     }
 }
 
@@ -139,10 +139,10 @@ async function checkRatingRemember() {
 }
 
 async function neverShowRemember(event_id) {
-    const res = await fetch(`/neverShowRemember/${event_id}`,{
-        method:"PUT"
+    const res = await fetch(`/neverShowRemember/${event_id}`, {
+        method: "PUT"
     })
-    if(res.status!==200){
+    if (res.status !== 200) {
         console.log("???")
         return
     }
@@ -156,6 +156,8 @@ async function weatherApi() {
     const api = await fetch("https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=en")
     const data = await api.json()
     console.log(data)
+
+
 
 }
 weatherApi()

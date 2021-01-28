@@ -8,7 +8,7 @@
 nav {
   position: absolute;
   width: 80%;
-  left: -40px;
+  /* left: -40px; */
 }
 
 .wrapper {
@@ -139,13 +139,13 @@ nav {
 }
 
 .pointsCardTitle {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: white;
 }
 
 .pointsCardDescription {
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .pointsCardText {
@@ -177,6 +177,51 @@ nav {
 
   #trailImg1{
     border-radius: 0% !important;
+    max-width: 100vw;
+  }
+
+  .trailImage{
+    max-width: 100vw;
+    height: 100vw;
+  }
+
+  .container{
+    padding-top: 30px;
+  }
+
+  #nav{
+    max-width:100vw;
+    /* left:0px;
+    margin: 0%; */
+  }
+
+  .topMain {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+  }
+
+  .section2 {
+    position: relative;
+    height: auto;
+    margin-bottom: 50px;
+  }
+  
+  .block{
+  }
+
+
+  .pointsCard {
+    background-color: #fe4323;
+    height: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
   }
 
 }

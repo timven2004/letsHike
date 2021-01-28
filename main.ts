@@ -49,7 +49,7 @@ io.on('connection', (socket) => {
     socket.on('newMessage', async (data: string) => {
         const newMessageID = parseInt(data)
         const newMessage = await client.query(`
-            SELECT * FROM chatroom WHERE id = $1
+        SELECT * FROM chatroom INNER JOIN users ON users_id = users.id WHERE chatroom.id = $1
         `, [newMessageID])
         const content = newMessage.rows[0]
         io.emit("newMessage", content)
