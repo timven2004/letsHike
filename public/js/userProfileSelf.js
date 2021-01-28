@@ -38,8 +38,8 @@ window.onload = async () => {
         `<div class="card" style="width: 20rem;">
         <div class="card-body">
         <h5 class="card-title">${element.single_rating}/5</h5>
-        <h6 class="card-subtitle mb-2 text-muted">by ${element.user_name} <span
-                id="date">${new Date(element.date).toLocaleDateString()}</span></h6>
+        <h6 class="card-subtitle mb-2 text-muted">by <a href="/userProfile/${element.users_id}">${element.user_name} <span
+                id="date"></a>${new Date(element.date).toLocaleDateString()}</span></h6>
         <p class="card-text" >${element.comment}</p>
         </div>
       </div>`

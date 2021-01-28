@@ -22,6 +22,11 @@ body {
   font-family: 'Abel', sans-serif;
 }
 
+a{
+  text-decoration: none;
+
+}
+
 .profilePic {
   border-radius: 50%;
   width: 100%;

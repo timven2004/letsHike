@@ -34,7 +34,7 @@ async function loadAndDisplayEvent() {
                 <h5>Date: ${data.date}</h5>
                 <h5>Time: ${data.time}</h5>
                 <h5>Max number of member: ${data.max_number_of_member}</h5>
-                <h5>Joining number of member:${data.joining_number_of_member} </h5>
+                <h5 id="joinNumber">Joining number of member:${data.joining_number_of_member} </h5>
                 <br>
                 <p>Details: ${data.detail}</p>
             </div>
@@ -135,39 +135,87 @@ async function getChatroomMessage() {
 }
 
 async function userJoinEvent() {
-    // Check organizer
-    const res = await fetch("/checkEventOrganizer")
-    const result = await res.json()
-    console.log(result)
-    if (result === true) {
-        document.querySelector("div.join").innerHTML = ""
-        return
+    const paramString = window.location.search
+    const searchParams = new URLSearchParams(paramString)
+    const event_id = searchParams.get("id")
+    const join = document.querySelector("div.join > a")
+
+    // User leave function
+    const userLeave = async (event) => {
+        console.log("userLeave")
+        event.preventDefault()
+        const resOfUserLeave = await fetch(`/userLeaveEvent/${event_id}`, {
+            method: "DELETE"
+        })
+        if (resOfUserLeave.status === 200) {
+            join.innerHTML = "JOIN NOW"
+            join.removeEventListener("click", userLeave)
+            join.addEventListener("click", userJoin)
+            updateJoiningNumber()
+            userJoiningEventData()
+        }
     }
 
-    // Join event
-    const join = document.querySelector("div.join > a")
-    join.addEventListener("click", async (event) => {
+    // User Join function
+    const userJoin = async (event) => {
+        console.log("userJoin")
         event.preventDefault()
         const paramString = window.location.search
         const searchParams = new URLSearchParams(paramString)
         const event_id = searchParams.get("id")
-        const res = await fetch("/userJoinEvent", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ "event_id": event_id })
-        })
+        const res = await fetch(`/userJoinEvent/${event_id}`)
         const result = await res.json()
         // User don't login
         if (res.status === 400) {
-            console.log("hi")
             window.location.assign("http://localhost:8080/login.html")
         }
+        join.innerHTML = "leave"
+        join.removeEventListener("click", userJoin)
+        join.addEventListener("click", userLeave)
+        updateJoiningNumber()
+        userJoiningEventData()
+    }
 
-        const joinResult = document.getElementById("joinResult")
-        joinResult.innerText = result
-    })
+    // Check organizer
+    checkOrganizer()
+    async function checkOrganizer(){
+        const res = await fetch("/checkEventOrganizer")
+        const result = await res.json()
+        console.log(result)
+        if (result === true) {
+            document.querySelector("div.join").innerHTML = ""
+            return
+        }
+    }
+
+    // Check user have been join
+    checkUserJoin()
+    async function checkUserJoin() {
+        const res = await fetch(`/checkUserHaveBeenJoin/${event_id}`)
+        const result = await res.json()
+        if (result === "don't login") {
+            // console.log("don't login")
+        }
+        // User leave
+        if (result && res.status === 200 && result !== "don't login") {
+            // console.log("userJoin")
+            join.innerHTML = "leave"
+            join.addEventListener("click", userLeave)
+            return
+        } else {
+            // Join event
+            // console.log("userNotJoin")
+            join.innerHTML = "JOIN NOW"
+            join.addEventListener("click", userJoin)
+        }
+    }
+
+    async function updateJoiningNumber(){
+        const joinNumber = document.getElementById("joinNumber")
+        const data = await fetch(`/getJoiningNumber/${event_id}`)
+        const numberOfJoining = await data.json()
+        joinNumber.innerHTML = `Joining number of member:${numberOfJoining} `
+    }
 }
 
 function getNewChatroomMessage() {
