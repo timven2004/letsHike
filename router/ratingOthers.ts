@@ -101,13 +101,6 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
                 UPDATE users
                 SET experience = experience + $1
                 WHERE users.id = $2;
-<<<<<<< HEAD
-                `, [retrieveHardness.rows[0].hardness, organizer1])
-            }
-
-
-            let addExp = await client.query(`
-=======
                 `,[retrieveHardness.rows[0].hardness, organizer1])
 
                 let organizerExp= await client.query(`
@@ -126,17 +119,11 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
 
 
             await client.query(`
->>>>>>> a26f564412e956dc5669d507d5766fb201b6ef19
                 UPDATE users
                 SET experience = experience + $1
                 WHERE users.id = $2;
                 `, [retrieveHardness.rows[0].hardness, userId])
 
-<<<<<<< HEAD
-            response;
-            addExp;
-
-=======
                 let userExp= await client.query(`
                 SELECT experience FROM users
                 WHERE users.id = $1
@@ -152,7 +139,6 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
 
 
                 
->>>>>>> a26f564412e956dc5669d507d5766fb201b6ef19
             res.redirect(`/userProfile/${organizer1}`)
         }
 
