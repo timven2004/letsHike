@@ -106,8 +106,11 @@ function addChatroomMessage() {
             body: formData
         })
         let result = await res.json()
-        if (res.status === 200) {
+        console.log(result)
+        if (res.status === 200 && result !== 'no login' ) {
             socket.emit("newMessage", `${result}`)
+        } else if (result === 'no login' ){
+            window.location = '/login.html'
         }
     })
 }
@@ -178,7 +181,7 @@ async function userJoinEvent() {
 
     // Check organizer
     checkOrganizer()
-    async function checkOrganizer(){
+    async function checkOrganizer() {
         const res = await fetch("/checkEventOrganizer")
         const result = await res.json()
         console.log(result)
@@ -210,7 +213,7 @@ async function userJoinEvent() {
         }
     }
 
-    async function updateJoiningNumber(){
+    async function updateJoiningNumber() {
         const joinNumber = document.getElementById("joinNumber")
         const data = await fetch(`/getJoiningNumber/${event_id}`)
         const numberOfJoining = await data.json()

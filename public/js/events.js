@@ -127,7 +127,7 @@ async function checkRatingRemember() {
         return
     }
     for (const event of events) {
-        console.log(event)
+        // console.log(event)
         const remember = document.getElementById("remember")
         remember.innerHTML += `
             <div id="${event.id}">
