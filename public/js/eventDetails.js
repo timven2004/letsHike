@@ -237,12 +237,14 @@ function getNewChatroomMessage() {
 async function showProfileNavbar() {
     const res = await fetch("/api/v1/userLoggedIn")
     const data = await res.json()
+    console.log(data)
 
     if (data !== 'noLogin') {
         document.getElementById('hidden-propfile').innerHTML = '<a href="./userProfileSelf.html">My profile</a>';
         document.getElementById('logout').innerHTML = '<a href="">Logout</a>'
+
     } else {
-        document.getElementById('login').innerHTML = '<a href="/login.html">Login/Sign up</a>'
+        document.getElementById('login').innerHTML = '<a href="/login.html">Login</a>'
     }
 }
 
