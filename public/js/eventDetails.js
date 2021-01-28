@@ -152,6 +152,7 @@ async function userJoinEvent() {
             join.removeEventListener("click", userLeave)
             join.addEventListener("click", userJoin)
             updateJoiningNumber()
+            userJoiningEventData()
         }
     }
 
@@ -172,6 +173,7 @@ async function userJoinEvent() {
         join.removeEventListener("click", userJoin)
         join.addEventListener("click", userLeave)
         updateJoiningNumber()
+        userJoiningEventData()
     }
 
     // Check organizer
