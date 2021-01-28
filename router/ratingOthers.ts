@@ -101,20 +101,20 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
                 UPDATE users
                 SET experience = experience + $1
                 WHERE users.id = $2;
-                `,[retrieveHardness.rows[0].hardness, organizer1])
+                `, [retrieveHardness.rows[0].hardness, organizer1])
 
-                let organizerExp= await client.query(`
+                let organizerExp = await client.query(`
                 SELECT experience FROM users
                 WHERE users.id = $1
                 `, [organizer1])
 
-                let newLevel = Math.floor(organizerExp.rows[0].experience/10);
+                let newLevel = Math.floor(organizerExp.rows[0].experience / 10);
 
                 await client.query(`
                 UPDATE users
                 SET level = $1
                 WHERE users.id = $2
-                `,[newLevel, organizer1])
+                `, [newLevel, organizer1])
             }
 
 
@@ -124,21 +124,21 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
                 WHERE users.id = $2;
                 `, [retrieveHardness.rows[0].hardness, userId])
 
-                let userExp= await client.query(`
+            let userExp = await client.query(`
                 SELECT experience FROM users
                 WHERE users.id = $1
                 `, [userId])
 
-                let newLevel = Math.floor(userExp.rows[0].experience/10);
+            let newLevel = Math.floor(userExp.rows[0].experience / 10);
 
-                await client.query(`
+            await client.query(`
                 UPDATE users
                 SET level = $1
                 WHERE users.id = $2
-                `,[newLevel, userId])
+                `, [newLevel, userId])
 
 
-                
+
             res.redirect(`/userProfile/${organizer1}`)
         }
 
@@ -182,6 +182,49 @@ ratingOthers.get("/ratingOthers/checkRatingRemember", async (req, res) => {
     res.json(eventId)
 })
 
+ratingOthers.get("/ratingOthers/checkRatingRememberUserProfile", async (req, res) => {
+
+    try{    
+    const user_id = req.session["user_id"]
+    const eventsUserJoined = await client.query(`
+    SELECT user_joining_event.event_id
+    FROM user_joining_event
+    WHERE user_joining_event.users_id = $1 
+    `, [user_id]);
+
+
+    console.log(`${eventsUserJoined.rows}`)
+    let checking = []
+
+    for (let entry of eventsUserJoined.rows) {
+        let temp = {}
+        if (!temp[entry.event_id]){
+            temp[entry.event_id]=[]
+        }
+
+
+        const comments = await client.query(`
+        SELECT users_id 
+        FROM rating_event
+        WHERE event_id = $1
+        `, [entry.event_id])
+
+        for (let comment of comments.rows){
+            temp[entry.event_id].push(comment.users_id)
+            console.log(comment.users_id)
+        }
+        checking.push(temp)
+    }
+
+    console.log(checking)
+
+
+    }
+ catch (e){console.log(e)}
+
+})
+
+
 ratingOthers.put("/neverShowRemember/:id", async (req, res) => {
     try {
         const event_id = req.params.id
@@ -195,6 +238,6 @@ ratingOthers.put("/neverShowRemember/:id", async (req, res) => {
         res.json("ok")
     } catch (err) {
         console.error(err.message)
-        res.status(500).json({message:"Internal server error"})
+        res.status(500).json({ message: "Internal server error" })
     }
 })
