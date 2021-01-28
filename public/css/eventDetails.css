@@ -176,3 +176,32 @@ textarea {
   text-align: center;
 }
 
+
+@media only screen and (max-width: 480px) {
+  #eventDetails-wrapper {
+    padding-top: 150px;
+    justify-content: center;
+  }
+  
+  #eventDetails-wrapper > .row{
+    margin-left: 30px;
+  }
+
+  #eventDetails-wrapper img {
+    width: 90%;
+    height: 200px;
+    object-fit: cover;
+    left: 20px;
+  }
+  
+  #eventDetails-wrapper h1 {
+    font-size: 25px;
+    right: 50px;
+  }
+
+  .detail-img{
+    object-fit: cover;
+    left: 30px;
+  }
+
+}

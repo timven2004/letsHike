@@ -61,7 +61,7 @@ p {
   padding: 2px;
 }
 
-.button {
+.button, #back{
   background: var(--secondary);
   color: var(--primary);
   padding: 15px 20px;
@@ -89,6 +89,10 @@ p {
 #user_icon {
   height: 200px;
   width: 200px;
+}
+
+#back{
+  background: #fff;
 }
 
 @media only screen and (max-width: 480px) {

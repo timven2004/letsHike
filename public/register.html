@@ -33,15 +33,13 @@
             <input id="gender" type="text" class="validate" name="gender" required>
             <label class="active" for="gender">Gender</label>
           </div>
-          
-          <!-- Select format
-          <div class="input-field col s6">
+  
+          <!-- <div class="input-field col s6">
             <select id="gender">
-              <option value=""  selected></option>
               <option value="M">M</option>
               <option value="F">F</option>
             </select>
-            <label>Choose a trail</label>
+            <label>Gender</label>
           </div> -->
 
           <div class="input-field col s6">
@@ -59,12 +57,20 @@
             <div class="redirect">
               <h8>Already have an account? |</h8>
               <a href="/login.html">Login</a>
+            </div>
           </div>
-          </div>
+          <div class="align-center">
+            <button id="back" onclick="goBack()">back</button>
+        </div>
         </form>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/register.js"></script>
+    <script>
+      function goBack() {
+          window.history.back();
+      }
+  </script>
 </body>
 </html>
