@@ -178,7 +178,7 @@ body {
 
 .intro{
   opacity: 100%;
-  z-index: 99;
+  z-index: 1;
   position:absolute;
   bottom:9px;
   left:5px;
@@ -195,7 +195,7 @@ body {
 }
 
 a{
-  margin:-5px;
+  margin:-5px 0px;
   position: relative;
 }
 
