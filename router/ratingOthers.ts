@@ -75,6 +75,14 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
         // console.log(checkingIfRepeatedRating)
 
         if (!checkingIfRepeatedRating.rows[0]) {
+
+            let checkOrganizerIfAddedExp = await client.query(
+                `SELECT users_id FROM rating_event
+                Where event_id=$1
+                `,[eventId]
+            )
+
+
             let response = await client.query(
                 `INSERT INTO rating_event(users_id, event_id,rating_person_id,single_rating,comment) VALUES ($1,$2, $3, $4,$5)`, [userId, eventId, organizer1, parseInt(data.rating), data.comment]);
                 
@@ -88,7 +96,15 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
                 `,[eventId]
             )
 
-            console.log(retrieveHardness.rows[0].hardness);
+            if (!checkOrganizerIfAddedExp.rows[0]){
+                await client.query(`
+                UPDATE users
+                SET experience = experience + $1
+                WHERE users.id = $2;
+                `,[retrieveHardness.rows[0].hardness, organizer1])
+            }
+
+
                 let addExp = await client.query(`
                 UPDATE users
                 SET experience = experience + $1
