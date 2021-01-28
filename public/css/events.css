@@ -175,4 +175,10 @@ nav {
     font-size: 40px;
     justify-content: center;
   }
+
+  .hero a {
+    width: 170px;
+    font-size: 30px;
+    justify-content: center;
+  }
 }
