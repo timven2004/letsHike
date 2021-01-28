@@ -23,7 +23,6 @@ async function loadAndDisplayEvent() {
         <div class="row">
             <div class="col-12">
                 <h1>${data.event_name}</h1>
-                <img src="${data.image}" alt="">
             </div>
         </div>
         <div id="event-detail-form">
@@ -70,6 +69,7 @@ async function userJoiningEventData() {
     for (const joiningMember of data) {
         joiningMemberStr += `
         <div class="col-12">
+        <h4>Joined member:</h4>
             <p>${joiningMember.user_name}</p>
         </div>`
     }
@@ -173,11 +173,14 @@ async function userJoinEvent() {
 function getNewChatroomMessage() {
     const socket = io.connect()
     socket.on("newMessage", data => {
+        const msgDate = moment(data.date).format('YYYY-MM-DD h:mm:ss a');
         const showComments = document.querySelector(".show-comment")
         showComments.innerHTML += `
-            <div class="col-12 col-md-10 comment">
-                <p>${data.content}</p>
-            </div>
+        <div class="col-12 col-md-10 comment">
+            <a href="/userProfileSelf.html">${data.user_name}:</a>
+            <p>${data.content}</p>
+            <p>${msgDate}</p>
+        </div>
         `
     })
 }

@@ -139,5 +139,7 @@ async function weatherApi() {
     const data = await api.json()
     console.log(data)
 
+    
+
 }
 weatherApi()

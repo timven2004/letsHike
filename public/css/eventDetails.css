@@ -45,7 +45,7 @@ h2 {
 }
 
 #eventDetails-wrapper {
-  padding-top: 100px;
+  padding-top: 200px;
 }
 
 #eventDetails-wrapper img {
@@ -56,12 +56,11 @@ h2 {
 
 #eventDetails-wrapper h1 {
   font-family: 'Monument Extended', sans-serif;
-  font-size: 60px;
-  z-index: 2;
-  color: #fff;
+  font-size: 40px;
+  color: #000;
   position: absolute;
-  right: 10%;
   top: 60%;
+  text-align: center;
 }
 
 #event-detail-form {
@@ -83,7 +82,7 @@ h2 {
   width: 300px;
   height: 300px;
   background: grey;
-  margin-bottom: 50px;
+  margin-top: 70px;
 }
 
 .join {
@@ -159,13 +158,14 @@ textarea {
   width: 100%;
 }
 
-.edit-button{
+.edit-button {
   position: absolute;
   right: 0;
-  margin: 20px;
+  margin: 100px 20px;
 }
 
-.edit-button a, button {
+.edit-button a,
+button {
   padding: 10px 20px;
   background: var(--pink);
   color: var(--primary);
@@ -176,14 +176,24 @@ textarea {
   text-align: center;
 }
 
+.event-wrapper {
+  background: #fff;
+}
+
+#joiningMember {
+  text-align: center;
+  width: 100%;
+  /* background: #fff;; */
+  margin: 0 auto;
+}
 
 @media only screen and (max-width: 480px) {
   #eventDetails-wrapper {
     padding-top: 150px;
     justify-content: center;
   }
-  
-  #eventDetails-wrapper > .row{
+
+  #eventDetails-wrapper > .row {
     margin-left: 30px;
   }
 
@@ -193,15 +203,14 @@ textarea {
     object-fit: cover;
     left: 20px;
   }
-  
+
   #eventDetails-wrapper h1 {
     font-size: 25px;
     right: 50px;
   }
 
-  .detail-img{
+  .detail-img {
     object-fit: cover;
     left: 30px;
   }
-
 }
