@@ -4,6 +4,7 @@ import { Event } from '../class/database'
 import moment from 'moment';
 import { checkSession } from "./middleware"
 
+
 export const events = express.Router()
 
 //events
@@ -26,7 +27,8 @@ events.get("/events/eventDetails/:id", async (req, res) => {
     try {
         const id = parseInt(req.params.id)
         const data = await client.query(`
-        SELECT * FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
+        SELECT * FROM event INNER JOIN users ON organizer = users.id
+        INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
         INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id WHERE event.id = $1
         `, [id])
         const eventData = data.rows[0]
@@ -221,7 +223,7 @@ events.get("/getJoiningNumber/:id", async (req, res) => {
     const event_id = req.params.id
     const joiningNumber = (await client.query(`
         SELECT joining_number_of_member FROM event WHERE id = $1
-    `,[event_id])).rows[0].joining_number_of_member
+    `, [event_id])).rows[0].joining_number_of_member
     res.json(joiningNumber)
 })
 

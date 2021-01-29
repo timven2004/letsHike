@@ -28,7 +28,7 @@ async function easy() {
     const res = await fetch('/events')
     const data = await res.json()
 
-    const a = data.filter(trail => trail.hardness < 3)
+    const a = data.filter(trail => trail.hardness <=3)
 
     let hardeventsStr = ``
     for (const event of a) {
@@ -47,7 +47,7 @@ async function medium() {
     const res = await fetch('/events')
     const data = await res.json()
 
-    const a = data.filter(trail => trail.hardness == 3)
+    const a = data.filter(trail => trail.hardness > 3 && trail.hardness < 7)
 
     let hardeventsStr = ``
     for (const event of a) {
@@ -67,7 +67,7 @@ async function hard() {
     const res = await fetch('/events')
     const data = await res.json()
 
-    const a = data.filter(trail => trail.hardness > 3)
+    const a = data.filter(trail => trail.hardness > 6)
 
     let hardeventsStr = ``
     for (const event of a) {
