@@ -132,7 +132,7 @@ async function getChatroomMessage() {
         if(user_id !== create_id){
             showComments.innerHTML += `
                 <div class="col-12 col-md-10 comment">
-                    <a href="/userProfileSelf.html">${data.user_name}:</a>
+                    <a href="/userProfile/${create_id}">${data.user_name}:</a>
                     <p>${data.content}</p>
                     <p>${msgDate}</p>
                 </div>
@@ -140,7 +140,7 @@ async function getChatroomMessage() {
         }else{
             showComments.innerHTML += `
                 <div class="col-12 col-md-10 comment" id="chatmsg${newMessageID}">
-                    <a href="/userProfileSelf.html">${data.user_name}:</a>
+                    <a href="/userProfile/${create_id}">${data.user_name}:</a>
                     <p>${data.content}</p>
                     <p>${msgDate}</p>
                     <a onclick="deleteChatroomMessage(${newMessageID})">-Delete-</a>
@@ -162,7 +162,7 @@ async function getNewChatroomMessage() {
         if(user_id !== data.users_id){
             showComments.innerHTML += `
                 <div class="col-12 col-md-10 comment">
-                    <a href="/userProfileSelf.html">${data.user_name}:</a>
+                    <a href="/userProfile/${create_id}">${data.user_name}:</a>
                     <p>${data.content}</p>
                     <p>${msgDate}</p>
                 </div>
@@ -171,7 +171,7 @@ async function getNewChatroomMessage() {
             // console.log(`user_id=`,user_id,`newMessageID=`,newMessageID)
             showComments.innerHTML += `
                 <div class="col-12 col-md-10 comment" id="chatmsg${newMessageID}">
-                    <a href="/userProfileSelf.html">${data.user_name}:</a>
+                    <a href="/userProfile/${create_id}">${data.user_name}:</a>
                     <p>${data.content}</p>
                     <p>${msgDate}</p>
                     <a onclick="deleteChatroomMessage(${newMessageID})">-Delete-</a>
