@@ -32,12 +32,16 @@ body {
   background: var(--primary);
 }
 
-h1{
+h1 {
   margin-top: 10%;
 }
 
 h2 {
   color: #fff;
+}
+
+h4, h5 , .detail>p{
+  color: rgba(255, 255, 255, 0.76);
 }
 
 .wrapper {
@@ -49,10 +53,10 @@ h2 {
 }
 
 #eventDetails-wrapper {
-  padding: 60px 150px; 
+  padding: 60px 150px;
 }
 
-#event-detail-form > .row{
+#event-detail-form > .row {
   background: var(--primary);
 }
 
@@ -187,6 +191,11 @@ button {
   background: #fff;
 }
 
+h4 {
+  text-align: center;
+  color: #fff;
+}
+
 #joiningMember {
   text-align: center;
   width: 100%;
@@ -207,7 +216,6 @@ button {
   #eventDetails-wrapper > .row {
     margin-left: 30px;
   }
-
 
   #eventDetails-wrapper img {
     width: 90%;
