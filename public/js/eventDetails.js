@@ -163,7 +163,7 @@ async function getNewChatroomMessage() {
 
         if(user_id !== data.users_id){
             showComments.innerHTML += `
-                <div class="col-12 col-md-10 comment">
+                <div class="col-12 col-md-10 comment" id="chatmsg${newMessageID}">
                     <a href="/userProfile/${create_id}">${data.user_name}:</a>
                     <p>${data.content}</p>
                     <p>${msgDate}</p>
