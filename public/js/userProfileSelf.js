@@ -34,10 +34,8 @@ window.onload = async () => {
 
 
   notYetRate.json().then(result =>{
-    console.log(result);
 
-  for (notYetRatedEvent of result[0]){
-    console.log(notYetRatedEvent)
+  for (notYetRatedEvent of result){
     rateString = rateString + 
   `<div class="card" style="width: 20rem;">
   <div class="card-body">
