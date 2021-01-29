@@ -17,6 +17,10 @@
   color: #fff;
 }
 
+.container{
+  margin: 0!important;
+}
+
 body {
   background: var(--primary);
 }
