@@ -215,7 +215,8 @@ ratingOthers.get("/ratingOthers/checkRatingRememberUserProfile", async (req, res
                                                 FROM event
                                                 JOIN users
                                                 ON event.organizer = users.id
-                                                WHERE event.id = $1`,[property])
+                                                WHERE event.id = $1
+                                                AND NOT event.organizer = $2`,[property, user_id])
                                                 console.log("temp:"+temp.rows[0]);
                                                 result.push(temp.rows[0])
             }
