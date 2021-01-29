@@ -112,6 +112,11 @@ nav {
   display: inline;
 }
 
+.notYetRateCardsHolder{
+  display: flex;
+  flex-flow: row wrap;
+}
+
 @keyframes moveInFromLeft {
   0% {
     transform: translateX(-500px);

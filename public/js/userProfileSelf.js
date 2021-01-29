@@ -33,13 +33,11 @@ window.onload = async () => {
   let rateString = "";
 
 
-  notYetRate.json().then(result => {
-    console.log(result);
+  notYetRate.json().then(result =>{
 
-    for (notYetRatedEvent of result[0]) {
-      console.log(notYetRatedEvent)
-      rateString = rateString +
-        `<div class="card" style="width: 20rem;">
+  for (notYetRatedEvent of result){
+    rateString = rateString + 
+  `<div class="card" style="width: 20rem;">
   <div class="card-body">
   <h5 class="card-title"> <a href="/ratingOthers.html?eventId=${notYetRatedEvent.id}"> ${notYetRatedEvent.event_name} </a></h5>
   <h6 class="card-subtitle mb-2 text-muted">by <a href=userProfile/${notYetRatedEvent.organizer}>${notYetRatedEvent.user_name}</a> <span

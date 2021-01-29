@@ -201,13 +201,30 @@ ratingOthers.get("/ratingOthers/checkRatingRememberUserProfile", async (req, res
 
         for (let comment of comments.rows){
             temp[entry.event_id].push(comment.users_id)
-            console.log(comment.users_id)
+            // console.log(comment.users_id)
         }
         checking.push(temp)
     }
 
-    console.log(checking)
+    let result = []
+    for (let obj of checking){
+        // console.log(obj)
+        for (let property in obj){
+            if (obj[property].indexOf(user_id)==-1){
+                let temp = await client.query(`SELECT event.id, event.event_name, event.organizer, event.date, event.detail, users.user_name
+                                                FROM event
+                                                JOIN users
+                                                ON event.organizer = users.id
+                                                WHERE event.id = $1`,[property])
+                                                console.log("temp:"+temp.rows[0]);
+                                                result.push(temp.rows[0])
+            }
+        } 
+    }
 
+    // console.log("check:"+ checking);
+    // console.log("result:" + result)
+    res.json(result)
 
     }
  catch (e){console.log(e)}

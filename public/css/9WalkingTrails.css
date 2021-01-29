@@ -156,7 +156,7 @@ body {
   }
 }
 
-@media only screen and (max-width:800px){
+@media only screen and (max-width:480px){
 
 .viewerBigScreen {
   display:none;}
@@ -168,7 +168,7 @@ body {
 .viewerSmallScreen{
   display:block;
   width:100vw;
-
+  padding-top: 85px;
 }
   
 *{
