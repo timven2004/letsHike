@@ -1,11 +1,10 @@
-
 window.onload = () => {
     const socket = io.connect()
     socket.on("delMessage", async (id) => {
+        console.log("hi")
         console.log(`chatmsg${id}`)
         document.getElementById(`chatmsg${id}`).remove()
     })
-
     getNewChatroomMessage()
     loadAndDisplayEvent()
     userJoiningEventData()
@@ -23,7 +22,6 @@ async function loadAndDisplayEvent() {
 
     const res = await fetch(`/events/eventDetails/${id}`)
     const data = await res.json()
-    console.log(data)
 
     let eventStr = `
         <div class="row">
@@ -132,18 +130,18 @@ async function getChatroomMessage() {
         const newMessageID = data.id
         const msgDate = moment(data.date).format('YYYY-MM-DD h:mm:ss a');
         // console.log(`user_id=`,user_id,`create_id`,create_id)
-        if (user_id !== create_id) {
+        if(user_id !== create_id){
             showComments.innerHTML += `
-                <div class="col-12 col-md-10 comment">
-                    <a href="/userProfile/${user_id}">${data.user_name}:</a>
+                <div class="col-12 col-md-10 comment" id="chatmsg${newMessageID}">
+                    <a href="/userProfile/${create_id}">${data.user_name}:</a>
                     <p>${data.content}</p>
                     <p>${msgDate}</p>
                 </div>
             `
-        } else {
+        }else{
             showComments.innerHTML += `
                 <div class="col-12 col-md-10 comment" id="chatmsg${newMessageID}">
-                    <a href="/userProfile/${user_id}">${data.user_name}:</a>
+                    <a href="/userProfile/${create_id}">${data.user_name}:</a>
                     <p>${data.content}</p>
                     <p>${msgDate}</p>
                     <a onclick="deleteChatroomMessage(${newMessageID})">-Delete-</a>
@@ -161,20 +159,21 @@ async function getNewChatroomMessage() {
         const msgDate = moment(data.date).format('YYYY-MM-DD h:mm:ss a');
         const showComments = document.querySelector(".show-comment")
         const newMessageID = data.id
+        const create_id = data.users_id
 
-        if (user_id !== data.users_id) {
+        if(user_id !== data.users_id){
             showComments.innerHTML += `
-                <div class="col-12 col-md-10 comment" id="chatmsg${newMessageID}">
-                    <a href="/userProfileSelf.html">${data.user_name}:</a>
+                <div class="col-12 col-md-10 comment">
+                    <a href="/userProfile/${create_id}">${data.user_name}:</a>
                     <p>${data.content}</p>
                     <p>${msgDate}</p>
                 </div>
             `
-        } else {
+        }else{
             // console.log(`user_id=`,user_id,`newMessageID=`,newMessageID)
             showComments.innerHTML += `
                 <div class="col-12 col-md-10 comment" id="chatmsg${newMessageID}">
-                    <a href="/userProfileSelf.html">${data.user_name}:</a>
+                    <a href="/userProfile/${create_id}">${data.user_name}:</a>
                     <p>${data.content}</p>
                     <p>${msgDate}</p>
                     <a onclick="deleteChatroomMessage(${newMessageID})">-Delete-</a>
@@ -191,7 +190,6 @@ async function deleteChatroomMessage(id) {
     })
     const result = await res.json()
 }
-
 
 async function userJoinEvent() {
     const paramString = window.location.search

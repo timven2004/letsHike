@@ -131,3 +131,24 @@ body{
         opacity: 1;
     }
 }
+
+@media only screen and (max-width:480px){
+    .cardContainer {
+        margin: 90px 0px;
+        background-color: whitesmoke;
+        border-radius: 10px;
+    }
+    
+    #ratingStars{
+        font-size: 3rem;
+    }
+
+
+    h1{
+        font-size: 3rem !important;
+    }
+
+    h1#username{
+        font-size: 1.5rem !important;
+    }
+}

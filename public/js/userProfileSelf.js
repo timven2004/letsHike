@@ -93,7 +93,7 @@ async function showProfileNavbar() {
   console.log(data)
 
   if (data !== 'noLogin') {
-    document.getElementById('hidden-propfile').innerHTML = `<a href="/userProfile/${data}">My profile</a>`;
+    document.getElementById('hidden-propfile').innerHTML = `<a href="/userProfileSelf.html">My profile</a>`;
     document.getElementById('logout').innerHTML = '<a href="">Logout</a>'
   } else {
     document.getElementById('login').innerHTML = '<a href="/login.html">Login</a>'
