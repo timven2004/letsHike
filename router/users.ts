@@ -2,6 +2,7 @@ import { client } from "../main"
 import { User } from "../class/database"
 import { upload } from "../main"
 import express, { Request, Response, NextFunction } from "express"
+import { checkEventIsActive } from "./events"
 
 
 export const users = express.Router()
@@ -45,6 +46,7 @@ users.post("/api/v1/userLogin", async (req, res) => {
         const user = usersData.rows[0];
         if (user && user.password === userInputPassword) {
             req.session["user_id"] = user["id"]
+            checkEventIsActive()
             res.json({ message: "success" })
         } else {
             res.status(400).json({ message: "Invalid login, please try again" })
@@ -196,7 +198,7 @@ users.get("/api/v1/userLoggedIn", async (req, res) => {
         const user_id = req.session["user_id"]
         if (user_id) {
             res.json(user_id)
-            console.log("hih"+user_id)
+            console.log("hih" + user_id)
         } else {
             res.json('noLogin')
         }
@@ -239,22 +241,22 @@ users.get("/users/checkUserIsOrganizer/:id", async (req, res) => {
 
 // //updateLevel   //POST?
 users.get("/users/updateLevel", async (req, res) => {
-    if(req.session["user_id"]){
+    if (req.session["user_id"]) {
         const id = req.session["user_id"]
         const getExp = await client.query(`
             SELECT experience FROM users WHERE id = $1
             `, [id])
         const exp = getExp.rows[0].experience
-    
+
         if (exp % 10 === 0) {
-            const x = exp/10
+            const x = exp / 10
             const getLevel = await client.query(`
             SELECT level FROM users WHERE id = $1
             `, [id])
             const level = getLevel.rows[0].level
-    
+
             let curlevel = level + x
-    
+
             await client.query(`
                 UPDATE users SET LEVEL = $1 WHERE id = $2
                 `, [curlevel, id])
