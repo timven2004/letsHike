@@ -79,10 +79,6 @@ nav {
   letter-spacing: 2px;
 }
 
-.hero a:hover {
-  box-shadow: 0 0 10px #da8b0ce3, 0 0 30px #da8b0ccb;
-}
-
 .add-event-btn a,
 .filter button {
   padding: 10px 20px;
@@ -131,7 +127,12 @@ nav {
 
 .hero > button i{
   color:rgb(180, 51, 51);
-  font-size: 20px;
+  font-size: 30px;
+}
+
+.hero > button i:hover{
+  color: red;
+  transition: 1s ease-in;
 }
 
 #remember {
@@ -148,6 +149,12 @@ nav {
   padding: 10px;
 }
 
+#remember h3{
+  text-align: center;
+  font-weight: bolder;
+  color: red;
+}
+
 .remember-active {
   opacity: 1!important;
 }
@@ -161,7 +168,26 @@ nav {
   cursor: pointer;
 }
 
+.notice-board{
+  border-radius: 3px;;
+  padding: 20px 10px;
+  background: #fff;
+}
 
+.notice-board:nth-child(even){
+  background: #3b575344;
+}
+
+.notice-board a{
+  text-decoration: none;
+}
+
+.neverShowbtn{
+  float: right;
+  cursor: pointer;
+}
+
+/* weather */
 .weather-wrapper {
   width: 100%;
   background: var(--primary);

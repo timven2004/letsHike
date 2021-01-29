@@ -106,9 +106,9 @@ function addChatroomMessage() {
         })
         let result = await res.json()
         console.log(result)
-        if (res.status === 200 && result !== 'no login' ) {
+        if (res.status === 200 && result !== 'no login') {
             socket.emit("newMessage", `${result}`)
-        } else if (result === 'no login' ){
+        } else if (result === 'no login') {
             window.location = '/login.html'
         }
     })
@@ -122,18 +122,71 @@ async function getChatroomMessage() {
     const res = await fetch(`/chatroom/getMessage/${event_id}`)
     const datas = await res.json()
     const showComments = document.getElementById('show-comment-form')
+    const user_id = (await (await fetch("/api/v1/getUserData")).json()).id
 
     for (let data of datas) {
+        const create_id = data.users_id
+        const newMessageID = data.id
         const msgDate = moment(data.date).format('YYYY-MM-DD h:mm:ss a');
-
-        showComments.innerHTML += `
-            <div class="col-12 col-md-10 comment">
-                <a href="/userProfileSelf.html">${data.user_name}:</a>
-                <p>${data.content}</p>
-                <p>${msgDate}</p>
-            </div>
-        `
+        // console.log(`user_id=`,user_id,`create_id`,create_id)
+        if(user_id !== create_id){
+            showComments.innerHTML += `
+                <div class="col-12 col-md-10 comment">
+                    <a href="/userProfileSelf.html">${data.user_name}:</a>
+                    <p>${data.content}</p>
+                    <p>${msgDate}</p>
+                </div>
+            `
+        }else{
+            showComments.innerHTML += `
+                <div class="col-12 col-md-10 comment" id="chatmsg${newMessageID}">
+                    <a href="/userProfileSelf.html">${data.user_name}:</a>
+                    <p>${data.content}</p>
+                    <p>${msgDate}</p>
+                    <a onclick="deleteChatroomMessage(${newMessageID})">-Delete-</a>
+                </div>
+            `
+        }
     }
+}
+
+async function getNewChatroomMessage() {
+    const user_id = (await (await fetch("/api/v1/getUserData")).json()).id
+
+    const socket = io.connect()
+    socket.on("newMessage", data => {
+        const msgDate = moment(data.date).format('YYYY-MM-DD h:mm:ss a');
+        const showComments = document.querySelector(".show-comment")
+        const newMessageID = data.id
+
+        if(user_id !== data.users_id){
+            showComments.innerHTML += `
+                <div class="col-12 col-md-10 comment">
+                    <a href="/userProfileSelf.html">${data.user_name}:</a>
+                    <p>${data.content}</p>
+                    <p>${msgDate}</p>
+                </div>
+            `
+        }else{
+            // console.log(`user_id=`,user_id,`newMessageID=`,newMessageID)
+            showComments.innerHTML += `
+                <div class="col-12 col-md-10 comment" id="chatmsg${newMessageID}">
+                    <a href="/userProfileSelf.html">${data.user_name}:</a>
+                    <p>${data.content}</p>
+                    <p>${msgDate}</p>
+                    <a onclick="deleteChatroomMessage(${newMessageID})">-Delete-</a>
+                </div>
+            `
+        }
+    })
+}
+
+async function deleteChatroomMessage(id){
+    const res = await fetch(`/deleteChatroomMessage/${id}`,{
+        method:"DELETE"
+    })
+    const result = await res.json()
+    document.getElementById(`chatmsg${id}`).remove()
 }
 
 async function userJoinEvent() {
@@ -220,28 +273,13 @@ async function userJoinEvent() {
     }
 }
 
-function getNewChatroomMessage() {
-    const socket = io.connect()
-    socket.on("newMessage", data => {
-        const msgDate = moment(data.date).format('YYYY-MM-DD h:mm:ss a');
-        const showComments = document.querySelector(".show-comment")
-        showComments.innerHTML += `
-        <div class="col-12 col-md-10 comment">
-            <a href="/userProfileSelf.html">${data.user_name}:</a>
-            <p>${data.content}</p>
-            <p>${msgDate}</p>
-        </div>
-        `
-    })
-}
-
 //NavBar
 async function showProfileNavbar() {
     const res = await fetch("/api/v1/userLoggedIn")
     const data = await res.json()
 
     if (data !== 'noLogin') {
-        document.getElementById('hidden-propfile').innerHTML = '<a href="./userProfileSelf.html">My profile</a>';
+        document.getElementById('hidden-propfile').innerHTML = `<a href="/userProfile/${data}">My profile</a>`;
         document.getElementById('logout').innerHTML = '<a href="">Logout</a>'
 
     } else {

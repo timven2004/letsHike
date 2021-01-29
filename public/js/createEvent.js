@@ -27,6 +27,13 @@ function createEventFormSubmit() {
         // Check member number >= 2
         if(parseInt(form.max_number_of_member.value) < 2){
             console.log("At least 2 member")
+            return
+        }
+
+        // Check event_name length < 20
+        if(form.event_name.value.length > 20){
+            console.log("Event name longer that 20")
+            // return
         }
 
         // Form submit
