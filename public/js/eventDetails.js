@@ -1,8 +1,8 @@
 window.onload = () => {
     const socket = io.connect()
-    socket.on("delMessage", async (id) => {
-        console.log("hi")
+    socket.on("delMessage",(id) => {
         console.log(`chatmsg${id}`)
+        console.log(document.getElementById(`chatmsg${id}`))
         document.getElementById(`chatmsg${id}`).remove()
     })
     getNewChatroomMessage()
@@ -163,7 +163,7 @@ async function getNewChatroomMessage() {
 
         if(user_id !== data.users_id){
             showComments.innerHTML += `
-                <div class="col-12 col-md-10 comment">
+                <div class="col-12 col-md-10 comment" id="chatmsg${newMessageID}">
                     <a href="/userProfile/${create_id}">${data.user_name}:</a>
                     <p>${data.content}</p>
                     <p>${msgDate}</p>
