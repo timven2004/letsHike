@@ -17,7 +17,6 @@ async function loadAndDisplayEvent() {
 
     const res = await fetch(`/events/eventDetails/${id}`)
     const data = await res.json()
-    console.log(data)
 
     let eventStr = `
         <div class="row">
@@ -28,7 +27,7 @@ async function loadAndDisplayEvent() {
         <div id="event-detail-form">
             <div class="row">
             <div class="edit-button"></div>
-            <div class="col-12 col-md-7 detail">
+            <div class="col-12 col-md-6 detail">
                 <h4></h4>
                 <h5>meeting point: ${data.meeting_point}</h5>
                 <h5>Date: ${data.date}</h5>
@@ -38,7 +37,7 @@ async function loadAndDisplayEvent() {
                 <br>
                 <p>Details: ${data.detail}</p>
             </div>
-            <div class="col-12 col-md-5 detail-img">
+            <div class="col-12 col-md-6 detail-img">
                 <img src="${data.image}" alt=""><br>
             </div>
             </div>
@@ -237,7 +236,7 @@ async function userJoinEvent() {
     async function checkOrganizer() {
         const res = await fetch("/checkEventOrganizer")
         const result = await res.json()
-        console.log(result)
+        // console.log(result)
         if (result === true) {
             document.querySelector("div.join").innerHTML = ""
             return
@@ -278,7 +277,6 @@ async function userJoinEvent() {
 async function showProfileNavbar() {
     const res = await fetch("/api/v1/userLoggedIn")
     const data = await res.json()
-    console.log(data)
 
     if (data !== 'noLogin') {
         document.getElementById('hidden-propfile').innerHTML = '<a href="./userProfileSelf.html">My profile</a>';

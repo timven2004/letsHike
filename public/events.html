@@ -28,6 +28,10 @@
         </nav>
         <div class="notice"></div>
         <div class="hero">
+            <button onclick="notice()"><i class="fas fa-bell"></i></button>
+                <div id="remember">
+                    <h3>Notifications</h3>
+                </div>
             <h3 class="slogan">Slogan here!! </h3>
             <a href="#events-wrapper">Discover</a>
         </div>
@@ -37,14 +41,17 @@
             <button onclick="medium()">medium</button>
             <button onclick="hard()">hard</button>
         </div>
-        <div class="add-event-btn">
-            <!-- <a href="/goCreateEventPage">Create Event</a> -->
-        </div>
+        <div class="add-event-btn"></div>
         <div class="row" id="events-wrapper">
             <!-- AJAX -->
         </div>
-    </div>
-    <div id="remember"></div>
+            <div class="weather-wrapper">
+                <div id="weather">
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
     <script src="js/events.js"></script>
     
     <script>
@@ -53,10 +60,10 @@
             document.querySelector('.nav-bar').classList.toggle('nav-bar-show')
             document.querySelector('.block').classList.toggle('block-active')
         }
-
-        function shownotice(){
-            document.querySelector('.notice').classList.toggle('notice-active')
+        function notice(){
+            document.getElementById('remember').classList.toggle('remember-active')
         }
+
     </script>
 </body>
 </html>

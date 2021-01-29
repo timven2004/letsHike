@@ -87,13 +87,10 @@ async function hard() {
 async function showProfileNavbar() {
     const res = await fetch("/api/v1/userLoggedIn")
     const data = await res.json()
-    console.log(data)
 
     if (data !== 'noLogin') {
         document.getElementById('hidden-propfile').innerHTML = '<a href="./userProfileSelf.html">My profile</a>';
         document.getElementById('logout').innerHTML = '<a href="">Logout</a>'
-        document.getElementById('show-username').innerHTML = '<a id="username" onclick="shownotice()">notice</a>'
-
     } else {
         document.getElementById('login').innerHTML = '<a href="/login.html">Login</a>'
     }
@@ -120,6 +117,7 @@ async function showCreateEventBtnChecking() {
     }
 }
 
+
 async function checkRatingRemember() {
     const data = await fetch("/ratingOthers/checkRatingRemember")
     const events = await data.json()
@@ -131,12 +129,13 @@ async function checkRatingRemember() {
         const remember = document.getElementById("remember")
         remember.innerHTML += `
             <div id="${event.id}">
-                <a href="ratingOthers.html?eventId=${event.id}"></a>
+                <a href="ratingOthers.html?eventId=${event.id}">Event name</a>
                 <a onclick="neverShowRemember(${event.id})">Never Show</a>
             </div>
         `
     }
 }
+
 
 async function neverShowRemember(event_id) {
     const res = await fetch(`/neverShowRemember/${event_id}`, {
@@ -155,8 +154,17 @@ async function neverShowRemember(event_id) {
 async function weatherApi() {
     const api = await fetch("https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=fnd&lang=en")
     const data = await api.json()
-    console.log(data)
-
+    for (const everyDay of data.weatherForecast) {
+        const formatDate = moment(everyDay.forecastDate).format('DD-MM-YYYY');
+        document.getElementById('weather').innerHTML += `
+        <div class="weather-card">
+            <p>${formatDate}</p>
+            <p>${everyDay.week}</p>
+            <p id="icon"><img src="https://www.hko.gov.hk/images/HKOWxIconOutline/pic${everyDay.ForecastIcon}.png" alt=""></p>
+            <p>${everyDay.forecastMintemp.value}°C - ${everyDay.forecastMaxtemp.value}°C</p>
+        </div>
+        `
+    }
 
 
 }

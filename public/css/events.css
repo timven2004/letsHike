@@ -43,9 +43,9 @@ nav {
   color: #000;
 }
 
-.ratingRemember{
+.ratingRemember {
   position: absolute;
-  top:80%;
+  top: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,7 +53,7 @@ nav {
   width: 100%;
 }
 
-.ratingRemember > a{
+.ratingRemember > a {
   transform: translate(-50%, -50%);
   padding: 10px 20px;
   background: #da8b0c;
@@ -84,7 +84,7 @@ nav {
 }
 
 .add-event-btn a,
-.filter button{
+.filter button {
   padding: 10px 20px;
   border-radius: 3px;
   border: none;
@@ -93,12 +93,12 @@ nav {
   margin-top: 20px;
 }
 
-.filter{
+.filter {
   display: flex;
   justify-content: center;
 }
 
-.filter i{
+.filter i {
   font-size: 9px;
 }
 
@@ -108,7 +108,7 @@ nav {
   margin-left: 20px;
 }
 
-.add-event-btn a{
+.add-event-btn a {
   background: var(--primary);
   color: #fff;
   float: right;
@@ -116,21 +116,72 @@ nav {
   text-transform: uppercase;
 }
 
-.notice{
-  position : absolute;
-  margin-top: 60px;
-  width: 100%;
-  height: 0px;
-  background: black;
-  z-index: 3;
-  transition: 1s ease-in;
+/* remind */
+.hero > button{
+  border: none;
+  float: right;
+  margin-top: 70px;
+  margin-right: 53px;
+}
+
+.hero > button i{
+  color:rgb(180, 51, 51);
+  font-size: 20px;
+}
+
+#remember {
+  position: absolute;
+  background: #fff;
+  box-shadow: 7px 5px 12px #000000;
+  float: right;
+  right: 0px;
+  top: 100px;
+  width: 300px;
+  height: 80vh;
+  z-index: 2;
+  opacity: 0;
+  padding: 10px;
+}
+
+.remember-active {
+  opacity: 1!important;
+}
+
+.hero > i {
+  position: absolute;
+  font-size: 30px;
+  top: 100px;
+  right: 45px;
+  z-index: 4;
   cursor: pointer;
 }
 
-.notice-active{
-  height: 200px;
-  background: black;
-  transition: 1s ease-out;
+
+.weather-wrapper {
+  width: 100%;
+  background: var(--primary);
+}
+
+#weather{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.weather-card{
+  margin: 20px 0;
+  width: 100px;
+}
+
+#weather p{
+  color: #fff;
+  line-height: 10px;
+  text-align: center;
+}
+
+#icon > img{
+  width: 40px;
+  height: 40px;
 }
 
 /* AJAX */
