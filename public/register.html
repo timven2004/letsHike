@@ -9,6 +9,7 @@
     <title>Let's hike!</title>
 </head>
 <body>
+  <div class="align-center">
     <div class="container">
       <div class="form-wrapper">
         <h1>REGISTER</h1>
@@ -40,9 +41,12 @@
           <div class="input-field col s6">
             <input type="file" name="image" id="image" class="upload-file" required/>
           </div>
-          <p id="message">hi</p><br>
+          <p id="message"></p><br>
           <div class="align-center">
             <input class="button" type="submit" value="submit">
+          </div>
+          <div class="align-center">
+            <button id="back" onclick="goBack()">back</button>
           </div>
           <div class="align-center">
             <div class="redirect">
@@ -50,12 +54,10 @@
               <a href="/login.html">Login</a>
             </div>
           </div>
-          <div class="align-center">
-            <button id="back" onclick="goBack()">back</button>
-        </div>
         </form>
       </div>
     </div>
+  </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/register.js"></script>
     <script>

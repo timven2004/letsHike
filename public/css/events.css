@@ -251,6 +251,8 @@ nav {
   transition-duration: 0.35s;
 }
 
+
+
 @media only screen and (max-width: 480px) {
   .hero h3 {
     width: 200px;
@@ -259,8 +261,7 @@ nav {
   }
 
   .hero a {
-    width: 170px;
-    font-size: 30px;
+    font-size: 15px;
     justify-content: center;
   }
 
@@ -289,16 +290,28 @@ nav {
     margin: 0px auto;
   }
 
-  .hero a {
-    display: none;
-  }
+
+  /* --notice-- */
 
   .hero > button {
+    float: left;
+    margin-left: 35px;
     margin-top: 100px;
-    /* margin-right: 40px; */
+    z-index: 55;
+  }
+
+  .hero > button i {
+    font-size: 20px;
   }
 
   #remember{
+    width: 100%;
+    top: 25%;
     pointer-events: none;
+  }
+
+  #remember h3{
+    font-size: 20px;
+    margin: 0 auto;
   }
 }
