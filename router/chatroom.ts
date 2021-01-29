@@ -6,7 +6,6 @@ export const chatroom = express.Router()
 chatroom.post("/chatroom/addMessage", upload.none(), async (req, res) => {
     try {
         if (req.session["user_id"]) {
-
             const user_id = req.session["user_id"]
             const event_id = req.body.event_id
             const comment = req.body.comment

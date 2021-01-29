@@ -22,7 +22,7 @@ window.onload = async () => {
     }
   })
 
-  const notYetRate = await fetch(`/ratingOthers/checkRatingRememberUserProfile`,{
+  const notYetRate = await fetch(`/ratingOthers/checkRatingRememberUserProfile`, {
     method: 'GET', // *GET, POST, PUT, DELETE, etc.
     headers: {
       'Content-Type': 'application/json'
@@ -46,18 +46,18 @@ window.onload = async () => {
   </div>
 </div>`};
 
-notYetRateCardsHolder.innerHTML = rateString;
-})
+    notYetRateCardsHolder.innerHTML = rateString;
+  })
 
 
 
   response.json().then(result => {
 
-    if(isNaN(result.rating)||result.rating==null){result.rating="N/A"}
+    if (isNaN(result.rating) || result.rating == null) { result.rating = "N/A" }
 
     profilePic.setAttribute("src", `../${(result).user_icon}`);
     username.innerHTML = (result).user_name;
-    rating.innerHTML = `Rating: ${result.rating} ${result.rating=="N/A"?"":"/5.0"}`
+    rating.innerHTML = `Rating: ${result.rating} ${result.rating == "N/A" ? "" : "/5.0"}`
     level.innerHTML = "Skills Level: " + result.level;
     email.innerHTML = "Email: " + result.email;
     gender.innerHTML = "Gender: " + result.gender;
@@ -90,9 +90,10 @@ notYetRateCardsHolder.innerHTML = rateString;
 async function showProfileNavbar() {
   const res = await fetch("/api/v1/userLoggedIn")
   const data = await res.json()
+  console.log(data)
 
   if (data !== 'noLogin') {
-    document.getElementById('hidden-propfile').innerHTML = '<a href="./userProfileSelf.html">My profile</a>';
+    document.getElementById('hidden-propfile').innerHTML = `<a href="/userProfile/${data}">My profile</a>`;
     document.getElementById('logout').innerHTML = '<a href="">Logout</a>'
   } else {
     document.getElementById('login').innerHTML = '<a href="/login.html">Login</a>'

@@ -18,13 +18,14 @@
         <nav id="nav">
             <a href="/index.html"><h1 id="logo"><i class="fas fa-mountain"></i>Let's Hike</h1></a>
             <div id="toggle" onclick="toggle()"><span></span></div>
-            <ul class="nav-bar">
-                <li id="hidden-propfile"></li>
-                <li><a href="./events.html">Events</a></li>
-                <li><a href="./9walkingtrails.html">Hiking Trails</a></li>
-                <li id="login"></li>
-                <li id="logout"></li>
-            </ul>
+                <ul class="nav-bar">
+                    <li id="hidden-propfile"></li>
+                    <li><a href="../events.html">Events</a></li>
+                    <li><a href="../9walkingtrails.html">Hiking Trails</a></li>
+                    <li id ="show-username"></li>
+                    <li id="login"></li>
+                    <li id="logout"></li>
+                </ul>
         </nav>
         
         
@@ -88,13 +89,43 @@
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
         <script>
+            window.onload = () => {
+                showProfileNavbar()
+                logOut()
+            }
+
             function toggle() {
                 document.getElementById('nav').classList.toggle('active');
                 document.querySelector('.nav-bar').classList.toggle('nav-bar-show')
                 document.querySelector('.block').classList.toggle('block-active')
             }
-        </script>
 
+
+            //NavBar
+            async function showProfileNavbar() {
+                const res = await fetch("/api/v1/userLoggedIn")
+                const data = await res.json()
+
+                if (data !== 'noLogin') {
+                    document.getElementById('hidden-propfile').innerHTML = `<a href="/userProfile/${data}">My profile</a>`;
+                    document.getElementById('logout').innerHTML = '<a href="">Logout</a>'
+
+                } else {
+                    document.getElementById('login').innerHTML = '<a href="/login.html">Login</a>'
+                }
+            }
+
+            function logOut() {
+                const logOut = document.getElementById('logout')
+                logOut.addEventListener("click", async (e) => {
+                    e.preventDefault()
+                    const res = await fetch("/api/v1/logout")
+                    if (res.status === 200) {
+                        window.location = '/events.html'
+                    }
+                })
+            }
+        </script>
 </body>
 
 </html>

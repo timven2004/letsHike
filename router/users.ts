@@ -196,6 +196,7 @@ users.get("/api/v1/userLoggedIn", async (req, res) => {
         const user_id = req.session["user_id"]
         if (user_id) {
             res.json(user_id)
+            console.log("hih"+user_id)
         } else {
             res.json('noLogin')
         }
