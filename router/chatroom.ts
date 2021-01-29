@@ -1,5 +1,5 @@
 import express from "express"
-import { upload, client } from "../main"
+import { upload, client,io } from "../main"
 
 export const chatroom = express.Router()
 
@@ -41,6 +41,7 @@ chatroom.delete("/deleteChatroomMessage/:id", async (req, res) => {
         await client.query(`
             DELETE FROM chatroom WHERE id = $1
         `, [id])
+        io.emit("delMessage",id)
         res.json("ok")
     } catch (err) {
         console.error(err.message)

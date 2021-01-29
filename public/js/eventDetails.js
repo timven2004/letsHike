@@ -1,5 +1,11 @@
 
 window.onload = () => {
+    const socket = io.connect()
+    socket.on("delMessage", async (id) => {
+        console.log(`chatmsg${id}`)
+        document.getElementById(`chatmsg${id}`).remove()
+    })
+
     getNewChatroomMessage()
     loadAndDisplayEvent()
     userJoiningEventData()
@@ -8,6 +14,8 @@ window.onload = () => {
     userJoinEvent()
     showProfileNavbar()
     logOut()
+
+
 }
 
 async function loadAndDisplayEvent() {
@@ -129,7 +137,7 @@ async function getChatroomMessage() {
         const newMessageID = data.id
         const msgDate = moment(data.date).format('YYYY-MM-DD h:mm:ss a');
         // console.log(`user_id=`,user_id,`create_id`,create_id)
-        if(user_id !== create_id){
+        if (user_id !== create_id) {
             showComments.innerHTML += `
                 <div class="col-12 col-md-10 comment">
                     <a href="/userProfileSelf.html">${data.user_name}:</a>
@@ -137,7 +145,7 @@ async function getChatroomMessage() {
                     <p>${msgDate}</p>
                 </div>
             `
-        }else{
+        } else {
             showComments.innerHTML += `
                 <div class="col-12 col-md-10 comment" id="chatmsg${newMessageID}">
                     <a href="/userProfileSelf.html">${data.user_name}:</a>
@@ -159,15 +167,15 @@ async function getNewChatroomMessage() {
         const showComments = document.querySelector(".show-comment")
         const newMessageID = data.id
 
-        if(user_id !== data.users_id){
+        if (user_id !== data.users_id) {
             showComments.innerHTML += `
-                <div class="col-12 col-md-10 comment">
+                <div class="col-12 col-md-10 comment" id="chatmsg${newMessageID}">
                     <a href="/userProfileSelf.html">${data.user_name}:</a>
                     <p>${data.content}</p>
                     <p>${msgDate}</p>
                 </div>
             `
-        }else{
+        } else {
             // console.log(`user_id=`,user_id,`newMessageID=`,newMessageID)
             showComments.innerHTML += `
                 <div class="col-12 col-md-10 comment" id="chatmsg${newMessageID}">
@@ -181,13 +189,14 @@ async function getNewChatroomMessage() {
     })
 }
 
-async function deleteChatroomMessage(id){
-    const res = await fetch(`/deleteChatroomMessage/${id}`,{
-        method:"DELETE"
+
+async function deleteChatroomMessage(id) {
+    const res = await fetch(`/deleteChatroomMessage/${id}`, {
+        method: "DELETE"
     })
     const result = await res.json()
-    document.getElementById(`chatmsg${id}`).remove()
 }
+
 
 async function userJoinEvent() {
     const paramString = window.location.search
