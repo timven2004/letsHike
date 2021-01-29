@@ -5,11 +5,7 @@ export const chatroom = express.Router()
 
 chatroom.post("/chatroom/addMessage", upload.none(), async (req, res) => {
     try {
-        console.log("1");
-
         if (req.session["user_id"]) {
-            console.log("2");
-
             const user_id = req.session["user_id"]
             const event_id = req.body.event_id
             const comment = req.body.comment
@@ -18,10 +14,7 @@ chatroom.post("/chatroom/addMessage", upload.none(), async (req, res) => {
             `, [user_id, event_id, comment])
             res.json(id.rows[0].id)
         } else {
-            console.log("3");
-            
             res.json('no login')
-            console.log("3");
         }
     } catch (err) {
         console.error(err.message)

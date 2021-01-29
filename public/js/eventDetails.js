@@ -106,9 +106,9 @@ function addChatroomMessage() {
         })
         let result = await res.json()
         console.log(result)
-        if (res.status === 200 && result !== 'no login' ) {
+        if (res.status === 200 && result !== 'no login') {
             socket.emit("newMessage", `${result}`)
-        } else if (result === 'no login' ){
+        } else if (result === 'no login') {
             window.location = '/login.html'
         }
     })
@@ -128,7 +128,7 @@ async function getChatroomMessage() {
 
         showComments.innerHTML += `
             <div class="col-12 col-md-10 comment">
-                <a href="/userProfileSelf.html">${data.user_name}:</a>
+                <a href="/userProfile/${data.id}">${data.user_name}:</a>
                 <p>${data.content}</p>
                 <p>${msgDate}</p>
             </div>
@@ -227,7 +227,7 @@ function getNewChatroomMessage() {
         const showComments = document.querySelector(".show-comment")
         showComments.innerHTML += `
         <div class="col-12 col-md-10 comment">
-            <a href="/userProfileSelf.html">${data.user_name}:</a>
+            <a href="/userProfile/${data.id}">${data.user_name}:</a>
             <p>${data.content}</p>
             <p>${msgDate}</p>
         </div>
@@ -241,7 +241,7 @@ async function showProfileNavbar() {
     const data = await res.json()
 
     if (data !== 'noLogin') {
-        document.getElementById('hidden-propfile').innerHTML = '<a href="./userProfileSelf.html">My profile</a>';
+        document.getElementById('hidden-propfile').innerHTML = `<a href="/userProfile/${data}">My profile</a>`;
         document.getElementById('logout').innerHTML = '<a href="">Logout</a>'
 
     } else {
