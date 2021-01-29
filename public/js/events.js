@@ -127,9 +127,12 @@ async function checkRatingRemember() {
     for (const event of events) {
         // console.log(event)
         const remember = document.getElementById("remember")
+        const name = (await (await fetch(`/events/eventDetails/${event.id}`)).json()).event_name
+        console.log(name)
+
         remember.innerHTML += `
             <div class="notice-board" id="${event.id}">
-                <a href="ratingOthers.html?eventId=${event.id}">Event name</a>
+                <a href="ratingOthers.html?eventId=${event.id}">Event: ${name}</a>
                 <a class="neverShowbtn" onclick="neverShowRemember(${event.id})">Never Show</a>
             </div>
         `
