@@ -170,15 +170,15 @@ ratingOthers.get("/ratingOthers/checkRatingRemember", async (req, res) => {
     res.json(eventId)
 })
 
-ratingOthers.get("/ratingOthers/checkRatingRememberUserProfile", async (req, res) => {
+ratingOthers.get("/ratingOthers/checkRatingRememberUserProfile", checkSession,async (req, res) => {
 
     try {
         const user_id = req.session["user_id"]
         const eventsUserJoined = await client.query(`
-    SELECT user_joining_event.event_id
-    FROM user_joining_event
-    WHERE user_joining_event.users_id = $1 
-    `, [user_id]);
+        SELECT user_joining_event.event_id
+        FROM user_joining_event
+        WHERE user_joining_event.users_id = $1 
+        `, [user_id]);
 
 
         console.log(`${eventsUserJoined.rows}`)
