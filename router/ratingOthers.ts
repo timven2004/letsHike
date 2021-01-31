@@ -72,8 +72,6 @@ ratingOthers.post('/ratingOthers/api/:eventId', checkSession, async (req, res) =
         );
 
 
-        // console.log(checkingIfRepeatedRating)
-
         if (!checkingIfRepeatedRating.rows[0]) {
 
             let checkOrganizerIfAddedExp = await client.query(
@@ -174,61 +172,62 @@ ratingOthers.get("/ratingOthers/checkRatingRemember", async (req, res) => {
 
 ratingOthers.get("/ratingOthers/checkRatingRememberUserProfile", async (req, res) => {
 
-    try{    
-    const user_id = req.session["user_id"]
-    const eventsUserJoined = await client.query(`
+    try {
+        const user_id = req.session["user_id"]
+        const eventsUserJoined = await client.query(`
     SELECT user_joining_event.event_id
     FROM user_joining_event
     WHERE user_joining_event.users_id = $1 
     `, [user_id]);
 
 
-    console.log(`${eventsUserJoined.rows}`)
-    let checking = []
+        console.log(`${eventsUserJoined.rows}`)
+        let checking = []
 
-    for (let entry of eventsUserJoined.rows) {
-        let temp = {}
-        if (!temp[entry.event_id]){
-            temp[entry.event_id]=[]
-        }
+        for (let entry of eventsUserJoined.rows) {
+
+            let temp = {}
+            if (!temp[entry.event_id]) {
+                temp[entry.event_id] = []
+            }
 
 
-        const comments = await client.query(`
+            const comments = await client.query(`
         SELECT users_id 
         FROM rating_event
         WHERE event_id = $1
         `, [entry.event_id])
 
-        for (let comment of comments.rows){
-            temp[entry.event_id].push(comment.users_id)
-            // console.log(comment.users_id)
+            for (let comment of comments.rows) {
+                temp[entry.event_id].push(comment.users_id)
+                // console.log(comment.users_id)
+            }
+            checking.push(temp)
         }
-        checking.push(temp)
-    }
 
-    let result = []
-    for (let obj of checking){
-        // console.log(obj)
-        for (let property in obj){
-            if (obj[property].indexOf(user_id)==-1){
-                let temp = await client.query(`SELECT event.id, event.event_name, event.organizer, event.date, event.detail, users.user_name
+        let result = []
+        for (let obj of checking) {
+            // console.log(obj)
+            for (let property in obj) {
+                if (obj[property].indexOf(user_id) == -1) {
+                    let temp = await client.query(`SELECT event.id, event.event_name, event.organizer, event.date, event.detail, users.user_name
                                                 FROM event
                                                 JOIN users
                                                 ON event.organizer = users.id
                                                 WHERE event.id = $1
-                                                AND NOT event.organizer = $2`,[property, user_id])
-                                                console.log("temp:"+temp.rows[0]);
-                                                result.push(temp.rows[0])
+                                                AND NOT event.organizer = $2`, [property, user_id])
+                    console.log("temp:" + temp.rows[0]);
+                    result.push(temp.rows[0])
+                }
             }
-        } 
-    }
+        }
 
-    // console.log("check:"+ checking);
-    // console.log("result:" + result)
-    res.json(result)
+        // console.log("check:"+ checking);
+        // console.log("result:" + result)
+        res.json(result)
 
     }
- catch (e){console.log(e)}
+    catch (e) { console.log(e) }
 
 })
 

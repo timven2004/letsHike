@@ -1,5 +1,23 @@
-window.onload = () => {
+window.onload = async () => {
+    await displayOptionForm()
     createEventFormSubmit()
+
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+}
+
+async function displayOptionForm() {
+    const res = await fetch(`/9hiketrails/api/index`)
+    const data = await res.json()
+
+    let optionStr = ``
+    for (const option of data) {
+        optionStr += `
+        <option id="${option.id}" value="${option.id}">${option.name}</option>
+        `
+    }
+    document.getElementById('hiking_trail_id').innerHTML = optionStr
+
 }
 
 function createEventFormSubmit() {
