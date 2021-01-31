@@ -33,9 +33,7 @@ p {
   width: 80%;
   margin: 0 auto;
   text-align: center;
-  color: #d03429;
-  background: var(--pink);
-  padding: 10px;
+  color: var(--pink);
   border-radius: 5px;
 }
 
@@ -85,8 +83,8 @@ p {
 }
 
 .redirect {
-  display: flex;
   margin-top: 5px;
+  text-align: center;
 }
 
 .redirect a {
@@ -108,6 +106,10 @@ p {
     font-size: 50px;
   }
 
+  .form-wrapper{
+    width: 80%;
+  }
+
   .input-field >label {
     margin-left: 0px !important;
     font-size: 15px;
@@ -115,7 +117,14 @@ p {
 
   .redirect {
     display: block;
-    width: 150px;
     text-align: center;
+  }
+
+  .button ,#back{
+    width: 100%;
+  }
+
+  #back{
+    margin-top: -10px;
   }
 }

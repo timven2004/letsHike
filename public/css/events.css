@@ -104,7 +104,7 @@ nav {
   margin-left: 20px;
 }
 
-.add-event-btn{
+.add-event-btn {
   display: flex;
   justify-content: center;
 }
@@ -118,19 +118,19 @@ nav {
 }
 
 /* remind */
-.hero > button{
+.hero > button {
   border: none;
   float: right;
   margin-top: 70px;
   margin-right: 53px;
 }
 
-.hero > button i{
-  color:rgb(180, 51, 51);
+.hero > button i {
+  color: rgb(180, 51, 51);
   font-size: 30px;
 }
 
-.hero > button i:hover{
+.hero > button i:hover {
   color: red;
   transition: 1s ease-in;
 }
@@ -149,14 +149,14 @@ nav {
   padding: 10px;
 }
 
-#remember h3{
+#remember h3 {
   text-align: center;
   font-weight: bolder;
   color: red;
 }
 
 .remember-active {
-  opacity: 1!important;
+  opacity: 1 !important;
 }
 
 .hero > i {
@@ -168,21 +168,21 @@ nav {
   cursor: pointer;
 }
 
-.notice-board{
-  border-radius: 3px;;
+.notice-board {
+  border-radius: 3px;
   padding: 20px 10px;
   background: #fff;
 }
 
-.notice-board:nth-child(even){
+.notice-board:nth-child(even) {
   background: #3b575344;
 }
 
-.notice-board a{
+.notice-board a {
   text-decoration: none;
 }
 
-.neverShowbtn{
+.neverShowbtn {
   float: right;
   cursor: pointer;
 }
@@ -193,24 +193,24 @@ nav {
   background: var(--primary);
 }
 
-#weather{
+#weather {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.weather-card{
+.weather-card {
   margin: 20px 0;
   width: 100px;
 }
 
-#weather p{
+#weather p {
   color: #fff;
   line-height: 10px;
   text-align: center;
 }
 
-#icon > img{
+#icon > img {
   width: 40px;
   height: 40px;
 }
@@ -251,6 +251,8 @@ nav {
   transition-duration: 0.35s;
 }
 
+
+
 @media only screen and (max-width: 480px) {
   .hero h3 {
     width: 200px;
@@ -259,27 +261,25 @@ nav {
   }
 
   .hero a {
-    width: 170px;
-    font-size: 30px;
+    font-size: 15px;
     justify-content: center;
   }
-
 
   .filter {
     display: flex;
     justify-content: space-evenly;
   }
 
-  .filter button{
+  .filter button {
     margin-left: 0px;
   }
 
   .add-event-btn a {
     float: none;
-    margin:0px
+    margin: 0px;
   }
-  
-  .add-event-btn{
+
+  .add-event-btn {
     margin-top: 20px;
     display: flex;
     justify-content: center;
@@ -287,11 +287,31 @@ nav {
 
   #events-wrapper {
     width: 100%;
-    margin: 0px  auto;
+    margin: 0px auto;
   }
 
-  .hero a {
-    display: none;
+
+  /* --notice-- */
+
+  .hero > button {
+    float: left;
+    margin-left: 35px;
+    margin-top: 100px;
+    z-index: 55;
   }
-  
+
+  .hero > button i {
+    font-size: 20px;
+  }
+
+  #remember{
+    width: 100%;
+    top: 25%;
+    pointer-events: none;
+  }
+
+  #remember h3{
+    font-size: 20px;
+    margin: 0 auto;
+  }
 }

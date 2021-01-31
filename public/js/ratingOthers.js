@@ -1,3 +1,4 @@
+
 const username = document.querySelector("#username")
 const eventDescription = document.querySelector("#eventDescription")
 const userLevel = document.querySelector("#userLevel")
@@ -38,6 +39,9 @@ window.onload = async()=>{
         numberOfEventsJoined.innerHTML=result.experience;
         date.innerHTML= new Date(result.date).toLocaleDateString("en-US");
     })
+
+    showProfileNavbar()
+    logOut()
     }
 
 for (let i=0;i<stars.length;i++){
@@ -54,3 +58,28 @@ for (let i=0;i<stars.length;i++){
 
 form.setAttribute("action",`/ratingOthers/api/${eventId}`);
 
+
+//NavBar
+async function showProfileNavbar() {
+    const res = await fetch("/api/v1/userLoggedIn")
+    const data = await res.json()
+
+    if (data !== 'noLogin') {
+        document.getElementById('hidden-propfile').innerHTML = `<a href="/userProfile/${data}">My profile</a>`;
+        document.getElementById('logout').innerHTML = '<a href="">Logout</a>'
+
+    } else {
+        document.getElementById('login').innerHTML = '<a href="/login.html">Login</a>'
+    }
+}
+
+function logOut() {
+    const logOut = document.getElementById('logout')
+    logOut.addEventListener("click", async (e) => {
+        e.preventDefault()
+        const res = await fetch("/api/v1/logout")
+        if (res.status === 200) {
+            window.location = '/events.html'
+        }
+    })
+}
