@@ -20,7 +20,7 @@ ratingOthers.get('/ratingOthers/api/:id', async (req, res) => {
             WHERE event.id=$1
             ;`, [req.params.id]);
 
-            data.rows[0]['password'] = "password is hidden"
+            data.rows[0]['password'] = "password is hidden from server side"
 
         res.json(data.rows[0]);
         console.log(data.rows[0])
