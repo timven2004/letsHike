@@ -28,7 +28,7 @@ async function easy() {
     const res = await fetch('/events')
     const data = await res.json()
 
-    const a = data.filter(trail => trail.hardness <=3)
+    const a = data.filter(trail => trail.hardness <= 3)
 
     let hardeventsStr = ``
     for (const event of a) {
@@ -89,8 +89,13 @@ async function showProfileNavbar() {
     const data = await res.json()
 
     if (data !== 'noLogin') {
-        document.getElementById('hidden-propfile').innerHTML = `<a href="/userProfileSelf.html">My profile</a>`;
+        document.getElementById('hidden-propfile').innerHTML =
+            `<a href="/userProfileSelf.html">My profile</a>
+        <div id="remember">
+            <h3>Notifications</h3>
+        </div>`
         document.getElementById('logout').innerHTML = '<a href="">Logout</a>'
+        document.querySelector('.hero').innerHTML = `<button onclick="notice()"><i class="fas fa-bell"></i></button>`
     } else {
         document.getElementById('login').innerHTML = '<a href="/login.html">Login</a>'
     }
@@ -128,12 +133,11 @@ async function checkRatingRemember() {
         // console.log(event)
         const remember = document.getElementById("remember")
         const name = (await (await fetch(`/events/eventDetails/${event.id}`)).json()).event_name
-        console.log(name)
 
         remember.innerHTML += `
             <div class="notice-board" id="${event.id}">
-                <a href="ratingOthers.html?eventId=${event.id}">Event: ${name}</a>
-                <a class="neverShowbtn" onclick="neverShowRemember(${event.id})">Never Show</a>
+                <a href="ratingOthers.html?eventId=${event.id}">Event: <br>${name}</a>
+                <a class="neverShowbtn" onclick="neverShowRemember(${event.id})">Hidden</a>
             </div>
         `
     }

@@ -40,7 +40,12 @@ h2 {
   color: #fff;
 }
 
-h5 , .detail>p, .detail>h4{
+.detail>h4 {
+  color: #fff;
+  font-weight: bolder;
+}
+
+h5 , .detail>p{
   color: rgba(255, 255, 255, 0.76);
 }
 
