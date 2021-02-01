@@ -1,4 +1,3 @@
-
 const username = document.querySelector("#username")
 const eventDescription = document.querySelector("#eventDescription")
 const userLevel = document.querySelector("#userLevel")
@@ -35,7 +34,10 @@ window.onload = async()=>{
         username.innerHTML = result.user_name;
         eventDescription.innerHTML = result.detail;
         userLevel.innerHTML = result.level;
-        userRating.innerHTML = result.rating;
+        if (isNaN(result.rating)){
+            userRating.innerHTML="N.A"
+        } else {userRating.innerHTML = result.rating;
+        }
         numberOfEventsJoined.innerHTML=result.experience;
         date.innerHTML= new Date(result.date).toLocaleDateString("en-US");
     })
