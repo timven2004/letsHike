@@ -202,11 +202,11 @@ ratingOthers.get("/ratingOthers/checkRatingRememberUserProfile", checkSession,as
 
             for (let comment of comments.rows) {
                 temp[entry.event_id].push(comment.users_id)
-                // console.log(comment.users_id)
+                console.log(comment.users_id)
             }
             checking.push(temp)
         }
-
+        console.log("checking:" + checking)
         let result = []
         for (let obj of checking) {
             // console.log(obj)
@@ -219,7 +219,9 @@ ratingOthers.get("/ratingOthers/checkRatingRememberUserProfile", checkSession,as
                                                 WHERE event.id = $1
                                                 AND NOT event.organizer = $2`, [property, user_id])
                     console.log("temp:" + temp.rows[0]);
-                    result.push(temp.rows[0])
+                    if (temp.rows[0]){                    
+                        result.push(temp.rows[0])
+                    }
                 }
             }
         }
