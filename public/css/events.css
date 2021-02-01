@@ -241,7 +241,7 @@ nav {
   margin: 20px 0;
 }
 
-.effect h2 {
+.effect h2, .effect h3 {
   transform: translate(10px, -20px);
   opacity: 0;
   transition: opacity 0.2s, transform 0.35s;
@@ -259,9 +259,11 @@ nav {
   opacity: 0.7;
 }
 
-.effect:hover h2 {
-  opacity: 0.7;
-  transform: translate(10px, -80px);
+.effect:hover h2,.effect:hover h3 {
+  color: #000;
+  font-weight: bolder;
+  opacity: 1;
+  transform: translate(10px, -100px);
   transition-delay: 0.1s;
   transition-duration: 0.35s;
 }
