@@ -39,8 +39,11 @@ nav {
   font-family: 'Monument Extended', sans-serif;
   font-size: 80px;
   float: right;
-  transform: translate(-50px, 200px);
+  margin-top: 200px;
+  margin-left: 50px;
   color: #000;
+  text-shadow: 8px 8px 12px rgba(255, 255, 255, 0.92);
+  justify-content: center;
 }
 
 .ratingRemember {
@@ -169,9 +172,11 @@ nav {
 }
 
 .notice-board {
+  display: flex;
   border-radius: 3px;
-  padding: 20px 10px;
+  padding: 30px 10px;
   background: #fff;
+  
 }
 
 .notice-board:nth-child(even) {
@@ -185,7 +190,19 @@ nav {
 .neverShowbtn {
   float: right;
   cursor: pointer;
+  color: var(--primary);
+  background: var(--pink);
+  height: 23px;
+  width: 120px;
+  text-align: center;
 }
+
+.neverShowbtn:hover{
+  color: red;
+  transition: 0.3s ease-in;
+}
+
+
 
 /* weather */
 .weather-wrapper {
@@ -251,13 +268,16 @@ nav {
   transition-duration: 0.35s;
 }
 
-
+@media only screen and (max-width: 780px) {
+  .slogan{
+    font-size: 55px;
+    float: right;
+  }
+}
 
 @media only screen and (max-width: 480px) {
   .hero h3 {
-    width: 200px;
-    font-size: 40px;
-    justify-content: center;
+    margin-top: 80px; 
   }
 
   .hero a {

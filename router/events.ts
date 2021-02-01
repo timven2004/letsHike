@@ -12,7 +12,7 @@ events.get("/events", async (req, res) => {
     try {
         const data = await client.query<Event>(`
         SELECT event.id, image, event_name ,is_active, hardness FROM event INNER JOIN hiking_trail ON event.hiking_trail_id = hiking_trail.id
-        INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id WHERE is_active = true;
+        INNER JOIN image_hiking_trail ON image_hiking_trail.hiking_trail_id = hiking_trail.id WHERE is_active = true ORDER BY id ASC;
         `)
         const eventsdata = data.rows
         res.json(eventsdata)
