@@ -91,13 +91,13 @@ async function showProfileNavbar() {
     const data = await res.json()
 
     if (data !== 'noLogin') {
-        document.getElementById('hidden-propfile').innerHTML =
-            `<a href="/userProfileSelf.html">My profile</a>
+        document.getElementById('hidden-propfile').innerHTML =`<a href="/userProfileSelf.html">My profile</a>`
+
+        document.getElementById('logout').innerHTML = '<a href="">Logout</a>'
+        document.querySelector('#bell').innerHTML = `<button onclick="notice()"><i class="fas fa-bell"></i></button>
         <div id="remember">
             <h3>Notifications</h3>
         </div>`
-        document.getElementById('logout').innerHTML = '<a href="">Logout</a>'
-        document.querySelector('.hero').innerHTML = `<button onclick="notice()"><i class="fas fa-bell"></i></button>`
     } else {
         document.getElementById('login').innerHTML = '<a href="/login.html">Login</a>'
     }
