@@ -1,8 +1,6 @@
 window.onload = () => {
     const socket = io.connect()
     socket.on("delMessage",(id) => {
-        console.log(`chatmsg${id}`)
-        console.log(document.getElementById(`chatmsg${id}`))
         document.getElementById(`chatmsg${id}`).remove()
     })
     getNewChatroomMessage()
@@ -236,7 +234,10 @@ async function userJoinEvent() {
     // Check organizer
     checkOrganizer()
     async function checkOrganizer() {
-        const res = await fetch("/checkEventOrganizer")
+        const paramString = window.location.search
+        const searchParams = new URLSearchParams(paramString)
+        const id = searchParams.get("id")
+        const res = await fetch(`/checkEventOrganizer/${id}`)
         const result = await res.json()
         // console.log(result)
         if (result === true) {
