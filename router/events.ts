@@ -163,12 +163,13 @@ events.get("/goCreateEventPage", checkSession, (req, res) => {
     res.redirect("/createEvent.html")
 })
 
-events.get("/checkEventOrganizer", async (req, res) => {
+events.get("/checkEventOrganizer/:id", async (req, res) => {
     try {
+        const event_id = req.params.id
         const user_id = req.session["user_id"]
         const data = await client.query(`
-            SELECT COUNT(*) FROM event WHERE organizer = $1
-        `, [user_id])
+            SELECT COUNT(*) FROM event WHERE organizer = $1 AND id = $2
+        `, [user_id,event_id])
         const count = parseInt(data.rows[0].count)
         if (count !== 0) {
             res.json(true)
