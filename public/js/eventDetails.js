@@ -31,6 +31,7 @@ async function loadAndDisplayEvent() {
             <div class="row">
             <div class="edit-button"></div>
             <div class="col-12 col-md-6 detail">
+                <h4>Hardness: ${data.hardness}</h4>
                 <h4>Organizer: ${data.user_name}</h4>
                 <h5>meeting point: ${data.meeting_point}</h5>
                 <h5>Date: ${data.date}</h5>

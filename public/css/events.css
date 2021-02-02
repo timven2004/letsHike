@@ -39,7 +39,7 @@ nav {
   font-family: 'Monument Extended', sans-serif;
   font-size: 80px;
   float: right;
-  margin-top: 200px;
+  margin-top: 150px;
   margin-left: 50px;
   color: #000;
   text-shadow: 8px 8px 12px rgba(255, 255, 255, 0.92);
@@ -121,19 +121,18 @@ nav {
 }
 
 /* remind */
-.hero > button {
-  border: none;
+#bell > button {
   float: right;
   margin-top: 70px;
   margin-right: 53px;
 }
 
-.hero > button i {
+#bell > button i {
   color: rgb(180, 51, 51);
   font-size: 30px;
 }
 
-.hero > button i:hover {
+#bell > button i:hover {
   color: red;
   transition: 1s ease-in;
 }
@@ -173,8 +172,8 @@ nav {
 
 .notice-board {
   display: flex;
-  border-radius: 3px;
-  padding: 30px 10px;
+  border-radius: 2px;
+  padding: 10px 5px;
   background: #fff;
   
 }
@@ -185,15 +184,13 @@ nav {
 
 .notice-board a {
   text-decoration: none;
+  font-size: 15px;
 }
 
 .neverShowbtn {
   float: right;
   cursor: pointer;
-  color: var(--primary);
-  background: var(--pink);
-  height: 23px;
-  width: 120px;
+  color: rgb(197, 58, 58);
   text-align: center;
 }
 
@@ -243,7 +240,7 @@ nav {
   margin: 20px 0;
 }
 
-.effect h2 {
+.effect h2, .effect h3 {
   transform: translate(10px, -20px);
   opacity: 0;
   transition: opacity 0.2s, transform 0.35s;
@@ -261,9 +258,11 @@ nav {
   opacity: 0.7;
 }
 
-.effect:hover h2 {
-  opacity: 0.7;
-  transform: translate(10px, -80px);
+.effect:hover h2,.effect:hover h3 {
+  color: #000;
+  font-weight: bolder;
+  opacity: 1;
+  transform: translate(10px, -100px);
   transition-delay: 0.1s;
   transition-duration: 0.35s;
 }
@@ -277,7 +276,7 @@ nav {
 
 @media only screen and (max-width: 480px) {
   .hero h3 {
-    margin-top: 80px; 
+    margin-top: 100px; 
   }
 
   .hero a {
@@ -313,14 +312,14 @@ nav {
 
   /* --notice-- */
 
-  .hero > button {
+  #bell > button {
     float: left;
     margin-left: 35px;
     margin-top: 100px;
     z-index: 55;
   }
 
-  .hero > button i {
+  #bell > button i {
     font-size: 20px;
   }
 

@@ -9,6 +9,7 @@ window.onload = async () => {
 async function loadAndDisplayEvents() {
     const res = await fetch('/events')
     const data = await res.json()
+    console.log(data)
 
     let eventsStr = ``
     for (const event of data) {
@@ -16,6 +17,7 @@ async function loadAndDisplayEvents() {
         <div class="col-12 col-md-6 col-lg-4 effect">
             <a href="/eventDetails.html?id=${event.id}"><img src="${event.image}" alt=""></a>
             <h2>${event.event_name}</h2>
+            <h3>Hardness: ${event.hardness}</h3>
         </div>
     `
     }
@@ -28,7 +30,7 @@ async function easy() {
     const res = await fetch('/events')
     const data = await res.json()
 
-    const a = data.filter(trail => trail.hardness <=3)
+    const a = data.filter(trail => trail.hardness <= 3)
 
     let hardeventsStr = ``
     for (const event of a) {
@@ -89,8 +91,13 @@ async function showProfileNavbar() {
     const data = await res.json()
 
     if (data !== 'noLogin') {
-        document.getElementById('hidden-propfile').innerHTML = `<a href="/userProfileSelf.html">My profile</a>`;
+        document.getElementById('hidden-propfile').innerHTML =`<a href="/userProfileSelf.html">My profile</a>`
+
         document.getElementById('logout').innerHTML = '<a href="">Logout</a>'
+        document.querySelector('#bell').innerHTML = `<button onclick="notice()"><i class="fas fa-bell"></i></button>
+        <div id="remember">
+            <h3>Notifications</h3>
+        </div>`
     } else {
         document.getElementById('login').innerHTML = '<a href="/login.html">Login</a>'
     }
@@ -128,12 +135,11 @@ async function checkRatingRemember() {
         // console.log(event)
         const remember = document.getElementById("remember")
         const name = (await (await fetch(`/events/eventDetails/${event.id}`)).json()).event_name
-        console.log(name)
 
         remember.innerHTML += `
             <div class="notice-board" id="${event.id}">
-                <a href="ratingOthers.html?eventId=${event.id}">Event: ${name}</a>
-                <a class="neverShowbtn" onclick="neverShowRemember(${event.id})">Never Show</a>
+                <a href="ratingOthers.html?eventId=${event.id}">Event: <br>${name}</a>
+                <a class="neverShowbtn" onclick="neverShowRemember(${event.id})">Hidden</a>
             </div>
         `
     }
