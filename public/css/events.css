@@ -39,7 +39,7 @@ nav {
   font-family: 'Monument Extended', sans-serif;
   font-size: 80px;
   float: right;
-  margin-top: 200px;
+  margin-top: 150px;
   margin-left: 50px;
   color: #000;
   text-shadow: 8px 8px 12px rgba(255, 255, 255, 0.92);
@@ -276,7 +276,7 @@ nav {
 
 @media only screen and (max-width: 480px) {
   .hero h3 {
-    margin-top: 80px; 
+    margin-top: 100px; 
   }
 
   .hero a {
@@ -312,14 +312,14 @@ nav {
 
   /* --notice-- */
 
-  .hero > button {
+  #bell > button {
     float: left;
     margin-left: 35px;
     margin-top: 100px;
     z-index: 55;
   }
 
-  .hero > button i {
+  #bell > button i {
     font-size: 20px;
   }
 
