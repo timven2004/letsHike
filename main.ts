@@ -123,6 +123,7 @@ app.use(express.static('uploads'));
 app.use(express.static('hiking_trail_image'));
 
 // Router
+// app.use(API_VERSION, router);
 app.use(users);
 app.use(ratingOthers);
 app.use(events);
@@ -135,13 +136,13 @@ server.listen(PORT, () => {
     console.log(`PORT: ${PORT} is Listening`);
 });
 
-export function checkUserIsLoginMiddleware(
-    req: express.Request,
-    res: express.Response,
-    next: express.NextFunction
-) {
-    if (req.session['user_id']) {
-        next();
-    }
-    res.redirect('/login.html');
-}
+// export function checkUserIsLoginMiddleware(
+//     req: express.Request,
+//     res: express.Response,
+//     next: express.NextFunction
+// ) {
+//     if (req.session['user_id']) {
+//         next();
+//     }
+//     res.redirect('/login.html');
+// }

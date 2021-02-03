@@ -108,6 +108,7 @@ INSERT INTO event (event_name,organizer,meeting_point,date,time,max_number_of_me
 
 INSERT INTO rating_event (users_id, event_id, rating_person_id, single_rating,comment) VALUES (2, 3, 1, 4.0, 'This is a good hiker! I like it');
 INSERT INTO rating_event (users_id, event_id, rating_person_id, single_rating,comment) VALUES (3, 4, 1, 5.0, 'This guy is handsome, so I gave it 5 stars');
+INSERT INTO rating_event (users_id, event_id, rating_person_id, single_rating,comment) VALUES (4, 3, 1, 4.0, 'This is a good hiker! I like it');
 INSERT INTO rating_event (users_id, rating_person_id, single_rating,comment) VALUES (4, 2, 4.0, 'This is a on_ hiker! I hate it');
 INSERT INTO rating_event (users_id, rating_person_id, single_rating,comment) VALUES (1, 3, 2.0, 'This guy is ugly, so I gave it 2 stars');
 
@@ -165,6 +166,7 @@ INSERT INTO image_hiking_trail ( image, hiking_trail_id, is_default ) VALUES
 ( 'Parkview to Jardine’s Lookout.png', 7, true),
 ( 'Sir Cecil’s Ride and Red Incense Burner Summit.jpg', 8, true),
 ( 'Black Hill.jpg', 9, true ) ;
+INSERT INTO image_hiking_trail ( image, hiking_trail_id, is_default ) VALUES ( 'Dragon’s Back.jpg', 4, false);
 
 -- SELECT event_id in TABLE user_joining_event without have be rating in TABLE rating_event
 SELECT event_id FROM user_joining_event WHERE users_id = 2;
