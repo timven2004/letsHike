@@ -1,7 +1,8 @@
 CREATE DATABASE c13_project_1_group_5;
 
-\c c13_project_1_group_5
+-- \c c13_project_1_group_5
 
+-- user_name VARCHAR(255) NOT NULL UNIQUE,
 CREATE TABLE users(
     id SERIAL primary key,
     user_name VARCHAR(255) NOT NULL,
@@ -25,8 +26,8 @@ CREATE TABLE hiking_trail(
 
 CREATE TABLE image_hiking_trail(
     id SERIAL primary key,
-    image VARCHAR(255),
-    hiking_trail_id INTEGER,
+    image VARCHAR(255) NOT NULL,
+    hiking_trail_id INTEGER NOT NULL,
     FOREIGN KEY (hiking_trail_id) REFERENCES hiking_trail(id),
     is_default BOOLEAN
 );
@@ -34,14 +35,14 @@ CREATE TABLE image_hiking_trail(
 CREATE TABLE event(
     id SERIAL primary key,
     event_name VARCHAR(255),
-    organizer INTEGER,
+    organizer INTEGER NOT NULL,
     FOREIGN KEY (organizer) REFERENCES users(id),
     meeting_point VARCHAR(255),
     date DATE,
     time TIME,
-    max_number_of_member INTEGER,
-    joining_number_of_member INTEGER DEFAULT 1,
-    hiking_trail_id INTEGER,
+    max_number_of_member INTEGER NOT NULL DEFAULT 10,
+    joining_number_of_member INTEGER NOT NULL DEFAULT 1,
+    hiking_trail_id INTEGER NOT NULL,
     FOREIGN KEY (hiking_trail_id) REFERENCES hiking_trail(id),
     detail TEXT,
     is_active BOOLEAN DEFAULT true
@@ -49,46 +50,49 @@ CREATE TABLE event(
 
 CREATE TABLE chatroom(
     id SERIAL primary key,
-    users_id INTEGER,
+    users_id INTEGER NOT NULL,
     FOREIGN KEY (users_id) REFERENCES users(id),
-    event_id INTEGER,
-    FOREIGN KEY (event_id ) REFERENCES event(id),
+    event_id INTEGER NOT NULL,
+    FOREIGN KEY (event_id) REFERENCES event(id),
     content TEXT,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+-- created_at
 
 CREATE TABLE user_joining_event(
     id SERIAL primary key,
-    users_id INTEGER,
+    users_id INTEGER NOT NULL,
     FOREIGN KEY (users_id) REFERENCES users(id),
-    event_id INTEGER,
+    event_id INTEGER NOT NULL,
     FOREIGN KEY (event_id ) REFERENCES event(id),
     auto_rating_msg BOOLEAN DEFAULT true
 );
 
 CREATE TABLE rating_event(
     id SERIAL primary key,
-    users_id INTEGER,
+    users_id INTEGER NOT NULL,
     FOREIGN KEY (users_id) REFERENCES users(id),
-    event_id INTEGER,
+    event_id INTEGER NOT NULL,
     FOREIGN KEY (event_id) REFERENCES event(id),
-    rating_person_id INTEGER,
+    rating_person_id INTEGER NOT NULL,
     FOREIGN KEY (rating_person_id) REFERENCES users(id),
-    single_rating  INTEGER,
+    single_rating INTEGER NOT NULL DEFAULT 0,
     comment TEXT,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+-- created_at
 
 -- users --
 
 -- POST
-INSERT INTO users ( user_name , email, password, gender ) VALUES ($1,$2,$3,$4)
+-- 1234 === $2a$10$r6vZCM7ZzHwuTuItrseEKOB6/Um44J7qXDbDXOpnAeUAh.CT/FwZ2
+-- INSERT INTO users ( user_name , email, password, gender ) VALUES ($1,$2,$3,$4)
 INSERT INTO users ( user_name , email, password, gender, level,experience, introduction,user_icon ) VALUES ('a','a@a','a','?',5,53,'aaa','image-1611640660826.gif');
 INSERT INTO users ( user_name , email, password, gender, level,experience, introduction,user_icon ) VALUES ('b','b@b','b','?',4,42,'bbb','image-1611640660826.gif');
 INSERT INTO users ( user_name , email, password, gender, level,experience,introduction,user_icon ) VALUES ('c','c@c','c','?',3,39,'ccc','image-1611640660826.gif');
 INSERT INTO users ( user_name , email, password, gender, level,experience,introduction,user_icon ) VALUES ('d','d@d','d','?',6,68,'ddd','image-1611640660826.gif');
 INSERT INTO users ( user_name , email, password, gender, level,experience, introduction, is_admin ) VALUES ('admin','admin@admin.com','admin','?',90, 900,'Im admin',true);
-
+INSERT INTO users ( user_name , email, password, gender, level,experience, introduction,user_icon ) VALUES ('jason','jason@jason.com','$2a$10$r6vZCM7ZzHwuTuItrseEKOB6/Um44J7qXDbDXOpnAeUAh.CT/FwZ2', '?', 5, 53, 'Jason is Handsome', 'image-1611640660826.gif');
 
 -- GET
 SELECT * FROM users WHERE id = $1
@@ -102,10 +106,10 @@ UPDATE users SET ( user_name , email, password, gender ) = ('a','a@a','a','?') W
 INSERT INTO event (event_name,organizer,meeting_point,date,time,max_number_of_member,joining_number_of_member,hiking_trail_id,detail,is_active) VALUES ('TaiMoShanHiking!',1,'MONG KOK','2021-01-01', '09:00:00',5,3,2,'Lets meet at MK then go TaiMoshan',false);
 INSERT INTO event (event_name,organizer,meeting_point,date,time,max_number_of_member,joining_number_of_member,hiking_trail_id,detail,is_active) VALUES ('HappyHiking!',1,'MONG KOK','2021-01-01', '09:00:00',5,3,5,'Lets meet at MK then go TaiMoshan',false);
 
-INSERT INTO rating_event (users_id,rating_person_id,single_rating,comment) VALUES (2, 1, 4.0, 'This is a good hiker! I like it');
-INSERT INTO rating_event (users_id,rating_person_id,single_rating,comment) VALUES (3, 1, 5.0, 'This guy is handsome, so I gave it 5 stars');
-INSERT INTO rating_event (users_id,rating_person_id,single_rating,comment) VALUES (4, 2, 4.0, 'This is a on_ hiker! I hate it');
-INSERT INTO rating_event (users_id,rating_person_id,single_rating,comment) VALUES (1, 3, 2.0, 'This guy is ugly, so I gave it 2 stars');
+INSERT INTO rating_event (users_id, event_id, rating_person_id, single_rating,comment) VALUES (2, 3, 1, 4.0, 'This is a good hiker! I like it');
+INSERT INTO rating_event (users_id, event_id, rating_person_id, single_rating,comment) VALUES (3, 4, 1, 5.0, 'This guy is handsome, so I gave it 5 stars');
+INSERT INTO rating_event (users_id, rating_person_id, single_rating,comment) VALUES (4, 2, 4.0, 'This is a on_ hiker! I hate it');
+INSERT INTO rating_event (users_id, rating_person_id, single_rating,comment) VALUES (1, 3, 2.0, 'This guy is ugly, so I gave it 2 stars');
 
 INSERT INTO user_joining_event (users_id, event_id,auto_rating_msg) VALUES (1,1,true);
 INSERT INTO user_joining_event (users_id, event_id,auto_rating_msg) VALUES (2,1,true);
