@@ -42,7 +42,7 @@ async function loadAndDisplayEvent() {
                 <p>Details: ${data.detail}</p>
             </div>
             <div class="col-12 col-md-6 detail-img">
-                <img src="${data.image}" alt=""><br>
+                <img src="${data.images[0].image}" alt=""><br>
             </div>
             </div>
         </div>`;
