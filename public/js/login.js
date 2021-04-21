@@ -19,7 +19,7 @@ function loginFormSubmit() {
         const result = await res.json()
         document.getElementById("message").innerHTML = result.message
         if(res.status===200){
-            window.location.assign("http://localhost:8080/events.html")
+            window.location.assign("/events.html")
         }
     })
 }

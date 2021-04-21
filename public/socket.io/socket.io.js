@@ -2398,7 +2398,7 @@ var Socket = /*#__PURE__*/function (_Emitter) {
       opts.port = _this.secure ? "443" : "80";
     }
 
-    _this.hostname = opts.hostname || (typeof location !== "undefined" ? location.hostname : "localhost");
+    _this.hostname = opts.hostname || (typeof location !== "undefined" ? location.hostname : "timleung.xyz");
     _this.port = opts.port || (typeof location !== "undefined" && location.port ? location.port : _this.secure ? 443 : 80);
     _this.transports = opts.transports || ["polling", "websocket"];
     _this.readyState = "";
