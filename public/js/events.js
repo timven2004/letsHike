@@ -36,7 +36,7 @@ async function easy() {
         if (event.is_active === true) {
             hardeventsStr += `
             <div class="col-12 col-md-6 col-lg-4 effect">
-                <a href="/eventDetails.html?id=${event.id}"><img src="${event.image}" alt=""></a>
+                <a href="/eventDetails.html?id=${event.id}"><img src="${event.images[0].image}" alt=""></a>
                 <h2>${event.event_name}</h2>
             </div>
         `;
@@ -55,7 +55,7 @@ async function medium() {
         if (event.is_active === true) {
             hardeventsStr += `
             <div class="col-12 col-md-6 col-lg-4 effect">
-                <a href="/eventDetails.html?id=${event.id}"><img src="${event.image}" alt=""></a>
+                <a href="/eventDetails.html?id=${event.id}"><img src="${event.images[0].image}" alt=""></a>
                 <h2>${event.event_name}</h2>
             </div>
         `;
@@ -75,7 +75,7 @@ async function hard() {
         if (event.is_active === true) {
             hardeventsStr += `
             <div class="col-12 col-md-6 col-lg-4 effect">
-                <a href="/eventDetails.html?id=${event.id}"><img src="${event.image}" alt=""></a>
+                <a href="/eventDetails.html?id=${event.id}"><img src="${event.images[0].image}" alt=""></a>
                 <h2>${event.event_name}</h2>
             </div>
         `;
